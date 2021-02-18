@@ -18,7 +18,7 @@ export default () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text>Browse</Text>
-      <Image source={Images.logo} style={styles.logo} />
+      {/* <Image source={Images.logo} style={styles.logo} /> */}
     </SafeAreaView>
   );
 };

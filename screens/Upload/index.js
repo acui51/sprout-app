@@ -1,7 +1,10 @@
 import React from "react";
 import { SafeAreaView, Text, StyleSheet, Image } from "react-native";
 
+// Assets
 import { Images, Metrics } from "../../assets/Themes";
+
+// Components
 
 const styles = StyleSheet.create({
   container: {
