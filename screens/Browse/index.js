@@ -1,7 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, Image, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
-import { Images, Metrics } from "../../assets/Themes";
+import { Images, Metrics, Colors } from "../../assets/Themes";
+
+import { Bubble } from "../../components";
 
 const styles = StyleSheet.create({
   container: {
@@ -15,9 +18,12 @@ const styles = StyleSheet.create({
 });
 
 export default () => {
+  const { colors } = useTheme();
+
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Browse</Text>
+      <Text style={{ color: colors.text }}>Browse</Text>
+      <View background={Colors.gradient1}></View>
       {/* <Image source={Images.logo} style={styles.logo} /> */}
     </SafeAreaView>
   );
