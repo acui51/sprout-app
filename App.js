@@ -58,6 +58,7 @@ export default function App() {
               showLabel: false,
               style: {
                 backgroundColor: Colors.blur,
+                height: 96,
               },
             }}
           >
