@@ -1,7 +1,7 @@
 // gradients aren't supported by RN - find a library
 
 const colors = {
-  primary: "#8322FF", // primary purple
+  primary: "#8459FF", // primary purple
   secondary: "#246BFD", // secondary blue
   background1: "#181A20", //
   background2: "#262A34",

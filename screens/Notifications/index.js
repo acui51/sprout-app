@@ -23,7 +23,7 @@ export default () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ color: colors.text }}>Browse</Text>
+      <Text style={{ color: colors.text }}>Notifications</Text>
       <View background={Colors.gradient1}></View>
     </SafeAreaView>
   );

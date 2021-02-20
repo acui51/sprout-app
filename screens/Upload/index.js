@@ -1,8 +1,9 @@
 import React from "react";
 import { SafeAreaView, Text, StyleSheet, Image } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 // Assets
-import { Images, Metrics } from "../../assets/Themes";
+import { Metrics } from "../../assets/Themes";
 
 // Components
 
@@ -16,11 +17,13 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
 });
+
 export default () => {
+  const { colors } = useTheme();
+
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Upload</Text>
-      <Image source={Images.logo} style={styles.logo} />
+      <Text style={{ color: colors.text }}>Saved</Text>
     </SafeAreaView>
   );
 };

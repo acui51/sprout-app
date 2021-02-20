@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
 // Assets
-import { Metrics, Colors } from "../../assets/Themes";
+import { Metrics } from "../../assets/Themes";
 
 // Components
 
@@ -23,8 +23,7 @@ export default () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ color: colors.text }}>Browse</Text>
-      <View background={Colors.gradient1}></View>
+      <Text style={{ color: colors.text }}>Saved</Text>
     </SafeAreaView>
   );
 };
