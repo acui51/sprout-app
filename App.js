@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { StyleSheet, SafeAreaView, StatusBar, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons";
-import { Colors } from "./assets/Themes";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
-import CustomIcons from "./assets/Fonts";
 
 // Assets
+import { Colors } from "./assets/Themes";
+import CustomIcons from "./assets/Fonts";
 
 // Components
 import { Browse, Upload, Profile, Saved, Notifications } from "./screens";
@@ -23,7 +22,8 @@ const Theme = {
     ...DefaultTheme.colors,
     primary: Colors.primary,
     background: Colors.background1,
-    text: Colors.white,
+    text1: Colors.white,
+    text2: Colors.gray,
   },
 };
 

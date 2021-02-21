@@ -23,7 +23,7 @@ export default () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ color: colors.text }}>Saved</Text>
+      <Text style={{ color: colors.text1 }}>Saved</Text>
     </SafeAreaView>
   );
 };
