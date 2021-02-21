@@ -29,21 +29,25 @@ export default () => {
         text="Connect"
         variantButton="primaryShadow"
         variantText="whiteText"
+        width={120}
       />
       <CustomButton
         text="Requested"
         variantButton="primaryOutline"
         variantText="whiteText"
+        width={120}
       />
       <CustomButton
         text="Connected"
         variantButton="primaryOutline"
         variantText="whiteText"
+        width={120}
       />
       <CustomButton
         text="Edit Profile"
         variantButton="primaryOutline"
         variantText="whiteText"
+        width={120}
       />
     </SafeAreaView>
   );

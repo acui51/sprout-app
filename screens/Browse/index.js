@@ -46,54 +46,17 @@ export default () => {
       })}
 
       {/* TEST BUTTONS - CAN DELETE */}
-      <CustomButton text="EDM" variantButton="edm" variantText="blackText" />
+      <CustomButton
+        text="EDM"
+        variantButton="edm"
+        variantText="blackText"
+        width={120}
+      />
       <CustomButton
         text="EDM"
         variantButton="edmOutline"
         variantText="edmText"
-      />
-      <CustomButton text="POP" variantButton="pop" variantText="blackText" />
-      <CustomButton
-        text="POP"
-        variantButton="popOutline"
-        variantText="popText"
-      />
-      <CustomButton
-        text="COUNTRY"
-        variantButton="country"
-        variantText="blackText"
-      />
-      <CustomButton
-        text="COUNTRY"
-        variantButton="countryOutline"
-        variantText="countryText"
-      />
-      <CustomButton
-        text="HIP HOP"
-        variantButton="hiphop"
-        variantText="blackText"
-      />
-      <CustomButton
-        text="HIP HOP"
-        variantButton="hiphopOutline"
-        variantText="hiphopText"
-      />
-      <CustomButton text="RNB" variantButton="rnb" variantText="blackText" />
-      <CustomButton
-        text="RNB"
-        variantButton="rnbOutline"
-        variantText="rnbText"
-      />
-      <CustomButton
-        text="RNB"
-        variantButton="hiphopOutline"
-        variantText="hiphopText"
-      />
-      <CustomButton text="ROCK" variantButton="rock" variantText="blackText" />
-      <CustomButton
-        text="ROCK"
-        variantButton="rockOutline"
-        variantText="rockText"
+        width={120}
       />
     </SafeAreaView>
   );

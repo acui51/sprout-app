@@ -7,11 +7,21 @@ import { Colors } from "../../assets/Themes";
 /**
  * @param {string} variant - style variant
  * @param {string} text - inner text of button
+ * @param {number} width - specified width
  * @param {function} onPress - callback for button
  */
-export function CustomButton({ variantButton, variantText, text, onPress }) {
+export function CustomButton({
+  variantButton,
+  variantText,
+  text,
+  onPress,
+  width,
+}) {
   return (
-    <TouchableOpacity style={styles[variantButton]} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles[variantButton], { width }]}
+      onPress={onPress}
+    >
       <Text style={styles[variantText]}>{text}</Text>
     </TouchableOpacity>
   );
@@ -19,12 +29,15 @@ export function CustomButton({ variantButton, variantText, text, onPress }) {
 
 // Base styling for button
 export const base = {
-  paddingHorizontal: 25,
+  paddingHorizontal: 15,
   paddingVertical: 14,
   borderRadius: 24,
-  alignSelf: "flex-start",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
 };
 
+// Base styling for text
 export const text = {
   fontSize: 12,
   letterSpacing: 1.5,
