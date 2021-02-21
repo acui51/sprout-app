@@ -32,7 +32,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   const [appLoading, setAppLoading] = useState(false);
 
-  // Asynchronously load the custom fonts from icomoon
+  // Asynchronously load the custom fonts icons from icomoon
   const loadResourcesAsync = async () =>
     Promise.all([
       Font.loadAsync({
