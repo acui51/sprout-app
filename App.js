@@ -6,7 +6,7 @@ import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 
 // Assets
-import { Colors } from "./assets/Themes";
+import { Colors, Metrics } from "./assets/Themes";
 import CustomIcons from "./assets/Fonts";
 
 // Components
@@ -136,7 +136,7 @@ export default function App() {
               showLabel: false,
               style: {
                 backgroundColor: Colors.blur,
-                height: 55,
+                height: Metrics.tabBarHeight,
                 borderTopWidth: 0,
               },
             }}
