@@ -6,6 +6,7 @@ import { useTheme } from "@react-navigation/native";
 import { Metrics } from "../../assets/Themes";
 
 // Components
+import { CustomButton } from "../../components";
 
 const styles = StyleSheet.create({
   container: {
@@ -24,6 +25,26 @@ export default () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={{ color: colors.text1 }}>Profile</Text>
+      <CustomButton
+        text="Connect"
+        variantButton="primaryShadow"
+        variantText="whiteText"
+      />
+      <CustomButton
+        text="Requested"
+        variantButton="primaryOutline"
+        variantText="whiteText"
+      />
+      <CustomButton
+        text="Connected"
+        variantButton="primaryOutline"
+        variantText="whiteText"
+      />
+      <CustomButton
+        text="Edit Profile"
+        variantButton="primaryOutline"
+        variantText="whiteText"
+      />
     </SafeAreaView>
   );
 };

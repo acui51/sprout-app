@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, SafeAreaView, Button } from "react-native";
+import { StyleSheet, Text, SafeAreaView } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
 // Assets + Data
-import { Metrics, Colors } from "../../assets/Themes";
+import { Metrics } from "../../assets/Themes";
 import { SOUNDBITES_DATA } from "../../modelData";
 
 // Components
+import { CustomButton } from "../../components";
 
 const styles = StyleSheet.create({
   container: {
@@ -44,7 +45,56 @@ export default () => {
         );
       })}
 
-      <Button title="Add Soundbite" onPress={() => addSoundbite()} />
+      {/* TEST BUTTONS - CAN DELETE */}
+      <CustomButton text="EDM" variantButton="edm" variantText="blackText" />
+      <CustomButton
+        text="EDM"
+        variantButton="edmOutline"
+        variantText="edmText"
+      />
+      <CustomButton text="POP" variantButton="pop" variantText="blackText" />
+      <CustomButton
+        text="POP"
+        variantButton="popOutline"
+        variantText="popText"
+      />
+      <CustomButton
+        text="COUNTRY"
+        variantButton="country"
+        variantText="blackText"
+      />
+      <CustomButton
+        text="COUNTRY"
+        variantButton="countryOutline"
+        variantText="countryText"
+      />
+      <CustomButton
+        text="HIP HOP"
+        variantButton="hiphop"
+        variantText="blackText"
+      />
+      <CustomButton
+        text="HIP HOP"
+        variantButton="hiphopOutline"
+        variantText="hiphopText"
+      />
+      <CustomButton text="RNB" variantButton="rnb" variantText="blackText" />
+      <CustomButton
+        text="RNB"
+        variantButton="rnbOutline"
+        variantText="rnbText"
+      />
+      <CustomButton
+        text="RNB"
+        variantButton="hiphopOutline"
+        variantText="hiphopText"
+      />
+      <CustomButton text="ROCK" variantButton="rock" variantText="blackText" />
+      <CustomButton
+        text="ROCK"
+        variantButton="rockOutline"
+        variantText="rockText"
+      />
     </SafeAreaView>
   );
 };
