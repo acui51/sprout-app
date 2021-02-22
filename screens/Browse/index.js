@@ -7,7 +7,7 @@ import { Metrics } from "../../assets/Themes";
 import { SOUNDBITES_DATA } from "../../modelData";
 
 // Components
-import { CustomButton } from "../../components";
+import { CustomButton, Bubble } from "../../components";
 
 const styles = StyleSheet.create({
   container: {
@@ -58,6 +58,7 @@ export default () => {
         variantText="edmText"
         width={120}
       />
+      <Bubble />
     </SafeAreaView>
   );
 };
