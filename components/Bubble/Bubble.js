@@ -1,15 +1,42 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { Image, StyleSheet, TouchableOpacity } from "react-native";
 
 // Assets
-import { Images } from "../../assets/Themes";
+import { Colors } from "../../assets/Themes";
 
-export function Bubble() {
+/**
+ * Bubble component
+ *
+ * @param {string} genre
+ * @param {Images.<>} img
+ */
+export function Bubble({ genre, img }) {
   return (
-    <View>
-      {/* Three Circles - image, black, genre color */}
-      <Text>Bubble</Text>
-      <Image source={Images.tameImpala} />
-    </View>
+    <TouchableOpacity style={styles(genre).bubbleBackground}>
+      <Image source={img} />
+    </TouchableOpacity>
   );
 }
+
+const genreToColor = {
+  edm: Colors.colorful2,
+  pop: Colors.colorful4,
+  country: Colors.colorful6,
+  indie: Colors.colorful5,
+  rnb: Colors.colorful1,
+};
+
+const base = {
+  padding: 4.5,
+  alignSelf: "center",
+  borderRadius: 99 / 2,
+};
+
+// Stylesheet factory
+export const styles = (genre) =>
+  StyleSheet.create({
+    bubbleBackground: {
+      ...base,
+      backgroundColor: genreToColor[genre],
+    },
+  });

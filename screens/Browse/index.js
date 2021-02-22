@@ -3,7 +3,7 @@ import { StyleSheet, Text, SafeAreaView } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
 // Assets + Data
-import { Metrics } from "../../assets/Themes";
+import { Metrics, Images } from "../../assets/Themes";
 import { SOUNDBITES_DATA } from "../../modelData";
 
 // Components
@@ -58,7 +58,8 @@ export default () => {
         variantText="edmText"
         width={120}
       />
-      <Bubble />
+      <Bubble genre="edm" img={Images.sb_tameImpala} />
+      <Bubble genre="pop" img={Images.sb_candy} />
     </SafeAreaView>
   );
 };

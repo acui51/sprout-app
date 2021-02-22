@@ -9,15 +9,7 @@ import * as Font from "expo-font";
 import { Colors } from "./assets/Themes";
 
 // Components
-import { Main } from "./screens";
-
-// const Main = () => {
-//   return (
-//     <SafeAreaView>
-//       <Text>Hi</Text>
-//     </SafeAreaView>
-//   );
-// };
+import Main from "./main";
 
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';

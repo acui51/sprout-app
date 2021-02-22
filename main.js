@@ -1,15 +1,14 @@
 import React from "react";
-import { StyleSheet, Image, View, Text } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTheme } from "@react-navigation/native";
-import Ionicons from "react-native-vector-icons/Ionicons";
 
 // Assets
-import { Colors, Metrics } from "../../assets/Themes";
-import CustomIcons from "../../assets/Fonts";
+import { Colors, Metrics } from "./assets/Themes";
+import CustomIcons from "./assets/Fonts";
 
 // Components
-import { Browse, Upload, Profile, Saved, Notifications } from "../../screens";
+import { Browse, Upload, Profile, Saved, Notifications } from "./screens";
 
 const styles = StyleSheet.create({
   upload: {
@@ -20,9 +19,8 @@ const styles = StyleSheet.create({
   },
 });
 
-// Test Main as just a <View> component instead of importing complex Tab navigator
-
-export default () => {
+// Tab navigator
+export default Main = () => {
   const { colors } = useTheme();
   const Tab = createBottomTabNavigator();
 
@@ -49,12 +47,12 @@ export default () => {
             case "Upload":
               icon = focused ? (
                 <Image
-                  source={require("../../assets/Images/add.png")}
+                  source={require("./assets/Images/add.png")}
                   style={styles.upload}
                 />
               ) : (
                 <Image
-                  source={require("../../assets/Images/add.png")}
+                  source={require("./assets/Images/add.png")}
                   style={styles.upload}
                 />
               );
