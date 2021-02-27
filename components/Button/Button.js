@@ -10,6 +10,12 @@ import { Colors } from "../../assets/Themes";
  * @param {number} width - specified width
  * @param {function} onPress - callback for button
  */
+//   <CustomButton
+//     text="Connect"
+//     variantButton="primaryShadow"
+//     variantText="whiteText"
+//     width={120}
+//   />
 export function CustomButton({
   variantButton,
   variantText,

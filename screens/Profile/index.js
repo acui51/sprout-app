@@ -1,54 +1,96 @@
-import React from "react";
-import { SafeAreaView, Text, StyleSheet, Image } from "react-native";
-import { useTheme } from "@react-navigation/native";
+import React, { useState } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 // Assets
-import { Metrics } from "../../assets/Themes";
+import { Metrics, Colors, Images } from "../../assets/Themes";
 
 // Components
-import { CustomButton } from "../../components";
+import { Bubble, CustomText } from "../../components";
+import Container from "../../hoc/Container";
+import { ProfileCard } from "./components";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginHorizontal: Metrics.marginHorizontal,
+    alignItems: "center",
   },
   logo: {
     height: Metrics.icons.xl,
     resizeMode: "contain",
   },
+  profileCard: {
+    marginBottom: 32,
+  },
+  featuredAllSwitch: {
+    flexDirection: "row",
+    marginBottom: 32,
+  },
+  featuredAllText: {
+    fontSize: 20,
+    fontWeight: "700",
+  },
+  contentWrap: {
+    alignSelf: "baseline",
+    paddingBottom: 4,
+  },
 });
 
 export default () => {
-  const { colors } = useTheme();
+  const [view, setView] = useState("featured");
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={{ color: colors.text1 }}>Profile</Text>
-      <CustomButton
-        text="Connect"
-        variantButton="primaryShadow"
-        variantText="whiteText"
-        width={120}
+    <Container customStyles={styles.container}>
+      {/* Profile Card at Top */}
+      <ProfileCard
+        name="Ariana Venti"
+        bio="I love pizza almost as much as making music 👌"
+        buttonText="Edit Profile"
+        customStyles={styles.profileCard}
       />
-      <CustomButton
-        text="Requested"
-        variantButton="primaryOutline"
-        variantText="whiteText"
-        width={120}
-      />
-      <CustomButton
-        text="Connected"
-        variantButton="primaryOutline"
-        variantText="whiteText"
-        width={120}
-      />
-      <CustomButton
-        text="Edit Profile"
-        variantButton="primaryOutline"
-        variantText="whiteText"
-        width={120}
-      />
-    </SafeAreaView>
+
+      {/* Featured All Switcher */}
+      <View style={styles.featuredAllSwitch}>
+        <TouchableOpacity
+          style={{ marginHorizontal: 40 }}
+          onPress={() => setView("featured")}
+        >
+          <View
+            style={[
+              styles.contentWrap,
+              view === "featured" && {
+                borderBottomColor: Colors.white,
+                borderBottomWidth: 2,
+              },
+            ]}
+          >
+            <CustomText customStyles={styles.featuredAllText}>
+              Featured
+            </CustomText>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{ marginHorizontal: 40 }}
+          onPress={() => setView("all")}
+        >
+          <View
+            style={[
+              styles.contentWrap,
+              view === "all" && {
+                borderBottomColor: Colors.white,
+                borderBottomWidth: 2,
+              },
+            ]}
+          >
+            <CustomText customStyles={styles.featuredAllText}>All</CustomText>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      {/* User's Soundbubbles */}
+      {view === "featured" ? (
+        <Bubble genre="edm" img={Images.sb_tameImpala} />
+      ) : (
+        <Bubble genre="pop" img={Images.sb_candy} />
+      )}
+    </Container>
   );
 };
