@@ -58,6 +58,13 @@ export default () => {
         variantText="edmText"
         width={120}
       />
+      <CustomButton
+        text="Add Soundbite"
+        variantButton="edmOutline"
+        variantText="edmText"
+        width={150}
+        onPress={addSoundbite}
+      />
       <Bubble genre="edm" img={Images.sb_tameImpala} />
       <Bubble genre="pop" img={Images.sb_candy} />
     </SafeAreaView>

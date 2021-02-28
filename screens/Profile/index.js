@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
-// Assets
+// Assets + DATA
 import { Metrics, Colors, Images } from "../../assets/Themes";
 
 // Components
