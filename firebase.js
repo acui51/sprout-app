@@ -20,5 +20,6 @@ if (firebase.apps.length === 0) {
 }
 
 const db = app.firestore();
+const firestore = firebase.firestore;
 
-export { db };
+export { db, firestore };
