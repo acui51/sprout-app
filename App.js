@@ -53,20 +53,7 @@ function BrowseStackComponent() {
         },
       }}
     >
-      <BrowseStack.Screen
-        name="Explore"
-        component={Browse}
-        options={{
-          headerRight: () => (
-            // TODO: Create custom filter component
-            <Button
-              onPress={() => alert("This is a button!")}
-              title="Filter"
-              color={Colors.white}
-            />
-          ),
-        }}
-      />
+      <BrowseStack.Screen name="Explore" component={Browse} />
     </BrowseStack.Navigator>
   );
 }
@@ -323,7 +310,7 @@ const styles = StyleSheet.create({
   },
   upload: {
     marginTop: 10,
-    width: 60,
+    width: 75,
     height: undefined,
     aspectRatio: 1,
   },
