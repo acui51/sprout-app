@@ -96,15 +96,6 @@ export default ({ navigation }) => {
           </View>
         ))}
       </View>
-
-      {soundbites.map((elem, i) => (
-        <Bubble
-          key={i}
-          genre={elem.genre}
-          img={Images[`sb_${elem.imageName}`]}
-        />
-      ))}
-
       <Modal
         animationType="fade"
         transparent={true}
@@ -217,6 +208,7 @@ const styles = StyleSheet.create({
   },
   soundbite: {
     position: "absolute",
+  },
   textStyle: {
     color: Colors.white,
   },
