@@ -1,7 +1,6 @@
-import * as React from 'react';
+import React from "react";
 import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
-
 
 // Assets
 import { Metrics } from "../../assets/Themes";
@@ -9,30 +8,32 @@ import { Metrics } from "../../assets/Themes";
 // Components
 import { CustomButton, Bubble, CustomText } from "../../components";
 
-export default function App() {
+export default function studio({ navigation }) {
   const { colors } = useTheme();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.button}>
         <CustomButton
-          text="Record"
-          variantButton="primaryShadow"
+          text="NEXT"
+          variantButton="primaryOutline"
           variantText="whiteText"
-          width={165}
-          onPress={() => navigation.navigate('studio')}
+          width={110}
+          onPress={() => navigation.navigate('soundsGood')}
         />
       </View>
       <View style={styles.button}>
-        <CustomButton
-          text="Upload File"
+      <CustomButton
+          text="GoBack"
           variantButton="primaryOutline"
           variantText="whiteText"
-          width={165}
+          width={110}
+          onPress={() => navigation.navigate('Upload')}
         />
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -45,7 +46,4 @@ const styles = StyleSheet.create({
     height: Metrics.icons.xl,
     resizeMode: "contain",
   },
-  button: {
-    padding: 10,
-  }
 });

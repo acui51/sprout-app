@@ -8,9 +8,9 @@ import {
 } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { createStackNavigator } from '@react-navigation/stack';
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
-import { createStackNavigator } from "@react-navigation/stack";
 
 // Assets
 import { Colors, Metrics } from "./assets/Themes";
@@ -18,6 +18,10 @@ import CustomIcons from "./assets/Fonts";
 
 // Components
 import { Browse, Upload, Profile, Saved, Notifications } from "./screens";
+
+//import screens
+import Studio from './screens/Upload/studio';
+import SoundsGood from './screens/Upload/soundsGood';
 
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
@@ -106,6 +110,8 @@ function UploadStackComponent() {
       }}
     >
       <UploadStack.Screen name="Upload" component={Upload} />
+      <UploadStack.Screen name="Studio" component={Studio} />
+      <UploadStack.Screen name="SoundsGood" component={SoundsGood} />
     </UploadStack.Navigator>
   );
 }
