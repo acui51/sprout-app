@@ -81,9 +81,16 @@ const styles = StyleSheet.create({
 
   /********** EDM **********/
   edm: {
-    // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
     ...base,
     backgroundColor: Colors.colorful2,
+  },
+  edmShadow: {
+    ...base,
+    backgroundColor: Colors.colorful2,
+    shadowColor: "rgba(0, 0, 0, 1)",
+    shadowOpacity: 0.5,
+    shadowRadius: 50,
+    shadowOffset: { width: 0, height: 8 },
   },
   edmOutline: {
     ...base,
