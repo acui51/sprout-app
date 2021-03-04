@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { StyleSheet, Text, SafeAreaView } from "react-native";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 
@@ -13,7 +13,6 @@ import { CustomButton, Bubble } from "../../components";
 export default ({ navigation }) => {
   const [soundbites, setSoundbites] = useState([]);
   const [batch, setBatch] = useState(1);
-  const { colors } = useTheme();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -54,7 +53,6 @@ export default ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ color: colors.text1 }}>Browse</Text>
       <CustomButton
         text="REFRESH"
         variantButton="edm"
@@ -63,13 +61,24 @@ export default ({ navigation }) => {
         onPress={() => (batch === 1 ? setBatch(2) : setBatch(1))}
       />
 
-      {soundbites.map((elem, i) => (
-        <Bubble
-          key={i}
-          genre={elem.genre}
-          img={Images[`sb_${elem.imageName}`]}
-        />
-      ))}
+      <View style={styles.soundbitesWrapper}>
+        {soundbites.map((elem, i) => (
+          <View key={i} style={styles.soundbiteWrapper}>
+            <View
+              style={[
+                styles.soundbite,
+                { top: Math.floor(Math.random() * 100) + 1 },
+              ]}
+            >
+              <Bubble
+                key={i}
+                genre={elem.genre}
+                img={Images[`sb_${elem.imageName}`]}
+              />
+            </View>
+          </View>
+        ))}
+      </View>
     </SafeAreaView>
   );
 };
@@ -83,5 +92,18 @@ const styles = StyleSheet.create({
   logo: {
     height: Metrics.icons.medium,
     resizeMode: "contain",
+  },
+  soundbitesWrapper: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    flex: 1,
+  },
+  soundbiteWrapper: {
+    flexBasis: "33%",
+    height: "33%",
+    position: "relative",
+  },
+  soundbite: {
+    position: "absolute",
   },
 });

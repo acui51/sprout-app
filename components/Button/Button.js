@@ -22,10 +22,11 @@ export function CustomButton({
   text,
   onPress,
   width,
+  customStyles,
 }) {
   return (
     <TouchableOpacity
-      style={[styles[variantButton], { width }]}
+      style={[styles[variantButton], { width }, customStyles]}
       onPress={onPress}
     >
       <Text style={styles[variantText]}>{text}</Text>
