@@ -17,9 +17,10 @@ import { Colors, Metrics } from "./assets/Themes";
 import CustomIcons from "./assets/Fonts";
 
 // Components
-import { Browse, Upload, Profile, Saved, Notifications } from "./screens";
+import { Browse, Profile, Saved, Notifications } from "./screens";
 
 //import screens
+import Upload from './screens/Upload/index';
 import Studio from './screens/Upload/studio';
 import SoundsGood from './screens/Upload/soundsGood';
 

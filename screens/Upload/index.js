@@ -9,7 +9,7 @@ import { Metrics } from "../../assets/Themes";
 // Components
 import { CustomButton, Bubble, CustomText } from "../../components";
 
-export default function App() {
+export default function Upload({ navigation }) {
   const { colors } = useTheme();
   return (
     <SafeAreaView style={styles.container}>
