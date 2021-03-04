@@ -37,7 +37,12 @@ export default ({ navigation }) => {
         />
       ),
       headerRight: () => (
-        <AntDesign name="filter" size={24} color={Colors.white} />
+        <AntDesign
+          name="filter"
+          size={24}
+          color={Colors.white}
+          onPress={() => setFilterVisible(true)}
+        />
       ),
     });
   }, [navigation]);
@@ -152,22 +157,22 @@ export default ({ navigation }) => {
                       customStyles={styles.genre}
                     />
                   </View>
-                  <CustomButton
-                    text="Save Changes"
-                    variantButton="primaryShadow"
-                    variantText="whiteText"
-                    width={150}
-                    onPress={() => setFilterVisible(!filterVisible)}
-                  />
+                  <View style={styles.filterButtons}>
+                    <CustomText>*Default is all</CustomText>
+                    <CustomButton
+                      text="Save Changes"
+                      variantButton="primaryShadow"
+                      variantText="whiteText"
+                      width={150}
+                      onPress={() => setFilterVisible(!filterVisible)}
+                    />
+                  </View>
                 </View>
               </View>
             </TouchableWithoutFeedback>
           </ScrollView>
         </TouchableOpacity>
       </Modal>
-      <Pressable onPress={() => setFilterVisible(true)}>
-        <CustomText cusotomStyles={styles.textStyle}>Show Modal</CustomText>
-      </Pressable>
     </SafeAreaView>
   );
 };
@@ -215,6 +220,12 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     marginBottom: 48,
+  },
+  filterButtons: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   genre: {
     marginBottom: 10,
