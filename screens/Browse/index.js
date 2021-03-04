@@ -81,12 +81,7 @@ export default ({ navigation }) => {
       <View style={styles.soundbitesWrapper}>
         {soundbites.map((elem, i) => (
           <View key={i} style={styles.soundbiteWrapper}>
-            <View
-              style={[
-                styles.soundbite,
-                { top: Math.floor(Math.random() * 100) + 1 },
-              ]}
-            >
+            <View style={[styles.soundbite]}>
               <Bubble
                 key={i}
                 genre={elem.genre}

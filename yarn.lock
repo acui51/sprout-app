@@ -1114,7 +1114,7 @@
     getenv "0.7.0"
     jimp "0.12.1"
     mime "^2.4.4"
-    node-fetch "^2.6.0"
+    node-fetch "^2.6.1"
     parse-png "^2.1.0"
     resolve-from "^5.0.0"
     semver "7.3.2"
