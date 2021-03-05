@@ -4,7 +4,6 @@ import {
   Text,
   SafeAreaView,
   Modal,
-  Pressable,
   View,
   TouchableOpacity,
   ScrollView,
@@ -24,7 +23,6 @@ export default ({ navigation }) => {
   const [soundbites, setSoundbites] = useState([]);
   const [batch, setBatch] = useState(1);
   const [filterVisible, setFilterVisible] = useState(false);
-  const { colors } = useTheme();
 
   useLayoutEffect(() => {
     navigation.setOptions({
