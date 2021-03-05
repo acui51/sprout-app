@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -7,11 +7,11 @@ import { Metrics } from "../../assets/Themes";
 import { Colors } from "../../assets/Themes";
 
 // Components
-import { CustomButton} from "../../components";
-import Container from '../../hoc/Container';
+import { CustomButton, CustomText } from "../../components";
+import Container from "../../hoc/Container";
 
 export default function App() {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
     <Container>
       {/* <TouchableOpacity style = {styles.button}>
@@ -25,7 +25,7 @@ export default function App() {
             variantButton="primaryShadow"
             variantText="whiteText"
             width={165}
-            onPress={() => navigation.navigate('Studio')}
+            onPress={() => navigation.navigate("Studio")}
           />
         </View>
         <View style={styles.button}>
@@ -34,10 +34,9 @@ export default function App() {
             variantButton="primaryOutline"
             variantText="whiteText"
             width={165}
-          />
+          ></CustomButton>
         </View>
       </View>
-      
     </Container>
   );
 }
@@ -45,8 +44,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginHorizontal: Metrics.marginHorizontal,
   },
   logo: {

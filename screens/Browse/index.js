@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import {
   StyleSheet,
-  Text,
   SafeAreaView,
   Modal,
   View,
   TouchableOpacity,
   ScrollView,
   TouchableWithoutFeedback,
+  ActivityIndicator,
 } from "react-native";
-import { useTheme } from "@react-navigation/native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 
 // Assets + Data
@@ -21,6 +20,7 @@ import { CustomButton, Bubble, CustomText } from "../../components";
 
 export default ({ navigation }) => {
   const [soundbites, setSoundbites] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [batch, setBatch] = useState(1);
   const [filterVisible, setFilterVisible] = useState(false);
 
@@ -47,6 +47,8 @@ export default ({ navigation }) => {
 
   useEffect(() => {
     // Fetch from soundbites
+
+    setLoading(true);
     db.collection("browse")
       .doc(`${batch}`)
       .onSnapshot((doc) => {
@@ -62,24 +64,42 @@ export default ({ navigation }) => {
               arr.push(doc.data());
             });
             setSoundbites(arr);
+            setLoading(false);
           });
       });
   }, [batch]);
 
   return (
     <SafeAreaView style={styles.container}>
-      <CustomButton
-        text="REFRESH"
-        variantButton="edm"
-        variantText="blackText"
-        width={120}
-        onPress={() => (batch === 1 ? setBatch(2) : setBatch(1))}
-      />
-
-      <View style={styles.soundbitesWrapper}>
+      {loading ? (
+        <ActivityIndicator />
+      ) : (
+        <View style={styles.soundbitesWrapper}>
+          {soundbites.map((elem, i) => (
+            <View key={i} style={styles.soundbiteWrapper}>
+              <View
+                style={[
+                  styles.soundbite,
+                  {
+                    top: Math.floor(Math.random() * 100) + 1,
+                    left: Math.floor(Math.random() * 25) + 1,
+                  },
+                ]}
+              >
+                <Bubble
+                  key={i}
+                  genre={elem.genre}
+                  img={Images[`sb_${elem.imageName}`]}
+                />
+              </View>
+            </View>
+          ))}
+        </View>
+      )}
+      {/* <View style={styles.soundbitesWrapper}>
         {soundbites.map((elem, i) => (
           <View key={i} style={styles.soundbiteWrapper}>
-            <View style={[styles.soundbite]}>
+            <View style={[styles.soundbite, {top: Math.floor(Math.random() * 100) + 1}]}>
               <Bubble
                 key={i}
                 genre={elem.genre}
@@ -88,7 +108,8 @@ export default ({ navigation }) => {
             </View>
           </View>
         ))}
-      </View>
+      </View> */}
+
       <Modal
         animationType="fade"
         transparent={true}
@@ -201,6 +222,7 @@ const styles = StyleSheet.create({
   },
   soundbite: {
     position: "absolute",
+    top: 100,
   },
   textStyle: {
     color: Colors.white,
