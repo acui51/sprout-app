@@ -3,29 +3,29 @@ import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
 // Assets
-import { Metrics } from "../../assets/Themes";
+import { Metrics, Images} from "../../assets/Themes";
 
 // Components
 import { CustomButton, Bubble, CustomText } from "../../components";
 
 export default function studio({ navigation }) {
-  const { colors } = useTheme();
 
   return (
     <SafeAreaView style={styles.container}>
+      <Image source = {Images.Recorder}/>
       <View style={styles.button}>
         <CustomButton
           text="NEXT"
-          variantButton="primaryOutline"
+          variantButton="primaryShadow"
           variantText="whiteText"
           width={110}
-          onPress={() => navigation.navigate('soundsGood')}
+          onPress={() => navigation.navigate('SoundsGood')}
         />
       </View>
       <View style={styles.button}>
       <CustomButton
           text="GoBack"
-          variantButton="primaryOutline"
+          variantButton="primaryShadow"
           variantText="whiteText"
           width={110}
           onPress={() => navigation.navigate('Upload')}
@@ -45,5 +45,9 @@ const styles = StyleSheet.create({
   logo: {
     height: Metrics.icons.xl,
     resizeMode: "contain",
+  },
+  button: {
+    padding: 10,
+    // backgroundColor: Colors.primary,
   },
 });

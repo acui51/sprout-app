@@ -16,7 +16,7 @@ export default function soundsGood({ navigation }) {
       <View style={styles.button}>
         <CustomButton
           text="YES! CONTINUE"
-          variantButton="primaryOutline"
+          variantButton="primaryShadow"
           variantText="whiteText"
           width={196}
           onPress={() => navigation.goBack()}
