@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     ...text,
     color: Colors.background1,
   },
-
+  
   /********** EDM **********/
   edm: {
     ...base,
