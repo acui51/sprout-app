@@ -23,13 +23,14 @@ export function CustomButton({
   onPress,
   width,
   customStyles,
+  children,
 }) {
   return (
     <TouchableOpacity
       style={[styles[variantButton], { width }, customStyles]}
       onPress={onPress}
     >
-      <Text style={styles[variantText]}>{text}</Text>
+      {children ? children : <Text style={styles[variantText]}>{text}</Text>}
     </TouchableOpacity>
   );
 }
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     ...text,
     color: Colors.background1,
   },
-  
+
   /********** EDM **********/
   edm: {
     ...base,

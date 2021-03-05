@@ -8,6 +8,7 @@ const colors = {
   blur: "#181A20D9",
   white: "rgba(255, 255, 255, 0.87)",
   gray: "#5e6272",
+  red: "#EB5757",
   colorful1: "#A06AF9",
   colorful2: "#FBA3FF",
   colorful3: "#8E96FF",
