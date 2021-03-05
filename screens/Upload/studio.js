@@ -14,7 +14,7 @@ export default function studio({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <CustomText customStyles={styles.title}>Ariana Venti’s studio </CustomText>
+      <CustomText customStyles={styles.title}>Ariana Venti’s studio</CustomText>
       <View style={styles.content}>
         <Image source = {Images.studio}/>
       </View>

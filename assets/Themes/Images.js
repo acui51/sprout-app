@@ -6,6 +6,7 @@ const images = {
   ariana_venti: require("../Images/arianaVenti.png"),
   record: require("../Images/record_button.png"),
   studio: require("../Images/Recorder.png"),
+  sound_freq: require("../Images/AudioPlayer.png"),
 };
 
 export default images;
