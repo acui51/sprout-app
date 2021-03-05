@@ -7,29 +7,36 @@ import { Metrics, Images} from "../../assets/Themes";
 
 // Components
 import { CustomButton, Bubble, CustomText } from "../../components";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export default function studio({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image source = {Images.Recorder}/>
-      <View style={styles.button}>
-        <CustomButton
-          text="NEXT"
-          variantButton="primaryShadow"
-          variantText="whiteText"
-          width={110}
-          onPress={() => navigation.navigate('SoundsGood')}
-        />
+      <CustomText customStyles={styles.title}>Ariana Venti’s studio </CustomText>
+      <View style={styles.content}>
+        <Image source = {Images.studio}/>
       </View>
-      <View style={styles.button}>
-      <CustomButton
-          text="GoBack"
-          variantButton="primaryShadow"
-          variantText="whiteText"
-          width={110}
-          onPress={() => navigation.navigate('Upload')}
-        />
+      <View style={styles.content}>
+        <View style={styles.button}>
+          <CustomButton
+            text="NEXT"
+            variantButton="primaryShadow"
+            variantText="whiteText"
+            width={110}
+            onPress={() => navigation.navigate('SoundsGood')}
+          />
+        </View>
+        <View style={styles.button}>
+        <CustomButton
+            text="Go Back"
+            variantButton="primaryShadow"
+            variantText="whiteText"
+            width={110}
+            onPress={() => navigation.navigate('Upload')}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -38,16 +45,20 @@ export default function studio({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     marginHorizontal: Metrics.marginHorizontal,
   },
-  logo: {
-    height: Metrics.icons.xl,
-    resizeMode: "contain",
+  title: {
+    fontSize:45,
+    color: Colors.white,
+    paddingTop: 40,
+    paddingBottom: 100,
+  },
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   button: {
     padding: 10,
-    // backgroundColor: Colors.primary,
   },
 });
