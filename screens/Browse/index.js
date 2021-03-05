@@ -45,7 +45,7 @@ export default ({ navigation }) => {
         />
       ),
     });
-  }, [navigation]);
+  }, [navigation, batch]);
 
   useEffect(() => {
     // Fetch from soundbites
