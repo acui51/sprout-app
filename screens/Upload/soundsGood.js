@@ -2,53 +2,50 @@ import React from "react";
 import { StyleSheet, Image, View } from "react-native";
 
 // Assets
-import { Metrics, Images, Colors} from "../../assets/Themes";
+import { Metrics, Images, Colors } from "../../assets/Themes";
 
 // Components
 import { CustomButton, CustomText } from "../../components";
 import Container from "../../hoc/Container";
+import SoundCloudPlayer from "./SoundCloudPlayer";
 
-export default function soundsGood({ navigation }) {
-
+export default function SoundsGood({ navigation }) {
   return (
-    <Container customStyle={styles.container}>
-      <CustomText customStyles={styles.title}>Sounds Good?</CustomText>
-      <View style={styles.container}>
-        <Image source = {Images.sound_freq}/>
-        <View style={styles.button}>
-          <CustomButton
-            text="YES! CONTINUE"
-            variantButton="primaryShadow"
-            variantText="whiteText"
-            width={196}
-            onPress={() => navigation.goBack()}
-          />
-        </View>
+    <Container customStyles={styles.container}>
+      <View>
+        <CustomText customStyles={styles.title}>Sounds Good?</CustomText>
+      </View>
+      <View style={styles.content}>
+        <SoundCloudPlayer />
+      </View>
+      <View style={styles.button}>
+        <CustomButton
+          text="YES! CONTINUE"
+          variantButton="primaryShadow"
+          variantText="whiteText"
+          width={196}
+          onPress={() => navigation.goBack()}
+        />
       </View>
     </Container>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: Metrics.marginHorizontal,
+    justifyContent: "space-between",
   },
   title: {
-    fontSize:45,
+    fontSize: 45,
     color: Colors.white,
-    paddingTop: 40,
-    paddingBottom: 100,
+    fontWeight: "700",
   },
   content: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   button: {
-    padding: 10,
+    alignSelf: "center",
+    margin: 10,
   },
-  
 });
