@@ -6,14 +6,14 @@ import { useTheme } from "@react-navigation/native";
 import { Metrics, Images} from "../../assets/Themes";
 
 // Components
-import { CustomButton, Bubble, CustomText } from "../../components";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { CustomButton, CustomText } from "../../components";
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import Container from "../../hoc/Container";
 
 export default function studio({ navigation }) {
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Container style={styles.container}>
       <CustomText customStyles={styles.title}>Ariana Venti’s studio</CustomText>
       <View style={styles.content}>
         <Image source = {Images.studio}/>
@@ -38,7 +38,7 @@ export default function studio({ navigation }) {
           />
         </View>
       </View>
-    </SafeAreaView>
+    </Container>
   );
 };
 

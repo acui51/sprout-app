@@ -1,18 +1,17 @@
 import React from "react";
-import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
+import { StyleSheet, Image, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
 // Assets
 import { Metrics, Images, Colors} from "../../assets/Themes";
 
 // Components
-import { CustomButton, Bubble, CustomText } from "../../components";
+import { CustomButton, CustomText } from "../../components";
 
 export default function soundsGood({ navigation }) {
-  const { colors } = useTheme();
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Container style={styles.container}>
       <CustomText customStyles={styles.title}>Sounds Good?</CustomText>
       <View>
         <Image source = {Images.sound_freq}/>
@@ -26,7 +25,7 @@ export default function soundsGood({ navigation }) {
           onPress={() => navigation.goBack()}
         />
       </View>
-    </SafeAreaView>
+    </Container>
   );
 };
 

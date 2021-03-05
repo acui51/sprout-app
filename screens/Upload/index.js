@@ -1,20 +1,19 @@
 import * as React from 'react';
-import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
-import { useTheme, useNavigation } from "@react-navigation/native";
+import { StyleSheet, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Assets
 import { Metrics } from "../../assets/Themes";
-import { Colors, Images } from "../../assets/Themes";
+import { Colors } from "../../assets/Themes";
 
 // Components
-import { CustomButton, Bubble, CustomText, primary } from "../../components";
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { CustomButton} from "../../components";
+import Container from '../../hoc/Container';
 
 export default function App() {
   const navigation = useNavigation()
-  const { colors } = useTheme();
   return (
-    <SafeAreaView style={styles.container}>
+    <Container style={styles.container}>
       {/* <TouchableOpacity style = {styles.button}>
         <Image source={Images.record} />
         <CustomText style = {styles.whiteText}>Record</CustomText>
@@ -37,7 +36,7 @@ export default function App() {
           width={165}
         />
       </View>
-    </SafeAreaView>
+    </Container>
   );
 }
 
