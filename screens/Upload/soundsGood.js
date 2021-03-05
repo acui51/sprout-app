@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Image, View } from "react-native";
-import { useTheme } from "@react-navigation/native";
 
 // Assets
 import { Metrics, Images, Colors} from "../../assets/Themes";
 
 // Components
 import { CustomButton, CustomText } from "../../components";
+import Container from "../../hoc/Container";
 
 export default function soundsGood({ navigation }) {
 

@@ -1,6 +1,5 @@
 import React from "react";
-import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
-import { useTheme } from "@react-navigation/native";
+import { StyleSheet, Image, View } from "react-native";
 
 // Assets
 import { Metrics, Images} from "../../assets/Themes";
