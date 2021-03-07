@@ -17,12 +17,17 @@ import { db, firestore } from "../../firebase";
 
 // Components
 import { CustomButton, Bubble, CustomText } from "../../components";
+import SoundbitePopup from "./components";
 
 export default ({ navigation }) => {
   const [soundbites, setSoundbites] = useState([]);
   const [loading, setLoading] = useState(false);
   const [batch, setBatch] = useState(1);
   const [filterVisible, setFilterVisible] = useState(false);
+  const [soundbiteInFocus, setSoundbiteInFocus] = useState({
+    soundbite: {},
+    inFocus: false,
+  });
 
   // Genres selected
   const [edmGenre, setEdmGenre] = useState(true);
@@ -88,8 +93,11 @@ export default ({ navigation }) => {
     setSoundbites(copySoundbites);
   };
 
+  console.log(soundbiteInFocus);
+
   return (
     <SafeAreaView style={styles.container}>
+      {/* Load soundbites */}
       {loading ? (
         <ActivityIndicator />
       ) : (
@@ -109,6 +117,16 @@ export default ({ navigation }) => {
                   key={i}
                   genre={elem.genre}
                   img={Images[`sb_${elem.imageName}`]}
+                  onPress={() =>
+                    setSoundbiteInFocus({
+                      sounbite: {
+                        title: elem.title,
+                        genre: elem.genre,
+                        img: elem.imgName,
+                      },
+                      inFocus: true,
+                    })
+                  }
                 />
               </View>
             </View>
@@ -116,6 +134,15 @@ export default ({ navigation }) => {
         </View>
       )}
 
+      {/* Soundbite Popup */}
+      {soundbiteInFocus.inFocus && (
+        <SoundbitePopup
+          soundbiteInFocus
+          setSoundbiteInFocus={setSoundbiteInFocus}
+        ></SoundbitePopup>
+      )}
+
+      {/* Filter genre modal */}
       <Modal
         animationType="fade"
         transparent={true}
