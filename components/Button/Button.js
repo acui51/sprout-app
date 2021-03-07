@@ -38,7 +38,7 @@ export function CustomButton({
 // Base styling for button
 export const base = {
   paddingHorizontal: 15,
-  paddingVertical: 14,
+  paddingVertical: 15,
   borderRadius: 24,
   justifyContent: "center",
   alignItems: "center",
@@ -47,7 +47,7 @@ export const base = {
 
 // Base styling for text
 export const text = {
-  fontSize: 12,
+  fontSize: 14,
   letterSpacing: 1.5,
   fontWeight: "bold",
 };

@@ -7,7 +7,7 @@ import { Metrics } from "../../assets/Themes";
 import { Colors } from "../../assets/Themes";
 
 // Components
-import { CustomButton, CustomText } from "../../components";
+import { CustomButton } from "../../components";
 import Container from "../../hoc/Container";
 
 export default function App() {
