@@ -1,8 +1,15 @@
-import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ActivityIndicator,
+  ScrollView,
+} from "react-native";
 
 // Assets + DATA
 import { Metrics, Colors, Images } from "../../assets/Themes";
+import { db, firestore } from "../../firebase";
 
 // Components
 import { Bubble, CustomText } from "../../components";
@@ -11,6 +18,31 @@ import { ProfileCard } from "./components";
 
 export default () => {
   const [view, setView] = useState("featured");
+  const [loading, setLoading] = useState(false);
+  const [soundbites, setSoundbites] = useState([]);
+
+  useEffect(() => {
+    // Fetch from soundbites
+    setLoading(true);
+    db.collection("users")
+      .doc("ariana_venti")
+      .onSnapshot((doc) => {
+        const soundbites = doc.data()[`${view}_soundbites`];
+
+        // Query for the soundbites in 'soundbites' collection
+        db.collection("soundbites")
+          .where(firestore.FieldPath.documentId(), "in", soundbites)
+          .get()
+          .then((querySnapshot) => {
+            let arr = [];
+            querySnapshot.forEach((doc) => {
+              arr.push(doc.data());
+            });
+            setSoundbites(arr);
+            setLoading(false);
+          });
+      });
+  }, [view]);
 
   return (
     <Container customStyles={styles.container}>
@@ -74,11 +106,31 @@ export default () => {
         </TouchableOpacity>
       </View>
 
-      {/* User's Soundbubbles */}
-      {view === "featured" ? (
-        <Bubble genre="edm" img={Images.sb_tameImpala} />
+      {/* User's Soundbites - Featured or All */}
+      {loading ? (
+        <ActivityIndicator />
       ) : (
-        <Bubble genre="pop" img={Images.sb_candy} />
+        <View style={styles.soundbitesWrapper}>
+          {soundbites.map((elem, i) => (
+            <View key={i} style={styles.soundbiteWrapper}>
+              <View
+                style={[
+                  styles.soundbite,
+                  {
+                    top: Math.floor(Math.random() * 100) + 1,
+                    left: Math.floor(Math.random() * 25) + 1,
+                  },
+                ]}
+              >
+                <Bubble
+                  key={i}
+                  genre={elem.genre}
+                  img={Images[`sb_${elem.imageName}`]}
+                />
+              </View>
+            </View>
+          ))}
+        </View>
       )}
     </Container>
   );
@@ -106,5 +158,19 @@ const styles = StyleSheet.create({
   contentWrap: {
     alignSelf: "baseline",
     paddingBottom: 4,
+  },
+  soundbitesWrapper: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    flex: 1,
+  },
+  soundbiteWrapper: {
+    flexBasis: "50%",
+    height: "50%",
+    position: "relative",
+  },
+  soundbite: {
+    position: "absolute",
+    top: 100,
   },
 });
