@@ -126,6 +126,10 @@ const styles = StyleSheet.create({
     ...baseText,
     color: Colors.background1,
   },
+  grayBaseText: {
+    ...baseText,
+    color: Colors.gray,
+  },
   whiteProfileText: {
     ...profileText,
     color: Colors.white,

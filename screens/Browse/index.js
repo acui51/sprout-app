@@ -17,7 +17,7 @@ import { db, firestore } from "../../firebase";
 
 // Components
 import { CustomButton, Bubble, CustomText } from "../../components";
-import SoundbitePopup from "./components";
+import { SoundbitePopup } from "./components";
 
 export default ({ navigation }) => {
   const [soundbites, setSoundbites] = useState([]);
@@ -92,8 +92,6 @@ export default ({ navigation }) => {
     copySoundbites.push(soundbites[0]);
     setSoundbites(copySoundbites);
   };
-
-  console.log(soundbiteInFocus);
 
   return (
     <SafeAreaView style={styles.container}>
