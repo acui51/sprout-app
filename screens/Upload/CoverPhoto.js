@@ -10,7 +10,7 @@ import { CustomText } from "../../components";
 import Container from "../../hoc/Container";
 
 const CoverPhoto = ({ navigation }) => {
-  const [country, setCountry] = useState(null);
+  const [genre, setGenre] = useState(null);
   const [coverPhoto, setCoverPhoto] = useState(false);
 
   useLayoutEffect(() => {
@@ -47,19 +47,19 @@ const CoverPhoto = ({ navigation }) => {
       <DropDownPicker
         items={[
           {
-            label: "USA",
-            value: "usa",
+            label: "Rock",
+            value: "rock",
           },
           {
-            label: "UK",
-            value: "uk",
+            label: "RNB",
+            value: "rnb",
           },
           {
-            label: "France",
-            value: "france",
+            label: "EDM",
+            value: "edm",
           },
         ]}
-        defaultValue={country}
+        defaultValue={genre}
         placeholder="Select Genre"
         labelStyle={{ fontSize: 14, color: Colors.gray }}
         containerStyle={{ height: 40 }}
@@ -68,7 +68,7 @@ const CoverPhoto = ({ navigation }) => {
           justifyContent: "flex-start",
         }}
         dropDownStyle={{ backgroundColor: "#fafafa", width: "60%" }}
-        onChangeItem={(item) => setCountry(item.value)}
+        onChangeItem={(item) => setGenre(item.value)}
       />
     </Container>
   );

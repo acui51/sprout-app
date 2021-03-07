@@ -9,6 +9,7 @@ import { Colors } from "../../assets/Themes";
 // Components
 import { CustomButton, CustomText } from "../../components";
 import Container from "../../hoc/Container";
+import Recorder from "./Recorder";
 
 export default function App() {
   useLayoutEffect(() => {
@@ -31,19 +32,26 @@ export default function App() {
       <View style={styles.container}>
         <View style={styles.button}>
           <CustomButton
-            text="Record"
             variantButton="primaryShadow"
-            variantText="whiteText"
-            width={165}
+            variantText="whiteBaseText"
+            width={180}
             onPress={() => navigation.navigate("Studio")}
-          />
+            customStyles={{
+              paddingVertical: 8,
+              paddingHorizontal: 16,
+              justifyContent: "center",
+            }}
+          >
+            <Recorder small customStyles={{ marginRight: 8 }} />
+            <CustomText customStyles={styles.baseText}>Record</CustomText>
+          </CustomButton>
         </View>
         <View style={styles.button}>
           <CustomButton
             text="Upload File"
             variantButton="primaryOutline"
-            variantText="whiteText"
-            width={165}
+            variantText="whiteBaseText"
+            width={180}
           ></CustomButton>
         </View>
       </View>
@@ -66,6 +74,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   whiteText: {
+    color: Colors.white,
+  },
+  baseText: {
+    fontSize: 16,
+    letterSpacing: 1.5,
+    fontWeight: "bold",
     color: Colors.white,
   },
 });

@@ -34,8 +34,8 @@ export default function SoundsGood({ navigation }) {
         <CustomButton
           text="YES! CONTINUE"
           variantButton="primaryShadow"
-          variantText="whiteText"
-          width={196}
+          variantText="whiteBaseText"
+          width={210}
           onPress={() => navigation.navigate("Upload a Cover Photo")}
         />
       </View>

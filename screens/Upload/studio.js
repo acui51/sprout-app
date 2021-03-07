@@ -35,8 +35,8 @@ export default function Studio({ navigation }) {
           <CustomButton
             text="NEXT"
             variantButton="primaryShadow"
-            variantText="whiteText"
-            width={110}
+            variantText="whiteBaseText"
+            width={120}
             onPress={() => navigation.navigate("SoundsGood")}
             customStyles={styles.button}
           />
