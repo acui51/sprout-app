@@ -37,7 +37,13 @@ export default () => {
               },
             ]}
           >
-            <CustomText customStyles={styles.featuredAllText}>
+            <CustomText
+              customStyles={[
+                styles.featuredAllText,
+                { fontFamily: "Kollektif-Bold" },
+                view === "all" && { color: Colors.gray },
+              ]}
+            >
               Featured
             </CustomText>
           </View>
@@ -55,7 +61,15 @@ export default () => {
               },
             ]}
           >
-            <CustomText customStyles={styles.featuredAllText}>All</CustomText>
+            <CustomText
+              customStyles={[
+                styles.featuredAllText,
+                { fontFamily: "Kollektif-Bold" },
+                view === "featured" && { color: Colors.gray },
+              ]}
+            >
+              All
+            </CustomText>
           </View>
         </TouchableOpacity>
       </View>
