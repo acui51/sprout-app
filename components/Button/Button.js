@@ -47,7 +47,16 @@ export const base = {
 
 export const profile = {
   paddingHorizontal: 12.5,
-  paddingVertical: 6,
+  paddingVertical: 8,
+  borderRadius: 24,
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
+};
+
+export const genre = {
+  paddingVertical: 8,
+  paddingHorizontal: 24,
   borderRadius: 24,
   justifyContent: "center",
   alignItems: "center",
@@ -62,7 +71,7 @@ export const baseText = {
 };
 
 export const profileText = {
-  fontSize: 16,
+  fontSize: 12,
   letterSpacing: 1.5,
   fontWeight: "bold",
 };
@@ -99,6 +108,11 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
     borderWidth: 2,
   },
+  grayProfileOutline: {
+    ...profile,
+    borderColor: Colors.gray,
+    borderWidth: 2,
+  },
   whiteBaseText: {
     ...baseText,
     color: Colors.white,
@@ -118,11 +132,11 @@ const styles = StyleSheet.create({
 
   /********** EDM **********/
   edm: {
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful2,
   },
   edmShadow: {
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful2,
     shadowColor: "rgba(0, 0, 0, 1)",
     shadowOpacity: 0.5,
@@ -142,7 +156,7 @@ const styles = StyleSheet.create({
   /********** POP **********/
   pop: {
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful4,
   },
   popOutline: {
@@ -158,7 +172,7 @@ const styles = StyleSheet.create({
   /********** COUNTRY **********/
   country: {
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful6,
   },
   countryOutline: {
@@ -174,27 +188,27 @@ const styles = StyleSheet.create({
   /********** HIP HOP **********/
   hiphop: {
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
-    ...base,
-    backgroundColor: Colors.gray,
+    ...genre,
+    backgroundColor: Colors.colorful7,
   },
   hiphopOutline: {
     ...base,
-    borderColor: Colors.gray,
+    borderColor: Colors.colorful7,
     borderWidth: 2,
   },
   hiphopText: {
     ...baseText,
-    color: Colors.gray,
+    color: Colors.colorful7,
   },
 
   /********** RNB **********/
   rnb: {
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful1,
   },
   rnbOutline: {
-    ...base,
+    ...genre,
     borderColor: Colors.colorful1,
     borderWidth: 2,
   },
@@ -206,7 +220,7 @@ const styles = StyleSheet.create({
   /********** ROCK **********/
   rock: {
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful5,
   },
   rockOutline: {

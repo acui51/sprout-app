@@ -9,31 +9,6 @@ import { Bubble, CustomText } from "../../components";
 import Container from "../../hoc/Container";
 import { ProfileCard } from "./components";
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-  },
-  logo: {
-    height: Metrics.icons.xl,
-    resizeMode: "contain",
-  },
-  profileCard: {
-    marginBottom: 32,
-  },
-  featuredAllSwitch: {
-    flexDirection: "row",
-    marginBottom: 32,
-  },
-  featuredAllText: {
-    fontSize: 20,
-    fontWeight: "700",
-  },
-  contentWrap: {
-    alignSelf: "baseline",
-    paddingBottom: 4,
-  },
-});
-
 export default () => {
   const [view, setView] = useState("featured");
 
@@ -94,3 +69,28 @@ export default () => {
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+  },
+  logo: {
+    height: Metrics.icons.xl,
+    resizeMode: "contain",
+  },
+  profileCard: {
+    marginBottom: 40,
+  },
+  featuredAllSwitch: {
+    flexDirection: "row",
+    marginBottom: 32,
+  },
+  featuredAllText: {
+    fontSize: 20,
+    fontWeight: "700",
+  },
+  contentWrap: {
+    alignSelf: "baseline",
+    paddingBottom: 4,
+  },
+});
