@@ -4,10 +4,15 @@ import { View, StyleSheet } from "react-native";
 // Assets
 import { Colors } from "../../assets/Themes";
 
-const Recorder = ({ customStyles }) => {
+const Recorder = ({ customStyles, small }) => {
   return (
-    <View style={[styles.recorderBorder, customStyles]}>
-      <View style={styles.recorder}></View>
+    <View
+      style={[
+        small ? styles.smallRecorderBorder : styles.recorderBorder,
+        customStyles,
+      ]}
+    >
+      <View style={small ? styles.smallRecorder : styles.recorder}></View>
     </View>
   );
 };
@@ -29,5 +34,20 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     justifyContent: "center",
     alignItems: "center",
+  },
+  smallRecorderBorder: {
+    borderColor: Colors.white,
+    borderWidth: 2,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  smallRecorder: {
+    backgroundColor: Colors.red,
+    height: 18,
+    width: 18,
+    borderRadius: 9,
   },
 });

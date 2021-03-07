@@ -24,6 +24,7 @@ const genreToColor = {
   country: Colors.colorful6,
   indie: Colors.colorful5,
   rnb: Colors.colorful1,
+  rock: Colors.colorful3,
 };
 
 const base = {
