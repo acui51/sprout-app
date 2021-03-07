@@ -7,7 +7,7 @@ import { Images, Metrics, Colors } from "../../assets/Themes";
 // Components
 import Container from "../../hoc/Container";
 import { CustomText } from "../../components";
-import { NotificationCard } from "./components";
+import { SoundNotificationCard, ConnectionNotificationCard } from "./components";
 
 const styles = StyleSheet.create({
   container: {
@@ -108,15 +108,10 @@ export default () => {
       </View>
       {/* Sound notifications */}
       {view === "sounds" ? (
-        <NotificationCard></NotificationCard>
-          // {/* <TouchableOpacity onPress={() => setState("check")}>
-          //   <View style={styles.addButton}>
-          //     <CustomText customStyles={styles.checkButton}>✓</CustomText>
-          //   </View>
-          // </TouchableOpacity> */}
+        <SoundNotificationCard></SoundNotificationCard>
       ) : (
         // Connection notifications 
-        <Bubble genre="pop" img={Images.sb_candy} />
+        <ConnectionNotificationCard></ConnectionNotificationCard>
       )}
     </Container>
   );
