@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { Entypo } from '@expo/vector-icons'; 
+import { Entypo } from "@expo/vector-icons";
 
 // Assets
 import { Images, Colors } from "../../../../assets/Themes";

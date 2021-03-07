@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { StyleSheet, Image, View, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 
 // Assets
-import { Images, Metrics, Colors } from "../../assets/Themes";
+import { Metrics, Colors } from "../../assets/Themes";
 
 // Components
 import Container from "../../hoc/Container";
 import { CustomText } from "../../components";
-import { SoundNotificationCard, ConnectionNotificationCard } from "./components";
+import {
+  SoundNotificationCard,
+  ConnectionNotificationCard,
+} from "./components";
 
 const styles = StyleSheet.create({
   container: {
@@ -31,21 +34,21 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
   },
   notificationBox: {
-    flexDirection: 'row',
+    flexDirection: "row",
     backgroundColor: Colors.white,
     borderRadius: 20,
-    height:77,
-    width:315,
+    height: 77,
+    width: 315,
   },
   username: {
     color: Colors.black,
     flex: 1,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
   },
   notificationText: {
     color: Colors.black,
     flex: 1,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
   },
   notificationTime: {
     color: Colors.gray,
@@ -53,16 +56,16 @@ const styles = StyleSheet.create({
   addButton: {
     backgroundColor: Colors.primary,
     borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center",
   },
   checkButton: {
     backgroundColor: Colors.white,
     color: Colors.primary,
     borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 export default () => {
@@ -102,7 +105,9 @@ export default () => {
               },
             ]}
           >
-            <CustomText customStyles={styles.featuredAllText}>Connections</CustomText>
+            <CustomText customStyles={styles.featuredAllText}>
+              Connections
+            </CustomText>
           </View>
         </TouchableOpacity>
       </View>
@@ -110,7 +115,7 @@ export default () => {
       {view === "sounds" ? (
         <SoundNotificationCard></SoundNotificationCard>
       ) : (
-        // Connection notifications 
+        // Connection notifications
         <ConnectionNotificationCard></ConnectionNotificationCard>
       )}
     </Container>
