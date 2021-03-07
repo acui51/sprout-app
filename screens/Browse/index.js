@@ -138,7 +138,12 @@ export default ({ navigation }) => {
             <TouchableWithoutFeedback>
               <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                  <CustomText customStyles={styles.modalTitle}>
+                  <CustomText
+                    customStyles={[
+                      styles.modalTitle,
+                      { fontFamily: "Kollektif-Bold" },
+                    ]}
+                  >
                     Select Genre
                   </CustomText>
 
@@ -149,7 +154,10 @@ export default ({ navigation }) => {
                       variantText="blackBaseText"
                       width={"31%"}
                       onPress={() => setEdmGenre(!edmGenre)}
-                      customStyles={[styles.genre]}
+                      customStyles={[
+                        styles.genre,
+                        edmGenre && { opacity: 0.4 },
+                      ]}
                     />
                     <CustomButton
                       text="POP"
@@ -188,7 +196,11 @@ export default ({ navigation }) => {
                     />
                   </View>
                   <View style={styles.filterButtons}>
-                    <CustomText>*Default is all</CustomText>
+                    <CustomText
+                      customStyles={{ fontWeight: "700", color: Colors.gray }}
+                    >
+                      *Default is all
+                    </CustomText>
                     <CustomButton
                       text="Save Changes"
                       variantButton="primaryShadow"
