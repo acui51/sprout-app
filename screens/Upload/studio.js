@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { StyleSheet, View } from "react-native";
 
 // Assets
-import { Metrics, Colors } from "../../assets/Themes";
+import { Colors } from "../../assets/Themes";
 
 // Components
 import { CustomButton, CustomText } from "../../components";
@@ -10,11 +10,21 @@ import RecordPlayer from "./RecordPlayer";
 import Container from "../../hoc/Container";
 
 export default function Studio({ navigation }) {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: () => (
+        <CustomText customStyles={{ fontSize: 16, fontWeight: "700" }}>
+          1/3: Record Sound
+        </CustomText>
+      ),
+    });
+  }, [navigation]);
+
   return (
     <Container customStyles={styles.container}>
       <View>
-        <CustomText customStyles={styles.title}>
-          Ariana Venti’s studio
+        <CustomText titleBold customStyles={styles.title}>
+          My Studio
         </CustomText>
       </View>
       <View style={styles.content}>
@@ -25,8 +35,8 @@ export default function Studio({ navigation }) {
           <CustomButton
             text="NEXT"
             variantButton="primaryShadow"
-            variantText="whiteText"
-            width={110}
+            variantText="whiteBaseText"
+            width={120}
             onPress={() => navigation.navigate("SoundsGood")}
             customStyles={styles.button}
           />

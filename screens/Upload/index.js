@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useLayoutEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -9,8 +9,19 @@ import { Colors } from "../../assets/Themes";
 // Components
 import { CustomButton } from "../../components";
 import Container from "../../hoc/Container";
+import Recorder from "./Recorder";
 
 export default function App() {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: () => (
+        <CustomText customStyles={{ fontSize: 16, fontWeight: "700" }}>
+          0/3: Pick Create Method
+        </CustomText>
+      ),
+    });
+  }, [navigation]);
+
   const navigation = useNavigation();
   return (
     <Container>
@@ -21,19 +32,31 @@ export default function App() {
       <View style={styles.container}>
         <View style={styles.button}>
           <CustomButton
-            text="Record"
             variantButton="primaryShadow"
-            variantText="whiteText"
-            width={165}
+            variantText="whiteBaseText"
+            width={180}
             onPress={() => navigation.navigate("Studio")}
-          />
+            customStyles={{
+              paddingVertical: 8,
+              paddingHorizontal: 16,
+              justifyContent: "center",
+            }}
+          >
+            <Recorder small customStyles={{ marginRight: 8 }} />
+            <CustomText customStyles={styles.baseText}>Record</CustomText>
+          </CustomButton>
         </View>
         <View style={styles.button}>
           <CustomButton
             text="Upload File"
             variantButton="primaryOutline"
-            variantText="whiteText"
-            width={165}
+            variantText="whiteBaseText"
+            width={180}
+            customStyles={{
+              paddingVertical: 14,
+              paddingHorizontal: 16,
+              justifyContent: "center",
+            }}
           ></CustomButton>
         </View>
       </View>
@@ -56,6 +79,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   whiteText: {
+    color: Colors.white,
+  },
+  baseText: {
+    fontSize: 16,
+    letterSpacing: 1.5,
+    fontWeight: "bold",
     color: Colors.white,
   },
 });

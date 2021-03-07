@@ -7,6 +7,11 @@ const images = {
   sb_rockSign: require("../Images/rock_sign.png"),
   sb_vForVendetta: require("../Images/v_for_vendetta.png"),
   sb_skeleton: require("../Images/skeleton.png"),
+  sb_popCherry: require("../Images/pop_cherry.png"),
+  sb_rnbPlant: require("../Images/rnb_plant.png"),
+  sb_rnbStatue: require("../Images/rnb_statue.png"),
+  sb_rnbChinese: require("../Images/rnb_chinese.png"),
+  sb_popBanana: require("../Images/pop_banana.png"),
   ariana_venti: require("../Images/arianaVenti.png"),
   honest_ocean: require("../Images/honestOcean.png"),
   studio: require("../Images/Recorder.png"),
@@ -15,6 +20,7 @@ const images = {
   check_button: require("../Images/checkButton.png"),
   delete_button: require("../Images/delete.png"),
   monster_cover: require("../Images/DJ_Cobra.png"),
+  uploadPhoto: require("../Images/uploadPhoto.png"),
 };
 
 export default images;

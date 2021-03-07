@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
 // Assets
 import { Colors } from "../../assets/Themes";
@@ -24,6 +24,7 @@ export function CustomButton({
   width,
   customStyles,
   children,
+  notification,
 }) {
   return (
     <TouchableOpacity
@@ -31,14 +32,35 @@ export function CustomButton({
       onPress={onPress}
     >
       {children ? children : <Text style={styles[variantText]}>{text}</Text>}
+      {notification && <View style={styles.notification}></View>}
     </TouchableOpacity>
   );
 }
 
 // Base styling for button
 export const base = {
-  paddingHorizontal: 15,
-  paddingVertical: 15,
+  paddingHorizontal: 32,
+  paddingVertical: 19,
+  borderRadius: 30,
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
+  position: "relative",
+};
+
+export const profile = {
+  paddingHorizontal: 12.5,
+  paddingVertical: 6,
+  borderRadius: 24,
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
+  position: "relative",
+};
+
+export const genre = {
+  paddingVertical: 8,
+  paddingHorizontal: 24,
   borderRadius: 24,
   justifyContent: "center",
   alignItems: "center",
@@ -46,10 +68,17 @@ export const base = {
 };
 
 // Base styling for text
-export const text = {
-  fontSize: 14,
+export const baseText = {
+  fontSize: 16,
   letterSpacing: 1.5,
   fontWeight: "bold",
+  lineHeight: 24,
+};
+
+export const profileText = {
+  fontSize: 12,
+  letterSpacing: 1.5,
+  fontWeight: "700",
 };
 
 // Primary styling for button
@@ -66,27 +95,53 @@ const styles = StyleSheet.create({
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 8 },
   },
+  profileShadow: {
+    ...profile,
+    ...primary,
+    shadowColor: "rgba(0, 0, 0, 1)",
+    shadowOpacity: 0.5,
+    shadowRadius: 16,
+    shadowOffset: { width: 0, height: 8 },
+  },
   primaryOutline: {
     ...base,
     borderColor: Colors.primary,
     borderWidth: 2,
   },
-  whiteText: {
-    ...text,
+  profileOutline: {
+    ...profile,
+    borderColor: Colors.primary,
+    borderWidth: 2,
+  },
+  grayProfileOutline: {
+    ...profile,
+    borderColor: Colors.gray,
+    borderWidth: 2,
+  },
+  whiteBaseText: {
+    ...baseText,
     color: Colors.white,
   },
-  blackText: {
-    ...text,
+  blackBaseText: {
+    ...baseText,
+    color: Colors.background1,
+  },
+  whiteProfileText: {
+    ...profileText,
+    color: Colors.white,
+  },
+  blackProfileText: {
+    ...profileText,
     color: Colors.background1,
   },
 
   /********** EDM **********/
   edm: {
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful2,
   },
   edmShadow: {
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful2,
     shadowColor: "rgba(0, 0, 0, 1)",
     shadowOpacity: 0.5,
@@ -99,14 +154,14 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   edmText: {
-    ...text,
+    ...baseText,
     color: Colors.colorful2,
   },
 
   /********** POP **********/
   pop: {
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful4,
   },
   popOutline: {
@@ -115,14 +170,14 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   popText: {
-    ...text,
+    ...baseText,
     color: Colors.colorful4,
   },
 
   /********** COUNTRY **********/
   country: {
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful6,
   },
   countryOutline: {
@@ -131,46 +186,46 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   countryText: {
-    ...text,
+    ...baseText,
     color: Colors.colorful6,
   },
 
   /********** HIP HOP **********/
   hiphop: {
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
-    ...base,
-    backgroundColor: Colors.gray,
+    ...genre,
+    backgroundColor: Colors.colorful7,
   },
   hiphopOutline: {
     ...base,
-    borderColor: Colors.gray,
+    borderColor: Colors.colorful7,
     borderWidth: 2,
   },
   hiphopText: {
-    ...text,
-    color: Colors.gray,
+    ...baseText,
+    color: Colors.colorful7,
   },
 
   /********** RNB **********/
   rnb: {
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful1,
   },
   rnbOutline: {
-    ...base,
+    ...genre,
     borderColor: Colors.colorful1,
     borderWidth: 2,
   },
   rnbText: {
-    ...text,
+    ...baseText,
     color: Colors.colorful1,
   },
 
   /********** ROCK **********/
   rock: {
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
-    ...base,
+    ...genre,
     backgroundColor: Colors.colorful5,
   },
   rockOutline: {
@@ -179,7 +234,16 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   rockText: {
-    ...text,
+    ...baseText,
     color: Colors.colorful5,
+  },
+  notification: {
+    position: "absolute",
+    right: 0,
+    top: 0,
+    height: 12,
+    width: 12,
+    borderRadius: 6,
+    backgroundColor: Colors.primary,
   },
 });
