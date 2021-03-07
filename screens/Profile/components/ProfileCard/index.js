@@ -70,6 +70,8 @@ const styles = StyleSheet.create({
   },
   profileImage: {
     marginRight: 24,
+    width: 90,
+    height: 90,
   },
   name: {
     fontSize: 20,

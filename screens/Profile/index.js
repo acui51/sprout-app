@@ -4,7 +4,6 @@ import {
   TouchableOpacity,
   View,
   ActivityIndicator,
-  ScrollView,
 } from "react-native";
 
 // Assets + DATA

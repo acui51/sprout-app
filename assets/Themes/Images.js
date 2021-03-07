@@ -13,9 +13,13 @@ const images = {
   sb_rnbChinese: require("../Images/rnb_chinese.png"),
   sb_popBanana: require("../Images/pop_banana.png"),
   ariana_venti: require("../Images/arianaVenti.png"),
-  record: require("../Images/record_button.png"),
+  honest_ocean: require("../Images/honestOcean.png"),
   studio: require("../Images/Recorder.png"),
   sound_freq: require("../Images/AudioPlayer.png"),
+  add_button: require("../Images/addButton.png"),
+  check_button: require("../Images/checkButton.png"),
+  delete_button: require("../Images/delete.png"),
+  monster_cover: require("../Images/DJ_Cobra.png"),
   uploadPhoto: require("../Images/uploadPhoto.png"),
 };
 
