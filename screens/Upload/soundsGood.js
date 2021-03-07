@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { StyleSheet, Image, View } from "react-native";
 
 // Assets
@@ -10,13 +10,25 @@ import Container from "../../hoc/Container";
 import SoundCloudPlayer from "./SoundCloudPlayer";
 
 export default function SoundsGood({ navigation }) {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: () => (
+        <CustomText customStyles={{ fontSize: 16, fontWeight: "700" }}>
+          2/3: Preview Sound
+        </CustomText>
+      ),
+    });
+  }, [navigation]);
+
   return (
     <Container customStyles={styles.container}>
       <View>
-        <CustomText customStyles={styles.title}>Sounds Good?</CustomText>
+        <CustomText titleBold customStyles={styles.title}>
+          Sounds Good?
+        </CustomText>
       </View>
       <View style={styles.content}>
-        <SoundCloudPlayer />
+        <SoundCloudPlayer prevPeople={1} />
       </View>
       <View style={styles.button}>
         <CustomButton
@@ -24,7 +36,7 @@ export default function SoundsGood({ navigation }) {
           variantButton="primaryShadow"
           variantText="whiteText"
           width={196}
-          onPress={() => navigation.goBack()}
+          onPress={() => navigation.navigate("Upload a Cover Photo")}
         />
       </View>
     </Container>

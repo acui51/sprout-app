@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useLayoutEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -11,6 +11,16 @@ import { CustomButton, CustomText } from "../../components";
 import Container from "../../hoc/Container";
 
 export default function App() {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: () => (
+        <CustomText customStyles={{ fontSize: 16, fontWeight: "700" }}>
+          0/3: Pick Create Method
+        </CustomText>
+      ),
+    });
+  }, [navigation]);
+
   const navigation = useNavigation();
   return (
     <Container>

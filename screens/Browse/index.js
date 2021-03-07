@@ -96,19 +96,6 @@ export default ({ navigation }) => {
           ))}
         </View>
       )}
-      {/* <View style={styles.soundbitesWrapper}>
-        {soundbites.map((elem, i) => (
-          <View key={i} style={styles.soundbiteWrapper}>
-            <View style={[styles.soundbite, {top: Math.floor(Math.random() * 100) + 1}]}>
-              <Bubble
-                key={i}
-                genre={elem.genre}
-                img={Images[`sb_${elem.imageName}`]}
-              />
-            </View>
-          </View>
-        ))}
-      </View> */}
 
       <Modal
         animationType="fade"
@@ -140,42 +127,42 @@ export default ({ navigation }) => {
                     <CustomButton
                       text="EDM"
                       variantButton="edmShadow"
-                      variantText="blackText"
+                      variantText="blackBaseText"
                       width={"31%"}
                       customStyles={styles.genre}
                     />
                     <CustomButton
                       text="POP"
                       variantButton="pop"
-                      variantText="blackText"
+                      variantText="blackBaseText"
                       width={"31%"}
                       customStyles={styles.genre}
                     />
                     <CustomButton
                       text="COUNTRY"
                       variantButton="country"
-                      variantText="blackText"
+                      variantText="blackBaseText"
                       width={"31%"}
                       customStyles={styles.genre}
                     />
                     <CustomButton
                       text="HIP HOP"
                       variantButton="hiphop"
-                      variantText="blackText"
+                      variantText="blackBaseText"
                       width={"31%"}
                       customStyles={styles.genre}
                     />
                     <CustomButton
                       text="RNB"
                       variantButton="rnb"
-                      variantText="blackText"
+                      variantText="blackBaseText"
                       width={"31%"}
                       customStyles={styles.genre}
                     />
                     <CustomButton
                       text="ROCK"
                       variantButton="rock"
-                      variantText="blackText"
+                      variantText="blackBaseText"
                       width={"31%"}
                       customStyles={styles.genre}
                     />
@@ -185,7 +172,7 @@ export default ({ navigation }) => {
                     <CustomButton
                       text="Save Changes"
                       variantButton="primaryShadow"
-                      variantText="whiteText"
+                      variantText="whiteBaseText"
                       width={150}
                       onPress={() => setFilterVisible(!filterVisible)}
                     />

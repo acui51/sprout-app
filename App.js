@@ -1,16 +1,11 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  SafeAreaView,
-  StatusBar,
-  Image,
-  Button,
-} from "react-native";
+import { StyleSheet, SafeAreaView, StatusBar, Image, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from "@react-navigation/stack";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
+import { Ionicons } from "@expo/vector-icons";
 
 // Assets
 import { Colors, Metrics } from "./assets/Themes";
@@ -20,9 +15,10 @@ import CustomIcons from "./assets/Fonts";
 import { Browse, Profile, Saved, Notifications } from "./screens";
 
 //import screens
-import Upload from './screens/Upload/index';
-import Studio from './screens/Upload/studio';
-import SoundsGood from './screens/Upload/soundsGood';
+import Upload from "./screens/Upload/index";
+import Studio from "./screens/Upload/studio";
+import SoundsGood from "./screens/Upload/soundsGood";
+import CoverPhoto from "./screens/Upload/CoverPhoto";
 
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
@@ -54,7 +50,8 @@ function BrowseStackComponent() {
         shadowColor: "transparent",
         headerTintColor: Colors.white,
         headerTitleStyle: {
-          fontWeight: "bold",
+          fontFamily: "Kollektif-Bold",
+          fontSize: 24,
         },
       }}
     >
@@ -80,7 +77,8 @@ function SavedStackComponent() {
         shadowColor: "transparent",
         headerTintColor: Colors.white,
         headerTitleStyle: {
-          fontWeight: "bold",
+          fontFamily: "Kollektif-Bold",
+          fontSize: 24,
         },
       }}
     >
@@ -106,13 +104,21 @@ function UploadStackComponent() {
         shadowColor: "transparent",
         headerTintColor: Colors.white,
         headerTitleStyle: {
-          fontWeight: "bold",
+          fontFamily: "Kollektif-Bold",
+          fontSize: 24,
         },
+        headerBackTitle: null,
+        headerBackImage: () => (
+          <View style={styles.backButton}>
+            <Ionicons name="arrow-back" size={24} color={Colors.white} />
+          </View>
+        ),
       }}
     >
       <UploadStack.Screen name="Upload" component={Upload} />
       <UploadStack.Screen name="Studio" component={Studio} />
       <UploadStack.Screen name="SoundsGood" component={SoundsGood} />
+      <UploadStack.Screen name="Upload a Cover Photo" component={CoverPhoto} />
     </UploadStack.Navigator>
   );
 }
@@ -134,7 +140,8 @@ function NotificationStackComponent() {
         shadowColor: "transparent",
         headerTintColor: Colors.white,
         headerTitleStyle: {
-          fontWeight: "bold",
+          fontFamily: "Kollektif-Bold",
+          fontSize: 24,
         },
       }}
     >
@@ -163,7 +170,8 @@ function ProfileStackComponent() {
         shadowColor: "transparent",
         headerTintColor: Colors.white,
         headerTitleStyle: {
-          fontWeight: "bold",
+          fontFamily: "Kollektif-Bold",
+          fontSize: 24,
         },
       }}
     >
@@ -184,6 +192,9 @@ export default function App() {
     Promise.all([
       Font.loadAsync({
         "custom-icons": require("./assets/Fonts/sprout-v2.ttf"),
+        "Kollektif": require("./assets/Fonts/Kollektif.ttf"),
+        "Kollektif-Bold": require("./assets/Fonts/Kollektif-Bold.ttf"),
+        "Kollektif-Italic": require("./assets/Fonts/Kollektif-Italic.ttf"),
       }),
     ]);
 
@@ -320,5 +331,12 @@ const styles = StyleSheet.create({
     width: 75,
     height: undefined,
     aspectRatio: 1,
+  },
+  backButton: {
+    borderColor: Colors.background2,
+    borderWidth: 2,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

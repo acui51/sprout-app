@@ -11,6 +11,7 @@ const images = {
   record: require("../Images/record_button.png"),
   studio: require("../Images/Recorder.png"),
   sound_freq: require("../Images/AudioPlayer.png"),
+  uploadPhoto: require("../Images/uploadPhoto.png"),
 };
 
 export default images;

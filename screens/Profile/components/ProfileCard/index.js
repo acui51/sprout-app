@@ -16,8 +16,8 @@ const ProfileCard = ({ name, bio, buttonText, customStyles }) => {
         <CustomText customStyles={styles.bio}>{bio}</CustomText>
         <CustomButton
           text={buttonText}
-          variantButton="primaryOutline"
-          variantText="whiteText"
+          variantButton="profileOutline"
+          variantText="whiteBaseText"
           width={120}
         />
       </View>

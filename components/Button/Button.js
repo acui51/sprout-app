@@ -37,8 +37,17 @@ export function CustomButton({
 
 // Base styling for button
 export const base = {
-  paddingHorizontal: 15,
-  paddingVertical: 14,
+  paddingHorizontal: 32,
+  paddingVertical: 19,
+  borderRadius: 30,
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
+};
+
+export const profile = {
+  paddingHorizontal: 12.5,
+  paddingVertical: 6,
   borderRadius: 24,
   justifyContent: "center",
   alignItems: "center",
@@ -46,8 +55,14 @@ export const base = {
 };
 
 // Base styling for text
-export const text = {
-  fontSize: 12,
+export const baseText = {
+  fontSize: 16,
+  letterSpacing: 1.5,
+  fontWeight: "bold",
+};
+
+export const profileText = {
+  fontSize: 16,
   letterSpacing: 1.5,
   fontWeight: "bold",
 };
@@ -66,17 +81,38 @@ const styles = StyleSheet.create({
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 8 },
   },
+  profileShadow: {
+    ...profile,
+    ...primary,
+    shadowColor: "rgba(0, 0, 0, 1)",
+    shadowOpacity: 0.5,
+    shadowRadius: 16,
+    shadowOffset: { width: 0, height: 8 },
+  },
   primaryOutline: {
     ...base,
     borderColor: Colors.primary,
     borderWidth: 2,
   },
-  whiteText: {
-    ...text,
+  profileOutline: {
+    ...profile,
+    borderColor: Colors.primary,
+    borderWidth: 2,
+  },
+  whiteBaseText: {
+    ...baseText,
     color: Colors.white,
   },
-  blackText: {
-    ...text,
+  blackBaseText: {
+    ...baseText,
+    color: Colors.background1,
+  },
+  whiteProfileText: {
+    ...profileText,
+    color: Colors.white,
+  },
+  blackProfileText: {
+    ...profileText,
     color: Colors.background1,
   },
 
@@ -99,7 +135,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   edmText: {
-    ...text,
+    ...baseText,
     color: Colors.colorful2,
   },
 
@@ -115,7 +151,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   popText: {
-    ...text,
+    ...baseText,
     color: Colors.colorful4,
   },
 
@@ -131,7 +167,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   countryText: {
-    ...text,
+    ...baseText,
     color: Colors.colorful6,
   },
 
@@ -147,7 +183,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   hiphopText: {
-    ...text,
+    ...baseText,
     color: Colors.gray,
   },
 
@@ -163,7 +199,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   rnbText: {
-    ...text,
+    ...baseText,
     color: Colors.colorful1,
   },
 
@@ -179,7 +215,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   rockText: {
-    ...text,
+    ...baseText,
     color: Colors.colorful5,
   },
 });
