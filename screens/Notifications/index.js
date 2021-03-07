@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { useTheme } from "@react-navigation/native";
+import { StyleSheet, Image, View, TouchableOpacity } from "react-native";
 
 // Assets
-import { Metrics, Colors } from "../../assets/Themes";
+import { Images, Metrics, Colors } from "../../assets/Themes";
 
 // Components
 import Container from "../../hoc/Container";
 import { CustomText } from "../../components";
+import { NotificationCard } from "./components";
 
 const styles = StyleSheet.create({
   container: {
@@ -30,11 +30,44 @@ const styles = StyleSheet.create({
     alignSelf: "baseline",
     paddingBottom: 4,
   },
+  notificationBox: {
+    flexDirection: 'row',
+    backgroundColor: Colors.white,
+    borderRadius: 20,
+    height:77,
+    width:315,
+  },
+  username: {
+    color: Colors.black,
+    flex: 1,
+    flexWrap: 'wrap',
+  },
+  notificationText: {
+    color: Colors.black,
+    flex: 1,
+    flexWrap: 'wrap',
+  },
+  notificationTime: {
+    color: Colors.gray,
+  },
+  addButton: {
+    backgroundColor: Colors.primary,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  checkButton: {
+    backgroundColor: Colors.white,
+    color: Colors.primary,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
 export default () => {
-  const { colors } = useTheme();
   const [view, setView] = useState("sounds");
+  const [state, setState] = useState("add");
   return (
     <Container customStyles={styles.container}>
       <View style={styles.featuredAllSwitch}>
@@ -52,7 +85,7 @@ export default () => {
             ]}
           >
             <CustomText customStyles={styles.featuredAllText}>
-              Featured
+              Sounds
             </CustomText>
           </View>
         </TouchableOpacity>
@@ -69,11 +102,22 @@ export default () => {
               },
             ]}
           >
-            <CustomText customStyles={styles.featuredAllText}>All</CustomText>
+            <CustomText customStyles={styles.featuredAllText}>Connections</CustomText>
           </View>
         </TouchableOpacity>
       </View>
-
+      {/* Sound notifications */}
+      {view === "sounds" ? (
+        <NotificationCard></NotificationCard>
+          // {/* <TouchableOpacity onPress={() => setState("check")}>
+          //   <View style={styles.addButton}>
+          //     <CustomText customStyles={styles.checkButton}>✓</CustomText>
+          //   </View>
+          // </TouchableOpacity> */}
+      ) : (
+        // Connection notifications 
+        <Bubble genre="pop" img={Images.sb_candy} />
+      )}
     </Container>
   );
 };

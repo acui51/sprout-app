@@ -8,9 +8,12 @@ const images = {
   sb_vForVendetta: require("../Images/v_for_vendetta.png"),
   sb_skeleton: require("../Images/skeleton.png"),
   ariana_venti: require("../Images/arianaVenti.png"),
-  record: require("../Images/record_button.png"),
+  honest_ocean: require("../Images/honestOcean.png"),
   studio: require("../Images/Recorder.png"),
   sound_freq: require("../Images/AudioPlayer.png"),
+  add_button: require("../Images/addButton.png"),
+  check_button: require("../Images/checkButton.png"),
+  delete_button: require("../Images/delete.png"),
 };
 
 export default images;
