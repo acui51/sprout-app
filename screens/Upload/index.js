@@ -52,6 +52,11 @@ export default function App() {
             variantButton="primaryOutline"
             variantText="whiteBaseText"
             width={180}
+            customStyles={{
+              paddingVertical: 14,
+              paddingHorizontal: 16,
+              justifyContent: "center",
+            }}
           ></CustomButton>
         </View>
       </View>

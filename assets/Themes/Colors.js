@@ -9,13 +9,13 @@ const colors = {
   white: "rgba(255, 255, 255, 0.87)",
   gray: "#5e6272",
   red: "#EB5757",
-  colorful1: "#A06AF9",
+  colorful1: "#8E96FF",
   colorful2: "#FBA3FF",
   colorful3: "#8E96FF",
   colorful4: "#94F0F0",
   colorful5: "#A5F59C",
   colorful6: "#FFDD72",
-  colorful7: "#FF968E",
+  colorful7: "#FF9993",
 };
 
 export default colors;

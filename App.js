@@ -170,8 +170,7 @@ function ProfileStackComponent() {
         shadowColor: "transparent",
         headerTintColor: Colors.white,
         headerTitleStyle: {
-          fontFamily: "Kollektif-Bold",
-          fontSize: 24,
+          fontSize: 18,
         },
       }}
     >
@@ -192,7 +191,7 @@ export default function App() {
     Promise.all([
       Font.loadAsync({
         "custom-icons": require("./assets/Fonts/sprout-v2.ttf"),
-        "Kollektif": require("./assets/Fonts/Kollektif.ttf"),
+        Kollektif: require("./assets/Fonts/Kollektif.ttf"),
         "Kollektif-Bold": require("./assets/Fonts/Kollektif-Bold.ttf"),
         "Kollektif-Italic": require("./assets/Fonts/Kollektif-Italic.ttf"),
       }),
@@ -338,5 +337,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
+    marginLeft: Metrics.headerMarginHorizontal,
   },
 });

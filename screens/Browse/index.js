@@ -24,21 +24,31 @@ export default ({ navigation }) => {
   const [batch, setBatch] = useState(1);
   const [filterVisible, setFilterVisible] = useState(false);
 
+  // Genres selected
+  const [edmGenre, setEdmGenre] = useState(true);
+  const [popGenre, setPopGenre] = useState(true);
+  const [countryGenre, setCountryGenre] = useState(true);
+  const [hiphopGenre, setHiphopGenre] = useState(true);
+  const [rnbGenre, setRnbGenre] = useState(true);
+  const [sockGenre, setRockGenre] = useState(true);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
         <Ionicons
           name="refresh"
-          size={24}
+          size={32}
           color={Colors.white}
+          style={{ marginLeft: Metrics.headerMarginHorizontal }}
           onPress={() => (batch === 1 ? setBatch(2) : setBatch(1))}
         />
       ),
       headerRight: () => (
         <AntDesign
           name="filter"
-          size={24}
+          size={32}
           color={Colors.white}
+          style={{ marginRight: Metrics.headerMarginHorizontal }}
           onPress={() => setFilterVisible(true)}
         />
       ),
@@ -68,6 +78,15 @@ export default ({ navigation }) => {
           });
       });
   }, [batch]);
+
+  const setFilteredSoundbites = () => {
+    let copySoundbites = [];
+    // let copySoundbites = soundbites.filter((elem) => {
+    //   elem.genre !== "edm";
+    // });
+    copySoundbites.push(soundbites[0]);
+    setSoundbites(copySoundbites);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -119,7 +138,12 @@ export default ({ navigation }) => {
             <TouchableWithoutFeedback>
               <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                  <CustomText customStyles={styles.modalTitle}>
+                  <CustomText
+                    customStyles={[
+                      styles.modalTitle,
+                      { fontFamily: "Kollektif-Bold" },
+                    ]}
+                  >
                     Select Genre
                   </CustomText>
 
@@ -129,7 +153,11 @@ export default ({ navigation }) => {
                       variantButton="edmShadow"
                       variantText="blackBaseText"
                       width={"31%"}
-                      customStyles={styles.genre}
+                      onPress={() => setEdmGenre(!edmGenre)}
+                      customStyles={[
+                        styles.genre,
+                        edmGenre && { opacity: 0.4 },
+                      ]}
                     />
                     <CustomButton
                       text="POP"
@@ -143,14 +171,14 @@ export default ({ navigation }) => {
                       variantButton="country"
                       variantText="blackBaseText"
                       width={"31%"}
-                      customStyles={styles.genre}
+                      customStyles={[styles.genre, { paddingHorizontal: 8 }]}
                     />
                     <CustomButton
                       text="HIP HOP"
                       variantButton="hiphop"
                       variantText="blackBaseText"
                       width={"31%"}
-                      customStyles={styles.genre}
+                      customStyles={[styles.genre, { paddingHorizontal: 8 }]}
                     />
                     <CustomButton
                       text="RNB"
@@ -168,13 +196,24 @@ export default ({ navigation }) => {
                     />
                   </View>
                   <View style={styles.filterButtons}>
-                    <CustomText>*Default is all</CustomText>
+                    <CustomText
+                      customStyles={{ fontWeight: "700", color: Colors.gray }}
+                    >
+                      *Default is all
+                    </CustomText>
                     <CustomButton
                       text="Save Changes"
                       variantButton="primaryShadow"
                       variantText="whiteBaseText"
-                      width={150}
-                      onPress={() => setFilterVisible(!filterVisible)}
+                      width={200}
+                      onPress={() => {
+                        setFilterVisible(!filterVisible);
+                        setFilteredSoundbites();
+                      }}
+                      customStyles={{
+                        paddingHorizontal: 8,
+                        paddingVertical: 10,
+                      }}
                     />
                   </View>
                 </View>
