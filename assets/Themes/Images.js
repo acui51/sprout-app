@@ -14,6 +14,7 @@ const images = {
   add_button: require("../Images/addButton.png"),
   check_button: require("../Images/checkButton.png"),
   delete_button: require("../Images/delete.png"),
+  monster_cover: require("../Images/DJ_Cobra.png"),
 };
 
 export default images;

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Entypo } from '@expo/vector-icons'; 
 
 // Assets
-import { Images, Colors, Metrics } from "../../../../assets/Themes";
+import { Images, Colors } from "../../../../assets/Themes";
 
 // Components
 import { CustomText } from "../../../../components";
@@ -23,7 +24,7 @@ const SoundNotificationCard = () => {
       {connected ? (
         <TouchableOpacity onPress={() => setConnected(false)}>
           <View style={styles.checkButton}>
-            <CustomText customStyles={{ fontSize: 25 }}>*</CustomText>
+            <Entypo name="check" size={24} color={Colors.primary} />
           </View>
         </TouchableOpacity>
       ) : (
@@ -33,12 +34,6 @@ const SoundNotificationCard = () => {
           </View>
         </TouchableOpacity>
       )}
-      {/* <TouchableOpacity onPress={() => setState("add")}>
-                <View style={styles.addButton}>
-                    <CustomText customStyles= {{fontSize: 25}}>+</CustomText>
-                </View>
-            </TouchableOpacity> */}
-
       <TouchableOpacity>
         <Image
           source={Images.delete_button}
@@ -96,9 +91,10 @@ const styles = StyleSheet.create({
   },
   checkButton: {
     backgroundColor: Colors.white,
-    color: Colors.primary,
-    borderRadius: 50,
-    justifyContent: "center",
+    width: 33,
+    height: 33,
+    borderRadius: 20,
+    paddingTop: 5,
     alignItems: "center",
   },
 });

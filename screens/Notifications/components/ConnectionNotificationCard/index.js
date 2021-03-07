@@ -10,7 +10,7 @@ import { Bubble, CustomText } from "../../../../components";
 const ConnectionNotificationCard = () => {
   return (
         <View style = {styles.notificationBox}>
-            <Bubble genre="pop" img={Images.sb_candy} />
+            <Image style={styles.soundCover} source={Images.monster_cover} />
             <CustomText customStyles={styles.username}>"Monsters" 
                 <CustomText customStyles={styles.notificationText}> was added by djcobra to a branch you are in. 
                     <CustomText customStyles={styles.notificationTime}> 11h</CustomText>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         width:315,
         padding: 15,
     },
-    profileImage: {
+    soundCover: {
         width: 50,
         height: 50,
         marginRight: 15,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
     deleteButton: {
         margin: 5,
-        marginLeft: 15,
+        marginLeft: 10,
         width: 20,
         height: 20,
     },
