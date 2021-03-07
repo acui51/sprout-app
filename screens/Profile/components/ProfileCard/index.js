@@ -9,7 +9,7 @@ import { Images, Colors } from "../../../../assets/Themes";
 // Components
 import { CustomButton, CustomText } from "../../../../components";
 
-const ProfileCard = ({ name, bio, buttonText, customStyles }) => {
+const ProfileCard = ({ name, bio, customStyles }) => {
   return (
     <View style={[styles.wrapper, customStyles]}>
       <View style={styles.profileCard}>
@@ -28,6 +28,8 @@ const ProfileCard = ({ name, bio, buttonText, customStyles }) => {
           </View>
         </View>
       </View>
+
+      {/* Edit Profile, Connections, Inbox Buttons */}
       <View style={{ flexDirection: "row", justifyContent: "center" }}>
         <CustomButton
           variantButton="profileOutline"
@@ -48,6 +50,9 @@ const ProfileCard = ({ name, bio, buttonText, customStyles }) => {
           variantText="whiteProfileText"
           text="Inbox"
           width={"33%"}
+          text="Inbox"
+          customStyles={{ position: "relative" }}
+          notification
         />
       </View>
     </View>

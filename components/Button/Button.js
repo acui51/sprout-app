@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
 // Assets
 import { Colors } from "../../assets/Themes";
@@ -24,6 +24,7 @@ export function CustomButton({
   width,
   customStyles,
   children,
+  notification,
 }) {
   return (
     <TouchableOpacity
@@ -31,6 +32,7 @@ export function CustomButton({
       onPress={onPress}
     >
       {children ? children : <Text style={styles[variantText]}>{text}</Text>}
+      {notification && <View style={styles.notification}></View>}
     </TouchableOpacity>
   );
 }
@@ -43,15 +45,17 @@ export const base = {
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "row",
+  position: "relative",
 };
 
 export const profile = {
   paddingHorizontal: 12.5,
-  paddingVertical: 8,
+  paddingVertical: 6,
   borderRadius: 24,
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "row",
+  position: "relative",
 };
 
 export const genre = {
@@ -68,12 +72,13 @@ export const baseText = {
   fontSize: 16,
   letterSpacing: 1.5,
   fontWeight: "bold",
+  lineHeight: 24,
 };
 
 export const profileText = {
   fontSize: 12,
   letterSpacing: 1.5,
-  fontWeight: "bold",
+  fontWeight: "700",
 };
 
 // Primary styling for button
@@ -231,5 +236,14 @@ const styles = StyleSheet.create({
   rockText: {
     ...baseText,
     color: Colors.colorful5,
+  },
+  notification: {
+    position: "absolute",
+    right: 0,
+    top: 0,
+    height: 12,
+    width: 12,
+    borderRadius: 6,
+    backgroundColor: Colors.primary,
   },
 });
