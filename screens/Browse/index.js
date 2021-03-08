@@ -16,7 +16,7 @@ import { Metrics, Images, Colors } from "../../assets/Themes";
 import { db, firestore } from "../../firebase";
 
 // Components
-import { CustomButton, Bubble, CustomText } from "../../components";
+import { CustomButton, Bubble, CustomText, genre } from "../../components";
 import { SoundbitePopup } from "./components";
 
 export default ({ navigation }) => {
@@ -24,19 +24,14 @@ export default ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [batch, setBatch] = useState(1);
   const [filterVisible, setFilterVisible] = useState(false);
+
+  // Soundbite in focus state - bring up soundbite modal or not
   const [soundbiteInFocus, setSoundbiteInFocus] = useState({
     soundbite: {},
     inFocus: false,
   });
 
-  // Genres selected
-  const [edmGenre, setEdmGenre] = useState(true);
-  const [popGenre, setPopGenre] = useState(true);
-  const [countryGenre, setCountryGenre] = useState(true);
-  const [hiphopGenre, setHiphopGenre] = useState(true);
-  const [rnbGenre, setRnbGenre] = useState(true);
-  const [rockGenre, setRockGenre] = useState(true);
-
+  // Genres selected state
   const [genres, setGenres] = useState({
     edm: true,
     pop: true,
@@ -101,6 +96,8 @@ export default ({ navigation }) => {
     copySoundbites.push(soundbites[0]);
     setSoundbites(copySoundbites);
   };
+
+  console.log(genres);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -207,10 +204,10 @@ export default ({ navigation }) => {
                       variantButton="edmShadow"
                       variantText="blackBaseText"
                       width={"31%"}
-                      onPress={() => setEdmGenre(!edmGenre)}
+                      onPress={() => setGenres({ ...genres, edm: !genres.edm })}
                       customStyles={[
                         styles.genre,
-                        edmGenre && { opacity: 0.4 },
+                        !genres.edm && { opacity: 0.4 },
                       ]}
                     />
                     <CustomButton
