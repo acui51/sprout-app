@@ -35,7 +35,16 @@ export default ({ navigation }) => {
   const [countryGenre, setCountryGenre] = useState(true);
   const [hiphopGenre, setHiphopGenre] = useState(true);
   const [rnbGenre, setRnbGenre] = useState(true);
-  const [sockGenre, setRockGenre] = useState(true);
+  const [rockGenre, setRockGenre] = useState(true);
+
+  const [genres, setGenres] = useState({
+    edm: true,
+    pop: true,
+    country: true,
+    hiphop: true,
+    rnb: true,
+    rock: true,
+  });
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -95,6 +104,26 @@ export default ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.genreScroll}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {Object.keys(genres).map((elem, i) => {
+            return (
+              <CustomButton
+                key={i}
+                text={elem.toUpperCase()}
+                variantButton={elem + "Shadow"}
+                variantText="smallBlackBaseText"
+                customStyles={{
+                  marginRight: 16,
+                  paddingVertical: 2,
+                  paddingHorizontal: 16,
+                }}
+              />
+            );
+          })}
+        </ScrollView>
+      </View>
+
       {/* Load soundbites */}
       {loading ? (
         <ActivityIndicator />
@@ -308,6 +337,9 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     marginBottom: 48,
+  },
+  genreScroll: {
+    // height: "10%",
   },
   filterButtons: {
     flexDirection: "row",

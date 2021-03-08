@@ -12,11 +12,7 @@ import {
 import { Colors, Images } from "../../../../assets/Themes";
 
 // Components
-import {
-  CustomButton,
-  CustomText,
-  SoundCloudPlayer,
-} from "../../../../components";
+import { CustomButton, SoundCloudPlayer, Bubble } from "../../../../components";
 
 const SoundbitePopup = ({ soundbiteInFocus, setSoundbiteInFocus }) => {
   return (
@@ -42,14 +38,45 @@ const SoundbitePopup = ({ soundbiteInFocus, setSoundbiteInFocus }) => {
           <TouchableWithoutFeedback>
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
-                <CustomButton
-                  variantButton="primaryOutline"
-                  variantText="grayBaseText"
-                  text="view evolution"
+                {/* Cover Photo */}
+                <Bubble
+                  customStyles={styles.coverPhoto}
+                  img={Images.sb_tameImpala}
+                  genre="edm"
                 />
 
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    marginBottom: 16,
+                  }}
+                >
+                  <CustomButton
+                    variantButton="primaryOutline"
+                    variantText="grayBaseText"
+                    text="Placeholder"
+                  />
+                  {/* View Evolution Button */}
+                  <CustomButton
+                    variantButton="primaryOutline"
+                    variantText="grayBaseText"
+                    text="view evolution"
+                  />
+                </View>
+
                 {/* SoundCloudPlayer */}
-                <SoundCloudPlayer prevPeople={1} variant="light" />
+                <SoundCloudPlayer
+                  prevPeople={1}
+                  variant="light"
+                  customStyles={{ marginBottom: 16 }}
+                />
+
+                <CustomButton
+                  variantButton="primaryShadow"
+                  variantText="whiteBaseText"
+                  text="Add To Sound"
+                />
               </View>
             </View>
           </TouchableWithoutFeedback>
@@ -76,6 +103,11 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     width: "100%",
+    position: "relative",
+  },
+  coverPhoto: {
+    position: "absolute",
+    top: -70,
   },
   centeredView: {
     flex: 1,

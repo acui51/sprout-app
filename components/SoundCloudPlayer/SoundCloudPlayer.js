@@ -19,7 +19,12 @@ const SoundCloudBar = ({ height, backgroundColor }) => {
  * @param {*} prevSounds - toggles whether we see 'last x soundbites'
  * @param {*} prevPeople - number of prev people soundbubbles we see
  */
-export function SoundCloudPlayer({ prevSounds, prevPeople, variant }) {
+export function SoundCloudPlayer({
+  prevSounds,
+  prevPeople,
+  variant,
+  customStyles,
+}) {
   const [time, setTime] = useState(0);
 
   let scBars = [];
@@ -54,7 +59,12 @@ export function SoundCloudPlayer({ prevSounds, prevPeople, variant }) {
   }
 
   return (
-    <View style={variant === "dark" ? styles.wrapperDark : styles.wrapperLight}>
+    <View
+      style={[
+        variant === "dark" ? styles.wrapperDark : styles.wrapperLight,
+        customStyles,
+      ]}
+    >
       {prevSounds && (
         <>
           <CustomText

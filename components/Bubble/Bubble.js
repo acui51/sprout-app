@@ -10,9 +10,12 @@ import { Colors } from "../../assets/Themes";
  * @param {string} genre
  * @param {Images.<>} img
  */
-export function Bubble({ genre, img, onPress }) {
+export function Bubble({ genre, img, onPress, customStyles }) {
   return (
-    <TouchableOpacity style={styles(genre).bubbleBackground} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles(genre).bubbleBackground, customStyles]}
+      onPress={onPress}
+    >
       <Image style={styles(genre).img} source={img} />
     </TouchableOpacity>
   );
