@@ -16,7 +16,8 @@ import { Metrics, Images, Colors } from "../../assets/Themes";
 import { db, firestore } from "../../firebase";
 
 // Components
-import { CustomButton, Bubble, CustomText } from "../../components";
+import { CustomButton, Bubble, CustomText, genre } from "../../components";
+import { SoundbitePopup } from "./components";
 
 export default ({ navigation }) => {
   const [soundbites, setSoundbites] = useState([]);
@@ -24,13 +25,21 @@ export default ({ navigation }) => {
   const [batch, setBatch] = useState(1);
   const [filterVisible, setFilterVisible] = useState(false);
 
-  // Genres selected
-  const [edmGenre, setEdmGenre] = useState(true);
-  const [popGenre, setPopGenre] = useState(true);
-  const [countryGenre, setCountryGenre] = useState(true);
-  const [hiphopGenre, setHiphopGenre] = useState(true);
-  const [rnbGenre, setRnbGenre] = useState(true);
-  const [sockGenre, setRockGenre] = useState(true);
+  // Soundbite in focus state - bring up soundbite modal or not
+  const [soundbiteInFocus, setSoundbiteInFocus] = useState({
+    soundbite: {},
+    inFocus: false,
+  });
+
+  // Genres selected state
+  const [genres, setGenres] = useState({
+    edm: true,
+    pop: true,
+    country: true,
+    hiphop: true,
+    rnb: true,
+    rock: true,
+  });
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -88,8 +97,31 @@ export default ({ navigation }) => {
     setSoundbites(copySoundbites);
   };
 
+  console.log(genres);
+
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.genreScroll}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {Object.keys(genres).map((elem, i) => {
+            return (
+              <CustomButton
+                key={i}
+                text={elem.toUpperCase()}
+                variantButton={elem + "Shadow"}
+                variantText="smallBlackBaseText"
+                customStyles={{
+                  marginRight: 16,
+                  paddingVertical: 2,
+                  paddingHorizontal: 16,
+                }}
+              />
+            );
+          })}
+        </ScrollView>
+      </View>
+
+      {/* Load soundbites */}
       {loading ? (
         <ActivityIndicator />
       ) : (
@@ -109,6 +141,16 @@ export default ({ navigation }) => {
                   key={i}
                   genre={elem.genre}
                   img={Images[`sb_${elem.imageName}`]}
+                  onPress={() =>
+                    setSoundbiteInFocus({
+                      sounbite: {
+                        title: elem.title,
+                        genre: elem.genre,
+                        img: elem.imgName,
+                      },
+                      inFocus: true,
+                    })
+                  }
                 />
               </View>
             </View>
@@ -116,6 +158,15 @@ export default ({ navigation }) => {
         </View>
       )}
 
+      {/* Soundbite Popup */}
+      {soundbiteInFocus.inFocus && (
+        <SoundbitePopup
+          soundbiteInFocus
+          setSoundbiteInFocus={setSoundbiteInFocus}
+        ></SoundbitePopup>
+      )}
+
+      {/* Filter genre modal */}
       <Modal
         animationType="fade"
         transparent={true}
@@ -153,10 +204,10 @@ export default ({ navigation }) => {
                       variantButton="edmShadow"
                       variantText="blackBaseText"
                       width={"31%"}
-                      onPress={() => setEdmGenre(!edmGenre)}
+                      onPress={() => setGenres({ ...genres, edm: !genres.edm })}
                       customStyles={[
                         styles.genre,
-                        edmGenre && { opacity: 0.4 },
+                        !genres.edm && { opacity: 0.4 },
                       ]}
                     />
                     <CustomButton
@@ -283,6 +334,9 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     marginBottom: 48,
+  },
+  genreScroll: {
+    // height: "10%",
   },
   filterButtons: {
     flexDirection: "row",
