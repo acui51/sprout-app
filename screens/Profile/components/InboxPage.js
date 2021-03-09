@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Image, View, ScrollView } from "react-native";
+import { StyleSheet, Image, useLayoutEffect, ScrollView } from "react-native";
 import { SearchBar } from "react-native-elements";
 import { FrontAwesome, Entypo } from "@expo/vector-icons";
 // Assets
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
 
 export default function InboxPage({ navigation }) {
   const [text, setSearch] = useState("");
-
   return (
     <Container customStyle={styles.container}>
       {/* <FrontAwesome name="pen" size={24}></FrontAwesome> */}

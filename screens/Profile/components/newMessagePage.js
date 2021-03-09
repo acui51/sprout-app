@@ -81,9 +81,9 @@ export default function newMessagePage({ navigation }) {
           pfp={Images.shawna_m}
         />
         <UserCard
-          username="taylorfast"
-          text="Taylor Fast"
-          pfp={Images.taylor_f}
+          username="justinebeaver"
+          text="Justine Beaver"
+          pfp={Images.justine_b}
         />
       </ScrollView>
     </Container>

@@ -19,6 +19,7 @@ const images = {
   bessie_b: require("../Images/bessieB.png"),
   shawna_m: require("../Images/shawnaM.png"),
   taylor_f: require("../Images/taylorF.png"),
+  justine_b: require("../Images/justineB.png"),
   studio: require("../Images/Recorder.png"),
   sound_freq: require("../Images/AudioPlayer.png"),
   add_button: require("../Images/addButton.png"),
