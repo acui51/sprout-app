@@ -5,13 +5,13 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
-  TouchableWithoutFeedback,
+  ActivityIndicator,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 
 // Assets
-import { Colors, Images } from "../../assets/Themes";
+import { Colors, Images, Metrics } from "../../assets/Themes";
 import { CustomText, CustomButton } from "../../components";
 import Container from "../../hoc/Container";
 import { db, firestore } from "../../firebase";
@@ -20,6 +20,8 @@ const CoverPhoto = ({ navigation }) => {
   const [genre, setGenre] = useState(null);
   const [coverPhoto, setCoverPhoto] = useState(false);
   const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [loadingInterval, setLoadingInterval] = useState(0);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -40,10 +42,21 @@ const CoverPhoto = ({ navigation }) => {
           </View>
         </View>
       ),
+      headerRight: () => (
+        <TouchableOpacity
+          style={styles.close}
+          onPress={() =>
+            navigation.navigate("BrowseTab", { screen: "Explore" })
+          }
+        >
+          <Ionicons name="close" size={16} color={Colors.white} />
+        </TouchableOpacity>
+      ),
     });
   }, [navigation]);
 
   const postSoundbite = () => {
+    setLoading(true);
     db.collection("soundbites")
       .add({
         genre: genre,
@@ -55,15 +68,22 @@ const CoverPhoto = ({ navigation }) => {
         console.log("docRefId", docRef.id);
         let ref = db.collection("users").doc("ariana_venti");
 
-        // Atomically add a new region to the "featured_soundbites" array field.
-        ref
-          .update({
-            featured_soundbites: firestore.FieldValue.arrayUnion(
-              `${docRef.id}`
-            ),
-          })
-          // Once promise is resolved -> navigate to ProfileTab
-          .then(() => navigation.navigate("ProfileTab", { screen: "Profile" }));
+        // Simulate a 5 second uploading timer
+        // setInterval(() => {}, 100);
+        setTimeout(() => {
+          // Atomically add a new region to the "featured_soundbites" array field.
+          ref
+            .update({
+              featured_soundbites: firestore.FieldValue.arrayUnion(
+                `${docRef.id}`
+              ),
+            })
+            // Once promise is resolved -> navigate to ProfileTab
+            .then(() => {
+              navigation.navigate("ProfileTab", { screen: "Profile" });
+              setLoading(false);
+            });
+        }, 2000);
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
@@ -176,7 +196,7 @@ const CoverPhoto = ({ navigation }) => {
         text="Post"
         variantButton="primaryShadow"
         variantText="whiteBaseText"
-        width={120}
+        width={loading ? 180 : 120}
         onPress={() => {
           postSoundbite();
         }}
@@ -185,7 +205,24 @@ const CoverPhoto = ({ navigation }) => {
           (!genre || !coverPhoto || text === "") && { opacity: 0.4 },
         ]}
         disabled={!genre || !coverPhoto || text === ""}
-      />
+      >
+        {loading && (
+          <>
+            <ActivityIndicator color={Colors.white} />
+            <CustomText customStyles={styles.uploadingText}>
+              Uploading
+            </CustomText>
+            <TouchableOpacity
+              style={styles.stopUploading}
+              onPress={() =>
+                navigation.navigate("BrowseTab", { screen: "Explore" })
+              }
+            >
+              <Ionicons name="close" size={16} color={Colors.primary} />
+            </TouchableOpacity>
+          </>
+        )}
+      </CustomButton>
     </Container>
   );
 };
@@ -234,5 +271,30 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     width: "100%",
     position: "absolute",
+  },
+  close: {
+    backgroundColor: Colors.primary,
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    marginRight: Metrics.headerMarginHorizontal,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  stopUploading: {
+    backgroundColor: Colors.white,
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: 8,
+  },
+  uploadingText: {
+    fontSize: 16,
+    letterSpacing: 1.5,
+    fontWeight: "bold",
+    lineHeight: 24,
+    marginLeft: 8,
   },
 });
