@@ -69,8 +69,15 @@ const CoverPhoto = ({ navigation }) => {
         let ref = db.collection("users").doc("ariana_venti");
 
         // Simulate a 5 second uploading timer
-        // setInterval(() => {}, 100);
+        let percentage = 0;
+        let interval = setInterval(() => {
+          console.log("interval ran");
+          percentage += 5;
+          setLoadingInterval(percentage);
+        }, 100);
+
         setTimeout(() => {
+          clearInterval(interval);
           // Atomically add a new region to the "featured_soundbites" array field.
           ref
             .update({
@@ -196,7 +203,7 @@ const CoverPhoto = ({ navigation }) => {
         text="Post"
         variantButton="primaryShadow"
         variantText="whiteBaseText"
-        width={loading ? 180 : 120}
+        width={loading ? 200 : 120}
         onPress={() => {
           postSoundbite();
         }}
@@ -208,7 +215,10 @@ const CoverPhoto = ({ navigation }) => {
       >
         {loading && (
           <>
-            <ActivityIndicator color={Colors.white} />
+            {/* <ActivityIndicator color={Colors.white} /> */}
+            <CustomText
+              customStyles={styles.uploadingText}
+            >{`${loadingInterval}%`}</CustomText>
             <CustomText customStyles={styles.uploadingText}>
               Uploading
             </CustomText>
