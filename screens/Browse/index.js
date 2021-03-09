@@ -147,6 +147,7 @@ export default ({ navigation }) => {
                     paddingVertical: 2,
                     paddingHorizontal: 16,
                   }}
+                  disabled
                 />
               );
             }
