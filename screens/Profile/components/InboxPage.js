@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
 // Assets
-import { Metrics } from "../../assets/Themes";
+import { Metrics } from "../../../assets/Themes";
 
 // Components
 
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default () => {
+export default function InboxPage({ navigation }) {
   const { colors } = useTheme();
 
   return (

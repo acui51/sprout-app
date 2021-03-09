@@ -19,6 +19,8 @@ import Upload from "./screens/Upload/index";
 import Studio from "./screens/Upload/studio";
 import SoundsGood from "./screens/Upload/soundsGood";
 import CoverPhoto from "./screens/Upload/CoverPhoto";
+import ConnectionPage from "./screens/Profile/components/ConnectionPage";
+import InboxPage from "./screens/Profile/components/InboxPage";
 
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
@@ -174,11 +176,9 @@ function ProfileStackComponent() {
         },
       }}
     >
-      <ProfileStack.Screen
-        name="Profile"
-        component={Profile}
-        options={{ title: "@arianaventi" }}
-      />
+      <ProfileStack.Screen name="Profile" component={Profile} options={{ title: "@arianaventi" }} />
+      <ProfileStack.Screen name="My Connections" component = {ConnectionPage} />
+      <ProfileStack.Screen name="My Inbox" component = {InboxPage} />
     </ProfileStack.Navigator>
   );
 }

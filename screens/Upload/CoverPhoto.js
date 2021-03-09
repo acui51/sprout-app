@@ -1,7 +1,6 @@
 import React, { useState, useLayoutEffect } from "react";
 import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import Icon from "react-native-vector-icons/Feather";
 import { AntDesign } from "@expo/vector-icons";
 
 // Assets
