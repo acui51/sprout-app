@@ -107,7 +107,7 @@ function UploadStackComponent() {
           fontFamily: "Kollektif-Bold",
           fontSize: 24,
         },
-        headerBackTitle: null,
+        headerBackTitleVisible: false,
         headerBackImage: () => (
           <View style={styles.backButton}>
             <Ionicons name="arrow-back" size={24} color={Colors.white} />

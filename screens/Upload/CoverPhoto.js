@@ -23,9 +23,21 @@ const CoverPhoto = ({ navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: () => (
-        <CustomText customStyles={{ fontSize: 16, fontWeight: "700" }}>
-          3/3: Title and Tag
-        </CustomText>
+        <View style={{ justifyContent: "center" }}>
+          <CustomText
+            customStyles={{
+              fontSize: 16,
+              fontWeight: "700",
+              marginBottom: 8,
+              paddingHorizontal: 28,
+            }}
+          >
+            3/3: Title and Tag
+          </CustomText>
+          <View style={styles.backgroundBar}>
+            <View style={styles.progressBar}></View>
+          </View>
+        </View>
       ),
     });
   }, [navigation]);
@@ -95,15 +107,7 @@ const CoverPhoto = ({ navigation }) => {
         variantButton="primaryShadow"
         variantText="whiteBaseText"
         width={120}
-        onPress={() =>
-          navigation.navigate(
-            "ProfileTab",
-            {},
-            NavigationActions.navigate({
-              routeName: "Profile",
-            })
-          )
-        }
+        onPress={() => navigation.navigate("ProfileTab", { screen: "Profile" })}
         customStyles={[
           styles.button,
           (!genre || !coverPhoto || text === "") && { opacity: 0.4 },
@@ -144,5 +148,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "700",
     color: Colors.gray,
+  },
+  backgroundBar: {
+    flexBasis: "75%",
+    backgroundColor: "#C4C4C4",
+    maxHeight: 8,
+    borderRadius: 24,
+    position: "relative",
+  },
+  progressBar: {
+    backgroundColor: Colors.primary,
+    height: 8,
+    borderRadius: 24,
+    width: "100%",
+    position: "absolute",
   },
 });

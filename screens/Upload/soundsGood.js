@@ -13,9 +13,25 @@ export default function SoundsGood({ navigation }) {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: () => (
-        <CustomText customStyles={{ fontSize: 16, fontWeight: "700" }}>
-          2/3: Preview Sound
-        </CustomText>
+        <View
+          style={{
+            justifyContent: "center",
+          }}
+        >
+          <CustomText
+            customStyles={{
+              fontSize: 16,
+              fontWeight: "700",
+              marginBottom: 8,
+              paddingHorizontal: 20,
+            }}
+          >
+            2/3: Preview Sound
+          </CustomText>
+          <View style={styles.backgroundBar}>
+            <View style={styles.progressBar}></View>
+          </View>
+        </View>
       ),
     });
   }, [navigation]);
@@ -59,5 +75,19 @@ const styles = StyleSheet.create({
   button: {
     alignSelf: "center",
     margin: 10,
+  },
+  backgroundBar: {
+    flexBasis: "75%",
+    backgroundColor: "#C4C4C4",
+    maxHeight: 8,
+    borderRadius: 24,
+    position: "relative",
+  },
+  progressBar: {
+    backgroundColor: Colors.primary,
+    height: 8,
+    borderRadius: 24,
+    width: "66%",
+    position: "absolute",
   },
 });
