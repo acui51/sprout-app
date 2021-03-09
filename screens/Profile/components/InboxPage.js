@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Image, View, ScrollView } from "react-native";
 import { SearchBar } from "react-native-elements";
-import { Entypo } from "@expo/vector-icons";
+import { FrontAwesome, Entypo } from "@expo/vector-icons";
 // Assets
 import { Metrics, Images, Colors } from "../../../assets/Themes";
 
@@ -41,6 +41,7 @@ export default function InboxPage({ navigation }) {
 
   return (
     <Container customStyle={styles.container}>
+      {/* <FrontAwesome name="pen" size={24}></FrontAwesome> */}
       <SearchBar
         containerStyle={styles.searchBarContainer}
         inputContainerStyle={styles.searchBarInputContainer}
