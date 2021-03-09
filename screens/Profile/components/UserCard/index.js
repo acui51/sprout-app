@@ -14,14 +14,17 @@ import { CustomButton, CustomText } from "../../../../components";
  */
 
 //const navigation = useNavigation();
-const UserCard = ({ username, text, pfp, customStyles }) => {
+const UserCard = ({ username, text, pfp, boldtext, customStyles }) => {
   return (
     <View style={styles.container}>
       <View style={styles.UserCard}>
         <Image style={styles.profileImage} source={pfp} />
         <View style={{ flexShrink: 1 }}>
           <CustomText customStyles={styles.username}>{username}</CustomText>
-          <CustomText customStyles={styles.text}>{text}</CustomText>
+          <CustomText customStyles={styles.boldtext}>
+            {boldtext}
+            <CustomText customStyles={styles.text}>{text}</CustomText>
+          </CustomText>
         </View>
       </View>
     </View>
@@ -41,7 +44,7 @@ const styles = StyleSheet.create({
     height: 77,
     width: 327,
     padding: 15,
-    //marginLeft: 15,
+    marginLeft: 10,
   },
   profileImage: {
     marginRight: 15,
@@ -56,6 +59,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "normal",
+    fontSize: 13,
+  },
+  boldtext: {
+    fontWeight: "bold",
     fontSize: 13,
   },
 });
