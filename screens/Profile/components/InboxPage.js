@@ -3,7 +3,7 @@ import { StyleSheet, Image, View, ScrollView } from "react-native";
 import { SearchBar } from "react-native-elements";
 import { FrontAwesome, Entypo } from "@expo/vector-icons";
 // Assets
-import { Metrics, Images, Colors } from "../../../assets/Themes";
+import { Images, Colors } from "../../../assets/Themes";
 
 // Components
 import { CustomText, CustomButton } from "../../../components";
@@ -27,12 +27,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 48,
     //width: 327,
-  },
-  circle: {
-    backgroundColor: Colors.primary,
-    width: 22,
-    height: 12,
-    borderRadius: 20,
   },
 });
 
@@ -59,26 +53,25 @@ export default function InboxPage({ navigation }) {
       />
       <ScrollView>
         <UserCard
-          username="scissors"
+          username="Scissors"
           boldtext="Thanks for the feedback..."
           text=" · 1h"
           pfp={Images.scissors}
+          notification
         >
-          {/* <View style={styles.circle}></View> */}
-          <Entypo name="check" size={24} color={Colors.primary} />
         </UserCard>
         <UserCard
-          username="bessieb"
+          username="Bessieb"
           text="Liked a message · 1d"
           pfp={Images.bessie_b}
         />
         <UserCard
-          username="justintimberpond"
+          username="Justintimberpond"
           text="Love it · 1d"
           pfp={Images.justin_t}
         />
         <UserCard
-          username="shawnamendez"
+          username="Shawnamendez"
           text="Gotchat, will try it out · 2d"
           pfp={Images.shawna_m}
         />

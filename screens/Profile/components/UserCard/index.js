@@ -1,7 +1,5 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
 // Assets
 import { Images, Colors } from "../../../../assets/Themes";
 
@@ -13,8 +11,14 @@ import { CustomButton, CustomText } from "../../../../components";
  * @param {Images.<>} pfp
  */
 
-//const navigation = useNavigation();
-const UserCard = ({ username, text, pfp, boldtext, customStyles }) => {
+const UserCard = ({
+  username,
+  text,
+  pfp,
+  boldtext,
+  notification,
+  customStyles,
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.UserCard}>
@@ -26,6 +30,7 @@ const UserCard = ({ username, text, pfp, boldtext, customStyles }) => {
             <CustomText customStyles={styles.text}>{text}</CustomText>
           </CustomText>
         </View>
+        {notification && <View style={styles.notificationDot} />}
       </View>
     </View>
   );
@@ -64,6 +69,13 @@ const styles = StyleSheet.create({
   boldtext: {
     fontWeight: "bold",
     fontSize: 13,
+  },
+  notificationDot: {
+    backgroundColor: Colors.primary,
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    marginLeft: 20,
   },
 });
 
