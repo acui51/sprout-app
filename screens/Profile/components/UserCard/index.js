@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background2,
     borderRadius: 20,
     height: 77,
-    width: 327,
+    //width: 327,
     padding: 15,
-    marginLeft: 10,
+    //marginLeft: 10,
   },
   profileImage: {
     marginRight: 15,

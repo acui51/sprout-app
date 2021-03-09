@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
     height: 48,
     //width: 327,
   },
+  to: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 16,
+  },
   suggest: {
     fontSize: 10,
     fontWeight: "bold",
@@ -40,16 +45,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ConnectionPage({ navigation }) {
+export default function newMessagePage({ navigation }) {
   const [text, setSearch] = useState("");
 
   return (
     <Container customStyle={styles.container}>
+      <CustomText customStyles={styles.to}>To</CustomText>
       <SearchBar
         containerStyle={styles.searchBarContainer}
         inputContainerStyle={styles.searchBarInputContainer}
-        placeholderTextColor={Colors.gray}
-        inputStyle={{ fontSize: 14, fontWeight: "bold" }}
+        placeholderTextColor={Colors.white}
         searchIcon={() => (
           <Image
             source={Images.search_icon}
