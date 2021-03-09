@@ -5,7 +5,7 @@ import { SearchBar } from "react-native-elements";
 import { Images, Colors } from "../../../assets/Themes";
 
 // Components
-import { CustomText, CustomButton } from "../../../components";
+import { CustomText } from "../../../components";
 import Container from "../../../hoc/Container";
 import UserCard from "../components/UserCard/index";
 
@@ -27,11 +27,12 @@ const styles = StyleSheet.create({
     height: 48,
     //width: 327,
   },
-  suggest: {
+  subheading: {
     fontSize: 10,
     fontWeight: "bold",
     color: Colors.gray,
-    marginBottom: 16,
+    marginBottom: 20,
+    marginTop: 5,
   },
   line: {
     borderBottomColor: Colors.background2,
@@ -60,7 +61,15 @@ export default function ConnectionPage({ navigation }) {
         onChangeText={(text) => setSearch(text)}
         //value={search}
       />
-      <CustomText customStyles={styles.suggest}>SUGGESTED</CustomText>
+      <UserCard
+        username="Connection Requests"
+        text="brunetted and 2 others"
+        pfp={Images.honest_ocean}
+        request
+      />
+      <CustomText customStyles={styles.subheading}>
+        MOST INTERACTED WITH
+      </CustomText>
       <View style={styles.line}></View>
       <ScrollView>
         <UserCard username="scissors" text="Sissors" pfp={Images.scissors} />
@@ -70,6 +79,10 @@ export default function ConnectionPage({ navigation }) {
           text="Justin Timberpound"
           pfp={Images.justin_t}
         />
+        <CustomText customStyles={styles.subheading}>
+          ALL CONNECTIONS
+        </CustomText>
+        <View style={styles.line}></View>
         <UserCard
           username="shawnamendez"
           text="Shawna Mendez"

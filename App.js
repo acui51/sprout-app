@@ -179,7 +179,19 @@ function ProfileStackComponent() {
       {/* <ProfileStack.Screen name="Profile" component={Profile}  options={{ title: "@arianaventi" }}/> */}
       {/* with the title option the connections page header becomes overcrowded */}
       <ProfileStack.Screen name="Profile" component={Profile} />
-      <ProfileStack.Screen name="My Connections" component={ConnectionPage} />
+      <ProfileStack.Screen name="My Connections" component={ConnectionPage} 
+        options={({navigation}) => ({
+          headerRight: () => (
+            <Ionicons
+            name="chatbubble-ellipses-outline" 
+              size={32}
+              color={Colors.white}
+              style={{ marginRight: Metrics.headerMarginHorizontal }}
+              onPress = {() => navigation.navigate("My Inbox")}
+            />
+          ),
+        })}
+      />
       <ProfileStack.Screen name="New Message" component={NewMessagePage} />
       <ProfileStack.Screen
         name="My Inbox"

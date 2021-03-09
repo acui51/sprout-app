@@ -4,8 +4,8 @@ import { View, Image, StyleSheet } from "react-native";
 import { Images, Colors } from "../../../../assets/Themes";
 
 // Components
-import { CustomButton, CustomText } from "../../../../components";
-
+import { CustomText } from "../../../../components";
+import { AntDesign } from '@expo/vector-icons';
 /**
  *
  * @param {Images.<>} pfp
@@ -17,7 +17,7 @@ const UserCard = ({
   pfp,
   boldtext,
   notification,
-  customStyles,
+  request,
 }) => {
   return (
     <View style={styles.container}>
@@ -31,6 +31,7 @@ const UserCard = ({
           </CustomText>
         </View>
         {notification && <View style={styles.notificationDot} />}
+        {request && <View style={{position: 'absolute', right: 40}}><AntDesign name="arrowright" size={20} color={Colors.white}/></View>}
       </View>
     </View>
   );
