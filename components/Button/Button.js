@@ -25,11 +25,13 @@ export function CustomButton({
   customStyles,
   children,
   notification,
+  disabled,
 }) {
   return (
     <TouchableOpacity
       style={[styles[variantButton], { width }, customStyles]}
       onPress={onPress}
+      disabled={disabled}
     >
       {children ? children : <Text style={styles[variantText]}>{text}</Text>}
       {notification && <View style={styles.notification}></View>}
