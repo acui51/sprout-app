@@ -19,6 +19,7 @@ export default function App() {
           0/3: Pick Create Method
         </CustomText>
       ),
+      headerRight: () => <CustomText>x</CustomText>,
     });
   }, [navigation]);
 

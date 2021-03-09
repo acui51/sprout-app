@@ -37,7 +37,7 @@ const SoundCloudPlayer = ({ prevSounds, prevPeople }) => {
         <SoundCloudBar
           key={i}
           height={Math.floor(Math.random() * 40) + 1}
-          backgroundColor={Colors.white}
+          backgroundColor={Colors.gray}
         />
       );
     }
@@ -111,11 +111,9 @@ const styles = StyleSheet.create({
   },
   soundCloudBar: {
     width: 2.4,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.gray,
     borderRadius: 20,
     margin: 1,
-    borderColor: "blue",
-    // borderWidth: 1,
   },
   scBarWrapper: {
     flexDirection: "row",

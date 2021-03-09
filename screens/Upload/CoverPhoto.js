@@ -5,10 +5,10 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  TouchableWithoutFeedback,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { AntDesign } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
 
 // Assets
 import { Colors, Images } from "../../assets/Themes";
@@ -75,14 +75,19 @@ const CoverPhoto = ({ navigation }) => {
           },
         ]}
         defaultValue={genre}
-        placeholder="Select Genre"
+        placeholder={"Select Genre"}
         labelStyle={{ fontSize: 14, color: Colors.gray }}
         containerStyle={{ height: 40 }}
-        style={{ backgroundColor: "#fafafa", width: "60%" }}
+        arrowColor={Colors.gray}
+        style={{
+          backgroundColor: Colors.background2,
+          width: "75%",
+          borderWidth: 0,
+        }}
         itemStyle={{
           justifyContent: "flex-start",
         }}
-        dropDownStyle={{ backgroundColor: "#fafafa", width: "60%" }}
+        dropDownStyle={{ backgroundColor: "#fafafa", width: "75%" }}
         onChangeItem={(item) => setGenre(item.value)}
       />
       <CustomButton
@@ -117,9 +122,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   coverPhoto: {
-    height: 272,
-    width: 272,
-    borderRadius: 136,
+    height: undefined,
+    width: 300,
+    aspectRatio: 1,
+    borderRadius: 300 / 2,
     backgroundColor: Colors.background2,
     justifyContent: "center",
     alignItems: "center",
@@ -130,13 +136,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   titleInput: {
-    backgroundColor: Colors.background3,
-    width: "65%",
+    backgroundColor: Colors.background2,
+    width: "100%",
     borderRadius: 30,
     paddingVertical: 16,
     paddingHorizontal: 20,
     fontSize: 16,
     fontWeight: "700",
-    color: Colors.background1,
+    color: Colors.gray,
   },
 });

@@ -8,7 +8,6 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   ActivityIndicator,
-  Button,
 } from "react-native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 
@@ -62,14 +61,15 @@ export default ({ navigation }) => {
           style={{ marginRight: Metrics.headerMarginHorizontal }}
           onPress={() => {
             setFilterVisible(true);
-            setGenres({
-              edm: false,
-              pop: false,
-              country: false,
-              hiphop: false,
-              rnb: false,
-              rock: false,
-            });
+            // Comment this out to active 'deselecting'
+            // setGenres({
+            //   edm: false,
+            //   pop: false,
+            //   country: false,
+            //   hiphop: false,
+            //   rnb: false,
+            //   rock: false,
+            // });
           }}
         />
       ),
@@ -102,6 +102,23 @@ export default ({ navigation }) => {
 
   // Save changes callback
   const setFilteredSoundbites = () => {
+    if (
+      !genres.edm &&
+      !genres.pop &&
+      !genres.country &&
+      !genres.hiphop &&
+      !genres.rnb &&
+      !genres.rock
+    ) {
+      setGenres({
+        edm: true,
+        pop: true,
+        country: true,
+        hiphop: true,
+        rnb: true,
+        rock: true,
+      });
+    }
     setFiltered(true);
   };
 
@@ -332,6 +349,11 @@ export default ({ navigation }) => {
                       }}
                     />
                   </View>
+                  <CustomText
+                    customStyles={{ fontWeight: "700", color: Colors.gray }}
+                  >
+                    *Default is all
+                  </CustomText>
                 </View>
               </View>
             </TouchableWithoutFeedback>
