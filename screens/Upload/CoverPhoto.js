@@ -5,20 +5,23 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
-  TouchableWithoutFeedback,
+  ActivityIndicator,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 
 // Assets
-import { Colors, Images } from "../../assets/Themes";
+import { Colors, Images, Metrics } from "../../assets/Themes";
 import { CustomText, CustomButton } from "../../components";
 import Container from "../../hoc/Container";
+import { db, firestore } from "../../firebase";
 
 const CoverPhoto = ({ navigation }) => {
   const [genre, setGenre] = useState(null);
   const [coverPhoto, setCoverPhoto] = useState(false);
   const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [loadingInterval, setLoadingInterval] = useState(0);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -39,8 +42,60 @@ const CoverPhoto = ({ navigation }) => {
           </View>
         </View>
       ),
+      headerRight: () => (
+        <TouchableOpacity
+          style={styles.close}
+          onPress={() =>
+            navigation.navigate("BrowseTab", { screen: "Explore" })
+          }
+        >
+          <Ionicons name="close" size={16} color={Colors.white} />
+        </TouchableOpacity>
+      ),
     });
   }, [navigation]);
+
+  const postSoundbite = () => {
+    setLoading(true);
+    db.collection("soundbites")
+      .add({
+        genre: genre,
+        imageName: "rockPow",
+        title: text,
+      })
+      .then((docRef) => {
+        // docRef.id
+        console.log("docRefId", docRef.id);
+        let ref = db.collection("users").doc("ariana_venti");
+
+        // Simulate a 5 second uploading timer
+        let percentage = 0;
+        let interval = setInterval(() => {
+          console.log("interval ran");
+          percentage += 5;
+          setLoadingInterval(percentage);
+        }, 100);
+
+        setTimeout(() => {
+          clearInterval(interval);
+          // Atomically add a new region to the "featured_soundbites" array field.
+          ref
+            .update({
+              featured_soundbites: firestore.FieldValue.arrayUnion(
+                `${docRef.id}`
+              ),
+            })
+            // Once promise is resolved -> navigate to ProfileTab
+            .then(() => {
+              navigation.navigate("ProfileTab", { screen: "Profile" });
+              setLoading(false);
+            });
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+  };
 
   return (
     <Container customStyles={styles.container}>
@@ -50,6 +105,7 @@ const CoverPhoto = ({ navigation }) => {
         onChangeText={(text) => setText(text)}
         value={text}
         placeholder="Title"
+        placeholderTextColor={Colors.gray}
       />
 
       {coverPhoto ? (
@@ -74,21 +130,62 @@ const CoverPhoto = ({ navigation }) => {
       <DropDownPicker
         items={[
           {
-            label: "Rock",
+            label: "ROCK",
             value: "rock",
+            icon: () => (
+              <View
+                style={{
+                  height: 14,
+                  width: 14,
+                  backgroundColor: Colors.colorful5,
+                  borderRadius: 7,
+                }}
+              ></View>
+            ),
           },
           {
             label: "RNB",
             value: "rnb",
+            icon: () => (
+              <View
+                style={{
+                  height: 14,
+                  width: 14,
+                  backgroundColor: Colors.colorful3,
+                  borderRadius: 7,
+                }}
+              ></View>
+            ),
           },
           {
             label: "EDM",
             value: "edm",
+            icon: () => (
+              <View
+                style={{
+                  height: 14,
+                  width: 14,
+                  backgroundColor: Colors.colorful2,
+                  borderRadius: 7,
+                }}
+              ></View>
+            ),
           },
         ]}
         defaultValue={genre}
         placeholder={"Select Genre"}
-        labelStyle={{ fontSize: 14, color: Colors.gray }}
+        placeholderStyle={{
+          fontWeight: "bold",
+          color: Colors.gray,
+        }}
+        labelStyle={{
+          fontSize: 14,
+          color: Colors.background1,
+        }}
+        selectedLabelStyle={{
+          color: Colors.gray,
+          fontWeight: "700",
+        }}
         containerStyle={{ height: 40 }}
         arrowColor={Colors.gray}
         style={{
@@ -106,14 +203,36 @@ const CoverPhoto = ({ navigation }) => {
         text="Post"
         variantButton="primaryShadow"
         variantText="whiteBaseText"
-        width={120}
-        onPress={() => navigation.navigate("ProfileTab", { screen: "Profile" })}
+        width={loading ? 200 : 120}
+        onPress={() => {
+          postSoundbite();
+        }}
         customStyles={[
           styles.button,
           (!genre || !coverPhoto || text === "") && { opacity: 0.4 },
         ]}
         disabled={!genre || !coverPhoto || text === ""}
-      />
+      >
+        {loading && (
+          <>
+            {/* <ActivityIndicator color={Colors.white} /> */}
+            <CustomText
+              customStyles={styles.uploadingText}
+            >{`${loadingInterval}%`}</CustomText>
+            <CustomText customStyles={styles.uploadingText}>
+              Uploading
+            </CustomText>
+            <TouchableOpacity
+              style={styles.stopUploading}
+              onPress={() =>
+                navigation.navigate("BrowseTab", { screen: "Explore" })
+              }
+            >
+              <Ionicons name="close" size={16} color={Colors.primary} />
+            </TouchableOpacity>
+          </>
+        )}
+      </CustomButton>
     </Container>
   );
 };
@@ -162,5 +281,30 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     width: "100%",
     position: "absolute",
+  },
+  close: {
+    backgroundColor: Colors.primary,
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    marginRight: Metrics.headerMarginHorizontal,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  stopUploading: {
+    backgroundColor: Colors.white,
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: 8,
+  },
+  uploadingText: {
+    fontSize: 16,
+    letterSpacing: 1.5,
+    fontWeight: "bold",
+    lineHeight: 24,
+    marginLeft: 8,
   },
 });

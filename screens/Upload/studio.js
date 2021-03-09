@@ -1,8 +1,9 @@
 import React, { useLayoutEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 // Assets
-import { Colors } from "../../assets/Themes";
+import { Colors, Metrics } from "../../assets/Themes";
 
 // Components
 import { CustomButton, CustomText } from "../../components";
@@ -28,6 +29,16 @@ export default function Studio({ navigation }) {
             <View style={styles.progressBar}></View>
           </View>
         </View>
+      ),
+      headerRight: () => (
+        <TouchableOpacity
+          style={styles.close}
+          onPress={() =>
+            navigation.navigate("BrowseTab", { screen: "Explore" })
+          }
+        >
+          <Ionicons name="close" size={16} color={Colors.white} />
+        </TouchableOpacity>
       ),
     });
   }, [navigation]);
@@ -89,5 +100,14 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     width: "33%",
     position: "absolute",
+  },
+  close: {
+    backgroundColor: Colors.primary,
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    marginRight: Metrics.headerMarginHorizontal,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

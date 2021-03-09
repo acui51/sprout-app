@@ -25,9 +25,9 @@ const genreToColor = {
   edm: Colors.colorful2,
   pop: Colors.colorful4,
   country: Colors.colorful6,
-  indie: Colors.colorful5,
   rnb: Colors.colorful1,
-  rock: Colors.colorful3,
+  rock: Colors.colorful5,
+  hiphop: Colors.colorful7,
 };
 
 const base = {
