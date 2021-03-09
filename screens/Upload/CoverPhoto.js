@@ -14,6 +14,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Colors, Images } from "../../assets/Themes";
 import { CustomText, CustomButton } from "../../components";
 import Container from "../../hoc/Container";
+import { db, firestore } from "../../firebase";
 
 const CoverPhoto = ({ navigation }) => {
   const [genre, setGenre] = useState(null);
@@ -42,6 +43,33 @@ const CoverPhoto = ({ navigation }) => {
     });
   }, [navigation]);
 
+  const postSoundbite = () => {
+    db.collection("soundbites")
+      .add({
+        genre: genre,
+        imageName: "rockPow",
+        title: text,
+      })
+      .then((docRef) => {
+        // docRef.id
+        console.log("docRefId", docRef.id);
+        let ref = db.collection("users").doc("ariana_venti");
+
+        // Atomically add a new region to the "featured_soundbites" array field.
+        ref
+          .update({
+            featured_soundbites: firestore.FieldValue.arrayUnion(
+              `${docRef.id}`
+            ),
+          })
+          // Once promise is resolved -> navigate to ProfileTab
+          .then(() => navigation.navigate("ProfileTab", { screen: "Profile" }));
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+  };
+
   return (
     <Container customStyles={styles.container}>
       {/* Title Input */}
@@ -50,6 +78,7 @@ const CoverPhoto = ({ navigation }) => {
         onChangeText={(text) => setText(text)}
         value={text}
         placeholder="Title"
+        placeholderTextColor={Colors.gray}
       />
 
       {coverPhoto ? (
@@ -74,21 +103,62 @@ const CoverPhoto = ({ navigation }) => {
       <DropDownPicker
         items={[
           {
-            label: "Rock",
+            label: "ROCK",
             value: "rock",
+            icon: () => (
+              <View
+                style={{
+                  height: 14,
+                  width: 14,
+                  backgroundColor: Colors.colorful5,
+                  borderRadius: 7,
+                }}
+              ></View>
+            ),
           },
           {
             label: "RNB",
             value: "rnb",
+            icon: () => (
+              <View
+                style={{
+                  height: 14,
+                  width: 14,
+                  backgroundColor: Colors.colorful3,
+                  borderRadius: 7,
+                }}
+              ></View>
+            ),
           },
           {
             label: "EDM",
             value: "edm",
+            icon: () => (
+              <View
+                style={{
+                  height: 14,
+                  width: 14,
+                  backgroundColor: Colors.colorful2,
+                  borderRadius: 7,
+                }}
+              ></View>
+            ),
           },
         ]}
         defaultValue={genre}
         placeholder={"Select Genre"}
-        labelStyle={{ fontSize: 14, color: Colors.gray }}
+        placeholderStyle={{
+          fontWeight: "bold",
+          color: Colors.gray,
+        }}
+        labelStyle={{
+          fontSize: 14,
+          color: Colors.background1,
+        }}
+        selectedLabelStyle={{
+          color: Colors.gray,
+          fontWeight: "700",
+        }}
         containerStyle={{ height: 40 }}
         arrowColor={Colors.gray}
         style={{
@@ -107,7 +177,9 @@ const CoverPhoto = ({ navigation }) => {
         variantButton="primaryShadow"
         variantText="whiteBaseText"
         width={120}
-        onPress={() => navigation.navigate("ProfileTab", { screen: "Profile" })}
+        onPress={() => {
+          postSoundbite();
+        }}
         customStyles={[
           styles.button,
           (!genre || !coverPhoto || text === "") && { opacity: 0.4 },
