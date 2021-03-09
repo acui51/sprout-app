@@ -8,6 +8,7 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   ActivityIndicator,
+  Button,
 } from "react-native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 
@@ -16,11 +17,12 @@ import { Metrics, Images, Colors } from "../../assets/Themes";
 import { db, firestore } from "../../firebase";
 
 // Components
-import { CustomButton, Bubble, CustomText, genre } from "../../components";
+import { CustomButton, Bubble, CustomText } from "../../components";
 import { SoundbitePopup } from "./components";
 
 export default ({ navigation }) => {
   const [soundbites, setSoundbites] = useState([]);
+  const [filtered, setFiltered] = useState(false);
   const [loading, setLoading] = useState(false);
   const [batch, setBatch] = useState(1);
   const [filterVisible, setFilterVisible] = useState(false);
@@ -58,7 +60,17 @@ export default ({ navigation }) => {
           size={32}
           color={Colors.white}
           style={{ marginRight: Metrics.headerMarginHorizontal }}
-          onPress={() => setFilterVisible(true)}
+          onPress={() => {
+            setFilterVisible(true);
+            setGenres({
+              edm: false,
+              pop: false,
+              country: false,
+              hiphop: false,
+              rnb: false,
+              rock: false,
+            });
+          }}
         />
       ),
     });
@@ -88,35 +100,39 @@ export default ({ navigation }) => {
       });
   }, [batch]);
 
+  // Save changes callback
   const setFilteredSoundbites = () => {
-    let copySoundbites = [];
-    // let copySoundbites = soundbites.filter((elem) => {
-    //   elem.genre !== "edm";
-    // });
-    copySoundbites.push(soundbites[0]);
-    setSoundbites(copySoundbites);
+    setFiltered(true);
   };
 
-  console.log(genres);
+  // Check if filtered - replace
+  let soundbitesToRender = soundbites;
+  if (filtered) {
+    soundbitesToRender = soundbitesToRender.filter((elem) => {
+      return genres[elem.genre] === true;
+    });
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.genreScroll}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {Object.keys(genres).map((elem, i) => {
-            return (
-              <CustomButton
-                key={i}
-                text={elem.toUpperCase()}
-                variantButton={elem + "Shadow"}
-                variantText="smallBlackBaseText"
-                customStyles={{
-                  marginRight: 16,
-                  paddingVertical: 2,
-                  paddingHorizontal: 16,
-                }}
-              />
-            );
+            if (genres[elem]) {
+              return (
+                <CustomButton
+                  key={i}
+                  text={elem.toUpperCase()}
+                  variantButton={elem + "Shadow"}
+                  variantText="smallBlackBaseText"
+                  customStyles={{
+                    marginRight: 16,
+                    paddingVertical: 2,
+                    paddingHorizontal: 16,
+                  }}
+                />
+              );
+            }
           })}
         </ScrollView>
       </View>
@@ -126,7 +142,7 @@ export default ({ navigation }) => {
         <ActivityIndicator />
       ) : (
         <View style={styles.soundbitesWrapper}>
-          {soundbites.map((elem, i) => (
+          {soundbitesToRender.map((elem, i) => (
             <View key={i} style={styles.soundbiteWrapper}>
               <View
                 style={[
@@ -207,7 +223,9 @@ export default ({ navigation }) => {
                       onPress={() => setGenres({ ...genres, edm: !genres.edm })}
                       customStyles={[
                         styles.genre,
-                        !genres.edm && { opacity: 0.4 },
+                        !genres.edm && {
+                          backgroundColor: `${Colors.colorful2}61`,
+                        },
                       ]}
                     />
                     <CustomButton
@@ -215,42 +233,89 @@ export default ({ navigation }) => {
                       variantButton="pop"
                       variantText="blackBaseText"
                       width={"31%"}
-                      customStyles={styles.genre}
+                      onPress={() => setGenres({ ...genres, pop: !genres.pop })}
+                      customStyles={[
+                        styles.genre,
+                        !genres.pop && {
+                          backgroundColor: `${Colors.colorful4}61`,
+                        },
+                      ]}
                     />
                     <CustomButton
                       text="COUNTRY"
                       variantButton="country"
                       variantText="blackBaseText"
                       width={"31%"}
-                      customStyles={[styles.genre, { paddingHorizontal: 8 }]}
+                      onPress={() =>
+                        setGenres({ ...genres, country: !genres.country })
+                      }
+                      customStyles={[
+                        styles.genre,
+                        { paddingHorizontal: 8 },
+                        !genres.country && {
+                          backgroundColor: `${Colors.colorful6}61`,
+                        },
+                      ]}
                     />
                     <CustomButton
                       text="HIP HOP"
                       variantButton="hiphop"
                       variantText="blackBaseText"
                       width={"31%"}
-                      customStyles={[styles.genre, { paddingHorizontal: 8 }]}
+                      onPress={() =>
+                        setGenres({ ...genres, hiphop: !genres.hiphop })
+                      }
+                      customStyles={[
+                        styles.genre,
+                        { paddingHorizontal: 8 },
+                        !genres.hiphop && {
+                          backgroundColor: `${Colors.colorful7}61`,
+                        },
+                      ]}
                     />
                     <CustomButton
                       text="RNB"
                       variantButton="rnb"
                       variantText="blackBaseText"
                       width={"31%"}
-                      customStyles={styles.genre}
+                      onPress={() => setGenres({ ...genres, rnb: !genres.rnb })}
+                      customStyles={[
+                        styles.genre,
+                        !genres.rnb && {
+                          backgroundColor: `${Colors.colorful3}61`,
+                        },
+                      ]}
                     />
                     <CustomButton
                       text="ROCK"
                       variantButton="rock"
                       variantText="blackBaseText"
                       width={"31%"}
-                      customStyles={styles.genre}
+                      onPress={() =>
+                        setGenres({ ...genres, rock: !genres.rock })
+                      }
+                      customStyles={[
+                        styles.genre,
+                        !genres.rock && {
+                          backgroundColor: `${Colors.colorful5}61`,
+                        },
+                      ]}
                     />
                   </View>
                   <View style={styles.filterButtons}>
                     <CustomText
                       customStyles={{ fontWeight: "700", color: Colors.gray }}
                     >
-                      *Default is all
+                      {Object.keys(genres).reduce(
+                        (accumulator, currentValue) => {
+                          if (genres[currentValue]) {
+                            accumulator += 1;
+                          }
+                          return accumulator;
+                        },
+                        0
+                      )}{" "}
+                      genres selected
                     </CustomText>
                     <CustomButton
                       text="Save Changes"
