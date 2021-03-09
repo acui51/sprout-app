@@ -36,12 +36,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
-    backgroundColor: Colors.lightGray,
+    backgroundColor: Colors.background2,
     borderRadius: 20,
     height: 77,
     width: 327,
     padding: 15,
-    marginLeft: 15,
+    //marginLeft: 15,
   },
   profileImage: {
     marginRight: 15,
@@ -50,13 +50,11 @@ const styles = StyleSheet.create({
     height: 50,
   },
   username: {
-    color: Colors.black,
     fontSize: 13,
     fontWeight: "700",
     marginBottom: 4,
   },
   text: {
-    color: Colors.black,
     fontWeight: "normal",
     fontSize: 13,
   },

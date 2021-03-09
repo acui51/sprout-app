@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   searchBarInputContainer: {
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.background2,
     borderRadius: 20, 
   },
 });
@@ -41,6 +41,7 @@ export default function ConnectionPage({ navigation }) {
         onChangeText={(text) => setSearch(text)}
         //value={search}
       />
+     
       <ScrollView>
         <UserCard username="scissors" text="Sissors" pfp={Images.scissors} />
         <UserCard username="bessieb" text="Bessie b" pfp={Images.bessie_b} />
