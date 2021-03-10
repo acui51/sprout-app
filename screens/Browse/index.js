@@ -379,6 +379,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     flex: 1,
+    marginTop: 8,
   },
   soundbiteWrapper: {
     flexBasis: "33%",
