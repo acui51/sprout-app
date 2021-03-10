@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background2,
     borderRadius: 20,
     height: 77,
-    width: 315,
+    width: "100%",
     padding: 15,
   },
   profileImage: {
@@ -98,4 +98,3 @@ const styles = StyleSheet.create({
 });
 
 export default ConnectionNotificationCard;
-

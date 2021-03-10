@@ -15,7 +15,6 @@ import {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: Metrics.marginHorizontal,
   },
   logo: {
     height: Metrics.icons.medium,
@@ -86,7 +85,12 @@ export default () => {
               },
             ]}
           >
-            <CustomText customStyles={styles.featuredAllText}>
+            <CustomText
+              customStyles={[
+                styles.featuredAllText,
+                view === "connections" && { color: Colors.gray },
+              ]}
+            >
               Sounds
             </CustomText>
           </View>
@@ -104,7 +108,12 @@ export default () => {
               },
             ]}
           >
-            <CustomText customStyles={styles.featuredAllText}>
+            <CustomText
+              customStyles={[
+                styles.featuredAllText,
+                view === "sounds" && { color: Colors.gray },
+              ]}
+            >
               Connections
             </CustomText>
           </View>
