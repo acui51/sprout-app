@@ -79,13 +79,8 @@ const styles = StyleSheet.create({
     width: 33,
     height: 33,
     borderRadius: 20,
-    alignItems: "center",
-  },
-  deleteButton: {
-    margin: 5,
     marginLeft: 10,
-    width: 20,
-    height: 20,
+    alignItems: "center",
   },
   checkButton: {
     backgroundColor: Colors.white,
@@ -93,7 +88,14 @@ const styles = StyleSheet.create({
     height: 33,
     borderRadius: 20,
     paddingTop: 5,
+    marginLeft: 10,
     alignItems: "center",
+  },
+  deleteButton: {
+    margin: 5,
+    marginLeft: 10,
+    width: 20,
+    height: 20,
   },
 });
 
