@@ -55,6 +55,7 @@ const CoverPhoto = ({ navigation }) => {
     });
   }, [navigation]);
 
+  let updateDB;
   const postSoundbite = () => {
     setLoading(true);
     db.collection("soundbites")
@@ -71,12 +72,11 @@ const CoverPhoto = ({ navigation }) => {
         // Simulate a 5 second uploading timer
         let percentage = 0;
         let interval = setInterval(() => {
-          console.log("interval ran");
           percentage += 5;
           setLoadingInterval(percentage);
         }, 100);
 
-        setTimeout(() => {
+        updateDB = setTimeout(() => {
           clearInterval(interval);
           // Atomically add a new region to the "featured_soundbites" array field.
           ref
@@ -215,7 +215,6 @@ const CoverPhoto = ({ navigation }) => {
       >
         {loading && (
           <>
-            {/* <ActivityIndicator color={Colors.white} /> */}
             <CustomText
               customStyles={styles.uploadingText}
             >{`${loadingInterval}%`}</CustomText>
@@ -224,9 +223,10 @@ const CoverPhoto = ({ navigation }) => {
             </CustomText>
             <TouchableOpacity
               style={styles.stopUploading}
-              onPress={() =>
-                navigation.navigate("BrowseTab", { screen: "Explore" })
-              }
+              onPress={() => {
+                clearTimeout(updateDB);
+                setLoading(false);
+              }}
             >
               <Ionicons name="close" size={16} color={Colors.primary} />
             </TouchableOpacity>
