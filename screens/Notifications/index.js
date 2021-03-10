@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   featuredAllSwitch: {
     flexDirection: "row",
     marginBottom: 32,
+    justifyContent: "center",
   },
   featuredAllText: {
     fontSize: 20,
