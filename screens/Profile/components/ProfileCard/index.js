@@ -45,7 +45,7 @@ const ProfileCard = ({ name, bio, customStyles }) => {
           text="Connections"
           width={"36%"}
           customStyles={{ marginRight: 8 }}
-          onPress={() => navigation.navigate("My Connections")}
+          onPress={() => navigation.navigate("My Network")}
         />
         <CustomButton
           variantButton="grayProfileOutline"

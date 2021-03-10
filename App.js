@@ -179,7 +179,7 @@ function ProfileStackComponent() {
       {/* <ProfileStack.Screen name="Profile" component={Profile}  options={{ title: "@arianaventi" }}/> */}
       {/* with the title option the connections page header becomes overcrowded */}
       <ProfileStack.Screen name="Profile" component={Profile} />
-      <ProfileStack.Screen name="My Connections" component={ConnectionPage} 
+      <ProfileStack.Screen name="My Network" component={ConnectionPage} 
         options={({navigation}) => ({
           headerRight: () => (
             <Ionicons
