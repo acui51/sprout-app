@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   TouchableOpacity,
@@ -26,6 +26,8 @@ const SoundbitePopup = ({
   setSoundbiteInFocus,
   soundbite,
 }) => {
+  const [lastSoundbites, setLastSoundbites] = useState(1);
+
   return (
     <Modal
       animationType="fade"
@@ -86,14 +88,36 @@ const SoundbitePopup = ({
                   {/* Include Last Soundbites */}
                   <View style={styles.lastSoundbites}>
                     <View style={styles.lastSoundbite}></View>
-                    <View style={styles.barUnactive}></View>
-                    <View style={styles.lastSoundbiteUnactive}></View>
+                    <View
+                      style={
+                        lastSoundbites === 2 ? styles.bar : styles.barUnactive
+                      }
+                    ></View>
+                    <TouchableOpacity
+                      onPress={() =>
+                        setLastSoundbites(lastSoundbites === 1 ? 2 : 1)
+                      }
+                    >
+                      <View
+                        style={
+                          lastSoundbites === 2
+                            ? styles.lastSoundbite
+                            : styles.lastSoundbiteUnactive
+                        }
+                      ></View>
+                    </TouchableOpacity>
                     <CustomText customStyles={styles.startText}>1</CustomText>
-                    <CustomText customStyles={styles.endTextUnactive}>
+                    <CustomText
+                      customStyles={
+                        lastSoundbites === 2
+                          ? styles.endText
+                          : styles.endTextUnactive
+                      }
+                    >
                       2
                     </CustomText>
                     <CustomText customStyles={styles.includeText}>
-                      Include last 1 sounds
+                      {`Include last ${lastSoundbites} sounds`}
                     </CustomText>
                   </View>
 
@@ -195,6 +219,11 @@ const styles = StyleSheet.create({
     width: 12,
     borderRadius: 6,
     backgroundColor: Colors.gray,
+  },
+  bar: {
+    height: 2,
+    width: 32,
+    backgroundColor: Colors.white,
   },
   barUnactive: {
     height: 2,
