@@ -12,7 +12,7 @@ export const ProfilePreview = ({ customStyles }) => {
     <View style={[styles.container, customStyles]}>
       {/* Person Profile Pic */}
       <View>
-        <Image style={styles.pfp} source={Images.sb_rockPow} />
+        <Image style={styles.pfp} source={Images.dj_cobra} />
       </View>
 
       {/* Profile Bio + Name */}

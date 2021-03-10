@@ -133,7 +133,7 @@ const SoundbitePopup = ({
 
                 {/* SoundCloudPlayer */}
                 <SoundCloudPlayer
-                  prevPeople={1}
+                  prevPeople={lastSoundbites}
                   variant="dark"
                   customStyles={{ marginBottom: 16 }}
                 />

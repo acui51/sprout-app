@@ -49,11 +49,24 @@ export function SoundCloudPlayer({
   }
 
   let prevSoundbiteBubbles = [];
-  let bubbles = ["ariana_venti"]; // add to this later for other people soudnbites
+  let bubbles = ["honest_ocean", "dj_cobra"]; // probs needs to be a prop later
   for (let j = 0; j < prevPeople; j++) {
-    if (j === 0) {
+    // If only one person, push on the last person in the chain because it's there sound
+    if (prevPeople === 1) {
       prevSoundbiteBubbles.push(
-        <Image key={j} style={styles.userSB} source={Images.ariana_venti} />
+        <Image
+          key={j}
+          style={styles[`userSB${j}`]}
+          source={Images[bubbles[bubbles.length - 1]]}
+        />
+      );
+    } else {
+      prevSoundbiteBubbles.push(
+        <Image
+          key={j}
+          style={styles[`userSB${j}`]}
+          source={Images[bubbles[j]]}
+        />
       );
     }
   }
@@ -186,11 +199,19 @@ const styles = StyleSheet.create({
     height: 2,
     backgroundColor: Colors.gray,
   },
-  userSB: {
+  userSB0: {
     transform: [{ rotateX: "180deg" }],
     position: "absolute",
     height: 30,
     width: 30,
     top: 45,
+  },
+  userSB1: {
+    transform: [{ rotateX: "180deg" }],
+    position: "absolute",
+    height: 30,
+    width: 30,
+    top: 45,
+    left: "33%",
   },
 });
