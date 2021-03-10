@@ -181,6 +181,7 @@ export default ({ navigation }) => {
                         title: elem.title,
                         genre: elem.genre,
                         img: elem.imageName,
+                        creator: elem.creator,
                       },
                       inFocus: true,
                     });
