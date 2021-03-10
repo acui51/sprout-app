@@ -1,5 +1,7 @@
-import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 
 // Data + assets
 import { Colors, Images } from "../../../../assets/Themes";
@@ -8,11 +10,25 @@ import { Colors, Images } from "../../../../assets/Themes";
 import { CustomText } from "../../../../components";
 
 export const ProfilePreview = ({ customStyles }) => {
+  const [connected, setConnected] = useState(false);
   return (
     <View style={[styles.container, customStyles]}>
       {/* Person Profile Pic */}
-      <View>
+      <View style={{ position: "relative" }}>
         <Image style={styles.pfp} source={Images.dj_cobra} />
+        {connected ? (
+          <TouchableOpacity onPress={() => setConnected(!connected)}>
+            <View style={styles.addedButton}>
+              <Entypo name="check" size={12} color={Colors.primary} />
+            </View>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity onPress={() => setConnected(!connected)}>
+            <View style={styles.addButton}>
+              <Feather name="plus" size={12} color={Colors.white} />
+            </View>
+          </TouchableOpacity>
+        )}
       </View>
 
       {/* Profile Bio + Name */}
@@ -40,5 +56,27 @@ const styles = StyleSheet.create({
     height: 64,
     width: 64,
     marginRight: 16,
+  },
+  addButton: {
+    position: "absolute",
+    height: 18,
+    width: 18,
+    borderRadius: 9,
+    backgroundColor: Colors.primary,
+    bottom: 0,
+    right: 16,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  addedButton: {
+    position: "absolute",
+    height: 18,
+    width: 18,
+    borderRadius: 9,
+    backgroundColor: Colors.white,
+    bottom: 0,
+    right: 16,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
