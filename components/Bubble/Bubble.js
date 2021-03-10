@@ -10,9 +10,12 @@ import { Colors } from "../../assets/Themes";
  * @param {string} genre
  * @param {Images.<>} img
  */
-export function Bubble({ genre, img }) {
+export function Bubble({ genre, img, onPress, customStyles }) {
   return (
-    <TouchableOpacity style={styles(genre).bubbleBackground}>
+    <TouchableOpacity
+      style={[styles(genre).bubbleBackground, customStyles]}
+      onPress={onPress}
+    >
       <Image style={styles(genre).img} source={img} />
     </TouchableOpacity>
   );
@@ -22,9 +25,9 @@ const genreToColor = {
   edm: Colors.colorful2,
   pop: Colors.colorful4,
   country: Colors.colorful6,
-  indie: Colors.colorful5,
   rnb: Colors.colorful1,
-  rock: Colors.colorful3,
+  rock: Colors.colorful5,
+  hiphop: Colors.colorful7,
 };
 
 const base = {

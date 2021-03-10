@@ -1,10 +1,10 @@
 import React, { useLayoutEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
 // Assets
-import { Metrics } from "../../assets/Themes";
-import { Colors } from "../../assets/Themes";
+import { Colors, Metrics } from "../../assets/Themes";
 
 // Components
 import { CustomButton, CustomText } from "../../components";
@@ -12,17 +12,39 @@ import Container from "../../hoc/Container";
 import Recorder from "./Recorder";
 
 export default function App() {
+  const navigation = useNavigation();
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: () => (
-        <CustomText customStyles={{ fontSize: 16, fontWeight: "700" }}>
-          0/3: Pick Create Method
-        </CustomText>
+        <View style={{ justifyContent: "center" }}>
+          <CustomText
+            customStyles={{
+              fontSize: 16,
+              fontWeight: "700",
+              marginBottom: 8,
+            }}
+          >
+            0/3: Pick Create Method
+          </CustomText>
+          <View style={styles.backgroundBar}>
+            <View style={styles.progressBar}></View>
+          </View>
+        </View>
+      ),
+      headerRight: () => (
+        <TouchableOpacity
+          style={styles.close}
+          onPress={() =>
+            navigation.navigate("BrowseTab", { screen: "Explore" })
+          }
+        >
+          <Ionicons name="close" size={16} color={Colors.white} />
+        </TouchableOpacity>
       ),
     });
   }, [navigation]);
 
-  const navigation = useNavigation();
   return (
     <Container>
       {/* <TouchableOpacity style = {styles.button}>
@@ -86,5 +108,28 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
     fontWeight: "bold",
     color: Colors.white,
+  },
+  backgroundBar: {
+    flexBasis: "75%",
+    backgroundColor: "#C4C4C4",
+    maxHeight: 8,
+    borderRadius: 24,
+    position: "relative",
+  },
+  progressBar: {
+    backgroundColor: Colors.primary,
+    height: 8,
+    borderRadius: 24,
+    width: "0%",
+    position: "absolute",
+  },
+  close: {
+    backgroundColor: Colors.primary,
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    marginRight: Metrics.headerMarginHorizontal,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

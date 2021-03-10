@@ -25,11 +25,13 @@ export function CustomButton({
   customStyles,
   children,
   notification,
+  disabled,
 }) {
   return (
     <TouchableOpacity
       style={[styles[variantButton], { width }, customStyles]}
       onPress={onPress}
+      disabled={disabled}
     >
       {children ? children : <Text style={styles[variantText]}>{text}</Text>}
       {notification && <View style={styles.notification}></View>}
@@ -126,6 +128,15 @@ const styles = StyleSheet.create({
     ...baseText,
     color: Colors.background1,
   },
+  smallBlackBaseText: {
+    ...baseText,
+    fontSize: 10,
+    color: Colors.background1,
+  },
+  grayBaseText: {
+    ...baseText,
+    color: Colors.gray,
+  },
   whiteProfileText: {
     ...profileText,
     color: Colors.white,
@@ -164,6 +175,14 @@ const styles = StyleSheet.create({
     ...genre,
     backgroundColor: Colors.colorful4,
   },
+  popShadow: {
+    ...genre,
+    backgroundColor: Colors.colorful4,
+    shadowColor: "rgba(0, 0, 0, 1)",
+    shadowOpacity: 0.5,
+    shadowRadius: 50,
+    shadowOffset: { width: 0, height: 8 },
+  },
   popOutline: {
     ...base,
     borderColor: Colors.colorful4,
@@ -179,6 +198,14 @@ const styles = StyleSheet.create({
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
     ...genre,
     backgroundColor: Colors.colorful6,
+  },
+  countryShadow: {
+    ...genre,
+    backgroundColor: Colors.colorful6,
+    shadowColor: "rgba(0, 0, 0, 1)",
+    shadowOpacity: 0.5,
+    shadowRadius: 50,
+    shadowOffset: { width: 0, height: 8 },
   },
   countryOutline: {
     ...base,
@@ -196,6 +223,14 @@ const styles = StyleSheet.create({
     ...genre,
     backgroundColor: Colors.colorful7,
   },
+  hiphopShadow: {
+    ...genre,
+    backgroundColor: Colors.colorful7,
+    shadowColor: "rgba(0, 0, 0, 1)",
+    shadowOpacity: 0.5,
+    shadowRadius: 50,
+    shadowOffset: { width: 0, height: 8 },
+  },
   hiphopOutline: {
     ...base,
     borderColor: Colors.colorful7,
@@ -212,6 +247,14 @@ const styles = StyleSheet.create({
     ...genre,
     backgroundColor: Colors.colorful1,
   },
+  rnbShadow: {
+    ...genre,
+    backgroundColor: Colors.colorful1,
+    shadowColor: "rgba(0, 0, 0, 1)",
+    shadowOpacity: 0.5,
+    shadowRadius: 50,
+    shadowOffset: { width: 0, height: 8 },
+  },
   rnbOutline: {
     ...genre,
     borderColor: Colors.colorful1,
@@ -227,6 +270,14 @@ const styles = StyleSheet.create({
     // TODO: WIDTH MIGHT HAVE TO BE CHANGED - HOW DO I FORWARD PROPS
     ...genre,
     backgroundColor: Colors.colorful5,
+  },
+  rockShadow: {
+    ...genre,
+    backgroundColor: Colors.colorful5,
+    shadowColor: "rgba(0, 0, 0, 1)",
+    shadowOpacity: 0.5,
+    shadowRadius: 50,
+    shadowOffset: { width: 0, height: 8 },
   },
   rockOutline: {
     ...base,

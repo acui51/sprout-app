@@ -37,7 +37,7 @@ export default () => {
             querySnapshot.forEach((doc) => {
               arr.push(doc.data());
             });
-            setSoundbites(arr);
+            setSoundbites(arr.reverse());
             setLoading(false);
           });
       });
