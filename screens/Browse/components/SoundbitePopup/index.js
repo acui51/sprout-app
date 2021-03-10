@@ -61,7 +61,6 @@ const SoundbitePopup = ({
                   variantButton={soundbite.genre}
                   variantText="blackBaseText"
                   text={soundbite.title}
-                  width={"40%"}
                   customStyles={{
                     alignSelf: "center",
                     marginTop: 24,
@@ -77,16 +76,19 @@ const SoundbitePopup = ({
                     marginBottom: 16,
                   }}
                 >
-                  <CustomButton
+                  {/* <CustomButton
                     variantButton="primaryOutline"
                     variantText="grayBaseText"
                     text="Placeholder"
-                  />
+                    width="50%"
+                  /> */}
                   {/* View Evolution Button */}
                   <CustomButton
                     variantButton="primaryOutline"
                     variantText="whiteBaseText"
                     text="view evolution"
+                    width="60%"
+                    customStyles={{ paddingHorizontal: 8, paddingVertical: 8 }}
                   />
                 </View>
 
@@ -104,7 +106,7 @@ const SoundbitePopup = ({
                   variantButton="primaryShadow"
                   variantText="whiteBaseText"
                   text="Add To Sound"
-                  width={"50%"}
+                  width={"60%"}
                   customStyles={{ alignSelf: "center", paddingHorizontal: 12 }}
                 >
                   <Feather name="plus" size={24} color={Colors.white} />
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-    width: "100%",
+    width: "90%",
     position: "relative",
   },
   coverPhoto: {
