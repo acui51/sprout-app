@@ -7,12 +7,19 @@ import {
   Modal,
   StyleSheet,
 } from "react-native";
+import { Feather } from "@expo/vector-icons";
 
 // Assets + Data
 import { Colors, Images } from "../../../../assets/Themes";
 
 // Components
-import { CustomButton, SoundCloudPlayer, Bubble } from "../../../../components";
+import {
+  CustomButton,
+  SoundCloudPlayer,
+  Bubble,
+  CustomText,
+} from "../../../../components";
+import { ProfilePreview } from "./ProfilePreview";
 
 const SoundbitePopup = ({
   soundbiteInFocus,
@@ -47,8 +54,22 @@ const SoundbitePopup = ({
                   customStyles={styles.coverPhoto}
                   img={Images[`sb_${soundbite.img}`]}
                   genre={soundbite.genre}
+                  large
                 />
 
+                <CustomButton
+                  variantButton={soundbite.genre}
+                  variantText="blackBaseText"
+                  text={soundbite.title}
+                  width={"40%"}
+                  customStyles={{
+                    alignSelf: "center",
+                    marginTop: 24,
+                    marginBottom: 16,
+                  }}
+                />
+
+                {/* Last soundbites + View evolution */}
                 <View
                   style={{
                     flexDirection: "row",
@@ -72,15 +93,25 @@ const SoundbitePopup = ({
                 {/* SoundCloudPlayer */}
                 <SoundCloudPlayer
                   prevPeople={1}
-                  variant="light"
+                  variant="dark"
                   customStyles={{ marginBottom: 16 }}
                 />
+
+                {/* Profile preview */}
+                <ProfilePreview />
 
                 <CustomButton
                   variantButton="primaryShadow"
                   variantText="whiteBaseText"
                   text="Add To Sound"
-                />
+                  width={"50%"}
+                  customStyles={{ alignSelf: "center", paddingHorizontal: 12 }}
+                >
+                  <Feather name="plus" size={24} color={Colors.white} />
+                  <CustomText customStyles={styles.addToSound}>
+                    Add To Sound
+                  </CustomText>
+                </CustomButton>
               </View>
             </View>
           </TouchableWithoutFeedback>
@@ -111,7 +142,7 @@ const styles = StyleSheet.create({
   },
   coverPhoto: {
     position: "absolute",
-    top: -70,
+    top: -150,
   },
   centeredView: {
     flex: 1,
@@ -122,5 +153,11 @@ const styles = StyleSheet.create({
   backdrop: {
     flex: 1,
     backgroundColor: `${Colors.background1}99`,
+  },
+  addToSound: {
+    fontSize: 16,
+    letterSpacing: 1.5,
+    fontWeight: "bold",
+    lineHeight: 24,
   },
 });
