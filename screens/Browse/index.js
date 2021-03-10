@@ -175,16 +175,16 @@ export default ({ navigation }) => {
                   key={i}
                   genre={elem.genre}
                   img={Images[`sb_${elem.imageName}`]}
-                  onPress={() =>
+                  onPress={() => {
                     setSoundbiteInFocus({
-                      sounbite: {
+                      soundbite: {
                         title: elem.title,
                         genre: elem.genre,
-                        img: elem.imgName,
+                        img: elem.imageName,
                       },
                       inFocus: true,
-                    })
-                  }
+                    });
+                  }}
                 />
               </View>
             </View>
@@ -197,6 +197,7 @@ export default ({ navigation }) => {
         <SoundbitePopup
           soundbiteInFocus
           setSoundbiteInFocus={setSoundbiteInFocus}
+          soundbite={soundbiteInFocus.soundbite}
         ></SoundbitePopup>
       )}
 

@@ -14,7 +14,11 @@ import { Colors, Images } from "../../../../assets/Themes";
 // Components
 import { CustomButton, SoundCloudPlayer, Bubble } from "../../../../components";
 
-const SoundbitePopup = ({ soundbiteInFocus, setSoundbiteInFocus }) => {
+const SoundbitePopup = ({
+  soundbiteInFocus,
+  setSoundbiteInFocus,
+  soundbite,
+}) => {
   return (
     <Modal
       animationType="fade"
@@ -41,8 +45,8 @@ const SoundbitePopup = ({ soundbiteInFocus, setSoundbiteInFocus }) => {
                 {/* Cover Photo */}
                 <Bubble
                   customStyles={styles.coverPhoto}
-                  img={Images.sb_tameImpala}
-                  genre="edm"
+                  img={Images[`sb_${soundbite.img}`]}
+                  genre={soundbite.genre}
                 />
 
                 <View
@@ -60,7 +64,7 @@ const SoundbitePopup = ({ soundbiteInFocus, setSoundbiteInFocus }) => {
                   {/* View Evolution Button */}
                   <CustomButton
                     variantButton="primaryOutline"
-                    variantText="grayBaseText"
+                    variantText="whiteBaseText"
                     text="view evolution"
                   />
                 </View>
@@ -91,7 +95,7 @@ export default SoundbitePopup;
 const styles = StyleSheet.create({
   modalView: {
     margin: 20,
-    backgroundColor: Colors.background3,
+    backgroundColor: Colors.background2,
     borderRadius: 24,
     padding: 35,
     shadowColor: "#000",
