@@ -22,6 +22,8 @@ const CoverPhoto = ({ navigation }) => {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [loadingInterval, setLoadingInterval] = useState(0);
+  const [uploadingTimeout, setUploadingTimeout] = useState(null);
+  const [uploadingInterval, setUploadingInterval] = useState(null);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -55,7 +57,13 @@ const CoverPhoto = ({ navigation }) => {
     });
   }, [navigation]);
 
-  let updateDB;
+  // Simulate a 2 second uploading percentage grower for the soundbite uploading
+  const interval = (percentage) =>
+    setInterval(() => {
+      percentage += 5;
+      setLoadingInterval(percentage);
+    }, 100);
+
   const postSoundbite = () => {
     setLoading(true);
     db.collection("soundbites")
@@ -69,28 +77,31 @@ const CoverPhoto = ({ navigation }) => {
         console.log("docRefId", docRef.id);
         let ref = db.collection("users").doc("ariana_venti");
 
-        // Simulate a 5 second uploading timer
+        // Start the interval counter
         let percentage = 0;
-        let interval = setInterval(() => {
-          percentage += 5;
-          setLoadingInterval(percentage);
-        }, 100);
+        let uploadingInterval = interval(percentage);
+        setUploadingInterval(uploadingInterval);
 
-        updateDB = setTimeout(() => {
-          clearInterval(interval);
-          // Atomically add a new region to the "featured_soundbites" array field.
-          ref
-            .update({
-              featured_soundbites: firestore.FieldValue.arrayUnion(
-                `${docRef.id}`
-              ),
-            })
-            // Once promise is resolved -> navigate to ProfileTab
-            .then(() => {
-              navigation.navigate("ProfileTab", { screen: "Profile" });
-              setLoading(false);
-            });
-        }, 2000);
+        // Set the timeout function to state - so we can clear it
+        setUploadingTimeout(() =>
+          setTimeout(() => {
+            // Clear the interval after 2 seconds
+            clearInterval(uploadingInterval);
+
+            // Atomically add a new region to the "featured_soundbites" array field.
+            ref
+              .update({
+                featured_soundbites: firestore.FieldValue.arrayUnion(
+                  `${docRef.id}`
+                ),
+              })
+              // Once promise is resolved -> navigate to ProfileTab
+              .then(() => {
+                navigation.navigate("ProfileTab", { screen: "Profile" });
+                setLoading(false);
+              });
+          }, 2000)
+        );
       })
       .catch((error) => {
         console.error("Error adding document: ", error);
@@ -224,7 +235,8 @@ const CoverPhoto = ({ navigation }) => {
             <TouchableOpacity
               style={styles.stopUploading}
               onPress={() => {
-                clearTimeout(updateDB);
+                clearTimeout(uploadingTimeout);
+                clearInterval(uploadingInterval);
                 setLoading(false);
               }}
             >
