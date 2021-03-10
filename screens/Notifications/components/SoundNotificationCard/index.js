@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 // Assets
@@ -8,8 +8,17 @@ import { Images, Colors } from "../../../../assets/Themes";
 import { Bubble, CustomText } from "../../../../components";
 
 const SoundNotificationCard = () => {
+  const [deleted, setDeleted] = useState(false);
   return (
-    <View style={styles.notificationBox}>
+    <View>
+      {deleted ? (
+        <View style={styles.container}>
+        <CustomText customStyles={styles.noRequestText}>
+          No new connection requests.
+        </CustomText>
+      </View>
+      ):(
+        <View style={styles.notificationBox}>
       <Image style={styles.soundCover} source={Images.monster_cover} />
       <CustomText customStyles={styles.username}>
         "Monsters"
@@ -19,17 +28,23 @@ const SoundNotificationCard = () => {
           <CustomText customStyles={styles.notificationTime}> 11h</CustomText>
         </CustomText>
       </CustomText>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => setDeleted(true)}>
         <Image
           source={Images.delete_button}
           style={styles.deleteButton}
         ></Image>
       </TouchableOpacity>
     </View>
+      )}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 5,
+    alignContent: "center",
+  },
   notificationBox: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -65,6 +80,12 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
   },
+  noRequestText: {
+    color: Colors.gray,
+    fontSize: 16,
+    fontWeight: "bold",
+    marginLeft: 70,
+  }
 });
 
 export default SoundNotificationCard;
