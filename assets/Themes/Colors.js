@@ -5,11 +5,13 @@ const colors = {
   secondary: "#246BFD", // secondary blue
   background1: "#181A20", //
   background2: "#262A34",
+  background3: "#DBDBDB",
   blur: "#181A20D9",
   white: "rgba(255, 255, 255, 0.87)",
   black: "#000000",
   gray: "#5e6272",
   lightGray: "#C4C4C4",
+  lightGrayEighty: "#C4C4C4CC",
   red: "#EB5757",
   colorful1: "#8E96FF",
   colorful2: "#FBA3FF",

@@ -6,7 +6,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Colors, Images } from "../../assets/Themes";
 
 // Components
-import { CustomText } from "../../components";
+import { CustomText } from "../CustomText";
 
 const SoundCloudBar = ({ height, backgroundColor }) => {
   return (
@@ -19,7 +19,12 @@ const SoundCloudBar = ({ height, backgroundColor }) => {
  * @param {*} prevSounds - toggles whether we see 'last x soundbites'
  * @param {*} prevPeople - number of prev people soundbubbles we see
  */
-const SoundCloudPlayer = ({ prevSounds, prevPeople }) => {
+export function SoundCloudPlayer({
+  prevSounds,
+  prevPeople,
+  variant,
+  customStyles,
+}) {
   const [time, setTime] = useState(0);
 
   let scBars = [];
@@ -37,7 +42,7 @@ const SoundCloudPlayer = ({ prevSounds, prevPeople }) => {
         <SoundCloudBar
           key={i}
           height={Math.floor(Math.random() * 40) + 1}
-          backgroundColor={Colors.gray}
+          backgroundColor={variant === "dark" ? Colors.white : Colors.gray}
         />
       );
     }
@@ -54,7 +59,12 @@ const SoundCloudPlayer = ({ prevSounds, prevPeople }) => {
   }
 
   return (
-    <View style={styles.wrapper}>
+    <View
+      style={[
+        variant === "dark" ? styles.wrapperDark : styles.wrapperLight,
+        customStyles,
+      ]}
+    >
       {prevSounds && (
         <>
           <CustomText
@@ -82,24 +92,43 @@ const SoundCloudPlayer = ({ prevSounds, prevPeople }) => {
         />
         <View style={styles.scBarWrapper}>
           {scBars}
-          <CustomText customStyles={styles.startText}>0:11</CustomText>
-          <CustomText customStyles={styles.endText}>0:30</CustomText>
+          <CustomText
+            customStyles={[
+              styles.startText,
+              variant === "light" && { color: Colors.gray },
+            ]}
+          >
+            0:11
+          </CustomText>
+          <CustomText
+            customStyles={[
+              styles.endText,
+              variant === "light" && { color: Colors.gray },
+            ]}
+          >
+            0:30
+          </CustomText>
 
           {prevSoundbiteBubbles}
         </View>
       </View>
     </View>
   );
+}
+
+export const wrapper = {
+  borderRadius: 24,
+  paddingTop: 16,
 };
 
-export default SoundCloudPlayer;
-
 const styles = StyleSheet.create({
-  wrapper: {
+  wrapperDark: {
+    ...wrapper,
     backgroundColor: Colors.background2,
-    borderRadius: 24,
-    paddingVertical: 30,
-    paddingHorizontal: 25,
+  },
+  wrapperLight: {
+    ...wrapper,
+    backgroundColor: Colors.lightGrayEighty,
   },
   soundCloudPlayer: {
     flexDirection: "row",
@@ -111,9 +140,11 @@ const styles = StyleSheet.create({
   },
   soundCloudBar: {
     width: 2.4,
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.white,
     borderRadius: 20,
     margin: 1,
+    borderColor: "blue",
+    // borderWidth: 1,
   },
   scBarWrapper: {
     flexDirection: "row",
