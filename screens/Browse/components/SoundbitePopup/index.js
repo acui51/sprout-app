@@ -57,6 +57,7 @@ const SoundbitePopup = ({
                   large
                 />
 
+                {/* Title */}
                 <CustomButton
                   variantButton={soundbite.genre}
                   variantText="blackBaseText"
@@ -82,12 +83,26 @@ const SoundbitePopup = ({
                     text="Placeholder"
                     width="50%"
                   /> */}
+                  {/* Include Last Soundbites */}
+                  <View style={styles.lastSoundbites}>
+                    <View style={styles.lastSoundbite}></View>
+                    <View style={styles.barUnactive}></View>
+                    <View style={styles.lastSoundbiteUnactive}></View>
+                    <CustomText customStyles={styles.startText}>1</CustomText>
+                    <CustomText customStyles={styles.endTextUnactive}>
+                      2
+                    </CustomText>
+                    <CustomText customStyles={styles.includeText}>
+                      Include last 1 sounds
+                    </CustomText>
+                  </View>
+
                   {/* View Evolution Button */}
                   <CustomButton
                     variantButton="primaryOutline"
                     variantText="whiteBaseText"
                     text="view evolution"
-                    width="60%"
+                    // width="60%"
                     customStyles={{ paddingHorizontal: 8, paddingVertical: 8 }}
                   />
                 </View>
@@ -130,7 +145,9 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: Colors.background2,
     borderRadius: 24,
-    padding: 35,
+    // padding: 35,
+    paddingHorizontal: 25,
+    paddingVertical: 35,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -161,5 +178,52 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
     fontWeight: "bold",
     lineHeight: 24,
+  },
+  lastSoundbites: {
+    position: "relative",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  lastSoundbite: {
+    height: 12,
+    width: 12,
+    borderRadius: 6,
+    backgroundColor: Colors.white,
+  },
+  lastSoundbiteUnactive: {
+    height: 12,
+    width: 12,
+    borderRadius: 6,
+    backgroundColor: Colors.gray,
+  },
+  barUnactive: {
+    height: 2,
+    width: 32,
+    backgroundColor: Colors.gray,
+  },
+  startText: {
+    fontWeight: "700",
+    position: "absolute",
+    top: "65%",
+    left: "3%",
+  },
+  endText: {
+    fontWeight: "700",
+    position: "absolute",
+    top: "65%",
+    right: "3%",
+  },
+  endTextUnactive: {
+    color: Colors.gray,
+    fontWeight: "700",
+    position: "absolute",
+    top: "65%",
+    right: "3%",
+  },
+  includeText: {
+    position: "absolute",
+    top: -5,
+    fontWeight: "700",
+    color: Colors.gray,
   },
 });
