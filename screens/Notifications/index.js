@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
 
 export default () => {
   const [view, setView] = useState("sounds");
-  const [state, setState] = useState("add");
   return (
     <Container customStyles={styles.container}>
       <View style={styles.featuredAllSwitch}>

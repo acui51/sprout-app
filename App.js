@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import { StyleSheet, SafeAreaView, StatusBar, Image, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 // Assets
 import { Colors, Metrics } from "./assets/Themes";
@@ -19,7 +19,9 @@ import Upload from "./screens/Upload/index";
 import Studio from "./screens/Upload/studio";
 import SoundsGood from "./screens/Upload/soundsGood";
 import CoverPhoto from "./screens/Upload/CoverPhoto";
-
+import ConnectionPage from "./screens/Profile/components/ConnectionPage";
+import InboxPage from "./screens/Profile/components/InboxPage";
+import NewMessagePage from "./screens/Profile/components/newMessagePage";
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
 // const { colors } = useTheme();
@@ -174,10 +176,37 @@ function ProfileStackComponent() {
         },
       }}
     >
+      {/* <ProfileStack.Screen name="Profile" component={Profile}  options={{ title: "@arianaventi" }}/> */}
+      {/* with the title option the connections page header becomes overcrowded */}
+      <ProfileStack.Screen name="Profile" component={Profile} />
+      <ProfileStack.Screen name="My Connections" component={ConnectionPage} 
+        options={({navigation}) => ({
+          headerRight: () => (
+            <Ionicons
+            name="chatbubble-ellipses-outline" 
+              size={32}
+              color={Colors.white}
+              style={{ marginRight: Metrics.headerMarginHorizontal }}
+              onPress = {() => navigation.navigate("My Inbox")}
+            />
+          ),
+        })}
+      />
+      <ProfileStack.Screen name="New Message" component={NewMessagePage} />
       <ProfileStack.Screen
-        name="Profile"
-        component={Profile}
-        options={{ title: "@arianaventi" }}
+        name="My Inbox"
+        component={InboxPage}
+        options={({navigation}) => ({
+          headerRight: () => (
+            <FontAwesome
+              name="pencil-square-o"
+              size={32}
+              color={Colors.white}
+              style={{ marginRight: Metrics.headerMarginHorizontal }}
+              onPress = {() => navigation.navigate("New Message")}
+            />
+          ),
+        })}
       />
     </ProfileStack.Navigator>
   );

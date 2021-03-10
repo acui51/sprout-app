@@ -2,7 +2,7 @@ import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-
+import { useNavigation } from "@react-navigation/native";
 // Assets
 import { Images, Colors } from "../../../../assets/Themes";
 
@@ -10,6 +10,7 @@ import { Images, Colors } from "../../../../assets/Themes";
 import { CustomButton, CustomText } from "../../../../components";
 
 const ProfileCard = ({ name, bio, customStyles }) => {
+  const navigation = useNavigation();
   return (
     <View style={[styles.wrapper, customStyles]}>
       <View style={styles.profileCard}>
@@ -44,6 +45,7 @@ const ProfileCard = ({ name, bio, customStyles }) => {
           text="Connections"
           width={"36%"}
           customStyles={{ marginRight: 8 }}
+          onPress={() => navigation.navigate("My Connections")}
         />
         <CustomButton
           variantButton="grayProfileOutline"
@@ -53,6 +55,7 @@ const ProfileCard = ({ name, bio, customStyles }) => {
           text="Inbox"
           customStyles={{ position: "relative" }}
           notification
+          onPress={() => navigation.navigate("My Inbox")}
         />
       </View>
     </View>
