@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
 
 export default function ConnectionPage({ navigation }) {
   const [text, setSearch] = useState("");
-
   return (
     <Container customStyle={styles.container}>
       <SearchBar

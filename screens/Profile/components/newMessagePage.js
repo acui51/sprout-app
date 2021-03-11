@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "transparent",
     borderTopColor: "transparent",
     marginBottom: 10,
+    paddingHorizontal: 0,
   },
   searchBarInputContainer: {
     backgroundColor: Colors.background2,
