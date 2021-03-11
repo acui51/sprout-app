@@ -24,6 +24,7 @@ import ConnectionPage from "./screens/Profile/components/ConnectionPage";
 import InboxPage from "./screens/Profile/components/InboxPage";
 import NewMessagePage from "./screens/Profile/components/newMessagePage";
 import ChatPage from "./screens/Profile/components/chatPage";
+
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
 // const { colors } = useTheme();
@@ -263,6 +264,7 @@ export default function App() {
   }
 
   const Tab = createBottomTabNavigator();
+
   const getTabBarVisibility = (route) => {
     const routeName = route.state
       ? route.state.routes[route.state.index].name
@@ -273,6 +275,7 @@ export default function App() {
     }
     return true;
   };
+
   return (
     <>
       <SafeAreaView style={styles.topSafeArea} />
@@ -281,7 +284,7 @@ export default function App() {
         <NavigationContainer theme={Theme}>
           <Tab.Navigator
             screenOptions={({ route }) => ({
-              tabBarVisible: getTabBarVisibility(route),
+              // tabBarVisible: getTabBarVisibility(route),
               tabBarIcon: ({ focused, color, size }) => {
                 let icon;
                 switch (route.name) {
@@ -338,9 +341,9 @@ export default function App() {
                           style={styles.pfp}
                           source={Images.ariana_venti}
                         />
-                        <CustomText customStyle={{ fontSize: 10 }}>
+                        {/* <CustomText customStyle={{ fontSize: 10 }}>
                           Profile
-                        </CustomText>
+                        </CustomText> */}
                       </View>
                     ) : (
                       <View style={styles.iconContainer}>
@@ -348,9 +351,9 @@ export default function App() {
                           style={styles.pfp}
                           source={Images.ariana_venti}
                         />
-                        <CustomText customStyle={{ fontSize: 10 }}>
+                        {/* <CustomText customStyle={{ fontSize: 10 }}>
                           Profile
-                        </CustomText>
+                        </CustomText> */}
                       </View>
                     );
                     break;

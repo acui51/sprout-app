@@ -62,14 +62,14 @@ export default ({ navigation }) => {
           onPress={() => {
             setFilterVisible(true);
             // Comment this out to active 'deselecting'
-            // setGenres({
-            //   edm: false,
-            //   pop: false,
-            //   country: false,
-            //   hiphop: false,
-            //   rnb: false,
-            //   rock: false,
-            // });
+            setGenres({
+              edm: false,
+              pop: false,
+              country: false,
+              hiphop: false,
+              rnb: false,
+              rock: false,
+            });
           }}
         />
       ),
@@ -196,7 +196,7 @@ export default ({ navigation }) => {
       {/* Soundbite Popup */}
       {soundbiteInFocus.inFocus && (
         <SoundbitePopup
-          soundbiteInFocus
+          soundbiteInFocus={soundbiteInFocus}
           setSoundbiteInFocus={setSoundbiteInFocus}
           soundbite={soundbiteInFocus.soundbite}
         ></SoundbitePopup>
