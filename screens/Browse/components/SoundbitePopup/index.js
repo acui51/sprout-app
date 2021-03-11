@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 // Assets + Data
 import { Colors, Images } from "../../../../assets/Themes";
@@ -27,6 +28,7 @@ const SoundbitePopup = ({
   soundbite,
 }) => {
   const [lastSoundbites, setLastSoundbites] = useState(1);
+  const navigation = useNavigation();
 
   return (
     <Modal
@@ -34,7 +36,10 @@ const SoundbitePopup = ({
       transparent={true}
       visible={soundbiteInFocus.inFocus}
       onRequestClose={() => {
-        setSoundbiteInFocus(!soundbiteInFocus.inFocus);
+        setSoundbiteInFocus({
+          ...soundbiteInFocus,
+          inFocus: !soundbiteInFocus.inFocus,
+        });
       }}
     >
       <TouchableOpacity
@@ -147,6 +152,15 @@ const SoundbitePopup = ({
                   text="Add To Sound"
                   width={"60%"}
                   customStyles={{ alignSelf: "center", paddingHorizontal: 12 }}
+                  onPress={() => {
+                    setSoundbiteInFocus({
+                      ...soundbiteInFocus,
+                      inFocus: !soundbiteInFocus.inFocus,
+                    });
+                    navigation.navigate("UploadTab", {
+                      screen: "Upload",
+                    });
+                  }}
                 >
                   <Feather name="plus" size={24} color={Colors.white} />
                   <CustomText customStyles={styles.addToSound}>

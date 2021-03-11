@@ -196,7 +196,7 @@ export default ({ navigation }) => {
       {/* Soundbite Popup */}
       {soundbiteInFocus.inFocus && (
         <SoundbitePopup
-          soundbiteInFocus
+          soundbiteInFocus={soundbiteInFocus}
           setSoundbiteInFocus={setSoundbiteInFocus}
           soundbite={soundbiteInFocus.soundbite}
         ></SoundbitePopup>
