@@ -22,6 +22,7 @@ import CoverPhoto from "./screens/Upload/CoverPhoto";
 import ConnectionPage from "./screens/Profile/components/ConnectionPage";
 import InboxPage from "./screens/Profile/components/InboxPage";
 import NewMessagePage from "./screens/Profile/components/newMessagePage";
+import ChatPage from "./screens/Profile/components/chatPage";
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
 // const { colors } = useTheme();
@@ -176,11 +177,10 @@ function ProfileStackComponent() {
         },
       }}
     >
-      {/* <ProfileStack.Screen name="Profile" component={Profile}  options={{ title: "@arianaventi" }}/> */}
-      {/* with the title option the connections page header becomes overcrowded */}
-      <ProfileStack.Screen name="Profile" component={Profile} />
+      <ProfileStack.Screen name="Profile" component={Profile} options={{ title: "@arianaventi" }}/>
       <ProfileStack.Screen name="My Network" component={ConnectionPage} 
         options={({navigation}) => ({
+          headerBackTitleVisible: false,
           headerRight: () => (
             <Ionicons
             name="chatbubble-ellipses-outline" 
@@ -197,6 +197,7 @@ function ProfileStackComponent() {
         name="My Inbox"
         component={InboxPage}
         options={({navigation}) => ({
+          headerBackTitleVisible: false,
           headerRight: () => (
             <FontAwesome
               name="pencil-square-o"
@@ -208,6 +209,7 @@ function ProfileStackComponent() {
           ),
         })}
       />
+      <ProfileStack.Screen name="chat" component={ChatPage} />
     </ProfileStack.Navigator>
   );
 }
