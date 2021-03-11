@@ -178,17 +178,23 @@ function ProfileStackComponent() {
         },
       }}
     >
-      <ProfileStack.Screen name="Profile" component={Profile} options={{ title: "@arianaventi" }}/>
-      <ProfileStack.Screen name="My Network" component={ConnectionPage} 
-        options={({navigation}) => ({
+      <ProfileStack.Screen
+        name="Profile"
+        component={Profile}
+        options={{ title: "@arianaventi" }}
+      />
+      <ProfileStack.Screen
+        name="My Network"
+        component={ConnectionPage}
+        options={({ navigation }) => ({
           headerBackTitleVisible: false,
           headerRight: () => (
             <Ionicons
-            name="chatbubble-ellipses-outline" 
+              name="chatbubble-ellipses-outline"
               size={32}
               color={Colors.white}
               style={{ marginRight: Metrics.headerMarginHorizontal }}
-              onPress = {() => navigation.navigate("My Inbox")}
+              onPress={() => navigation.navigate("My Inbox")}
             />
           ),
         })}
@@ -197,7 +203,7 @@ function ProfileStackComponent() {
       <ProfileStack.Screen
         name="My Inbox"
         component={InboxPage}
-        options={({navigation}) => ({
+        options={({ navigation }) => ({
           headerBackTitleVisible: false,
           headerRight: () => (
             <FontAwesome
@@ -205,12 +211,19 @@ function ProfileStackComponent() {
               size={32}
               color={Colors.white}
               style={{ marginRight: Metrics.headerMarginHorizontal }}
-              onPress = {() => navigation.navigate("New Message")}
+              onPress={() => navigation.navigate("New Message")}
             />
           ),
         })}
       />
-      <ProfileStack.Screen name="chat" component={ChatPage} />
+      <ProfileStack.Screen
+        name="chat"
+        component={ChatPage}
+        options={({ route }) => ({
+          title: route.params.userName,
+          headerBackTitleVisible: false,
+        })}
+      />
     </ProfileStack.Navigator>
   );
 }
@@ -250,9 +263,6 @@ export default function App() {
   }
 
   const Tab = createBottomTabNavigator();
-<<<<<<< Updated upstream
-
-=======
   const getTabBarVisibility = (route) => {
     const routeName = route.state
       ? route.state.routes[route.state.index].name
@@ -263,7 +273,6 @@ export default function App() {
     }
     return true;
   };
->>>>>>> Stashed changes
   return (
     <>
       <SafeAreaView style={styles.topSafeArea} />
@@ -272,6 +281,7 @@ export default function App() {
         <NavigationContainer theme={Theme}>
           <Tab.Navigator
             screenOptions={({ route }) => ({
+              tabBarVisible: getTabBarVisibility(route),
               tabBarIcon: ({ focused, color, size }) => {
                 let icon;
                 switch (route.name) {
