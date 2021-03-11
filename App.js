@@ -8,7 +8,8 @@ import * as Font from "expo-font";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 // Assets
-import { Colors, Metrics } from "./assets/Themes";
+import { Colors, Metrics, Images } from "./assets/Themes";
+import { CustomText } from "./components";
 import CustomIcons from "./assets/Fonts";
 
 // Components
@@ -265,9 +266,9 @@ export default function App() {
   const getTabBarVisibility = (route) => {
     const routeName = route.state
       ? route.state.routes[route.state.index].name
-      : '';
+      : "";
 
-    if (routeName === 'chat') {
+    if (routeName === "chat") {
       return false;
     }
     return true;
@@ -332,9 +333,25 @@ export default function App() {
                     break;
                   case "ProfileTab":
                     icon = focused ? (
-                      <CustomIcons name="user" color={color} size={size} />
+                      <View style={styles.iconContainer}>
+                        <Image
+                          style={styles.pfp}
+                          source={Images.ariana_venti}
+                        />
+                        <CustomText customStyle={{ fontSize: 10 }}>
+                          Profile
+                        </CustomText>
+                      </View>
                     ) : (
-                      <CustomIcons name="user" color={color} size={size} />
+                      <View style={styles.iconContainer}>
+                        <Image
+                          style={styles.pfp}
+                          source={Images.ariana_venti}
+                        />
+                        <CustomText customStyle={{ fontSize: 10 }}>
+                          Profile
+                        </CustomText>
+                      </View>
                     );
                     break;
                   default:
@@ -392,5 +409,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginLeft: Metrics.headerMarginHorizontal,
+  },
+  iconContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  pfp: {
+    width: 30,
+    height: 30,
+    marginBottom: 8,
   },
 });
