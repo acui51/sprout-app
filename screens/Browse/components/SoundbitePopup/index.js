@@ -67,7 +67,7 @@ const SoundbitePopup = ({
                   customStyles={{
                     alignSelf: "center",
                     marginTop: 24,
-                    marginBottom: 16,
+                    marginBottom: 24,
                   }}
                 />
 

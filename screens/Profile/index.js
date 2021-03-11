@@ -15,6 +15,17 @@ import { Bubble, CustomText } from "../../components";
 import Container from "../../hoc/Container";
 import { ProfileCard } from "./components";
 
+// Sorts the soundbites based on their date property
+const compareSoundbites = (a, b) => {
+  if (a.date < b.date) {
+    return 1;
+  }
+  if (a.date > b.date) {
+    return -1;
+  }
+  return 0;
+};
+
 export default () => {
   const [view, setView] = useState("featured");
   const [loading, setLoading] = useState(false);
@@ -110,7 +121,7 @@ export default () => {
         <ActivityIndicator />
       ) : (
         <View style={styles.soundbitesWrapper}>
-          {soundbites.map((elem, i) => (
+          {soundbites.sort(compareSoundbites).map((elem, i) => (
             <View key={i} style={styles.soundbiteWrapper}>
               <View
                 style={[
@@ -125,7 +136,15 @@ export default () => {
                   key={i}
                   genre={elem.genre}
                   img={Images[`sb_${elem.imageName}`]}
+                  customStyles={{ marginBottom: 8 }}
                 />
+
+                {/* If the soundbite is less than 2 minutes old, render a 'new' tag */}
+                {Date.now() - elem.date < 120000 && (
+                  <CustomText customStyles={{ fontWeight: "700" }}>
+                    Uploaded!
+                  </CustomText>
+                )}
               </View>
             </View>
           ))}
@@ -171,5 +190,6 @@ const styles = StyleSheet.create({
   soundbite: {
     position: "absolute",
     top: 100,
+    alignItems: "center",
   },
 });

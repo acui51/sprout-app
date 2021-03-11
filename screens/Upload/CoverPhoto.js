@@ -71,6 +71,7 @@ const CoverPhoto = ({ navigation }) => {
         genre: genre,
         imageName: "rockPow",
         title: text,
+        date: Date.now(),
       })
       .then((docRef) => {
         // docRef.id
