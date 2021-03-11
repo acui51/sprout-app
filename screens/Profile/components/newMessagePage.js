@@ -5,7 +5,7 @@ import { SearchBar } from "react-native-elements";
 import { Images, Colors } from "../../../assets/Themes";
 
 // Components
-import { CustomText, CustomButton } from "../../../components";
+import { CustomText } from "../../../components";
 import Container from "../../../hoc/Container";
 import UserCard from "../components/UserCard/index";
 
@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background2,
     borderRadius: 10,
     height: 48,
-    //width: 327,
   },
   to: {
     fontSize: 18,

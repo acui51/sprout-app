@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { StyleSheet, Image, useLayoutEffect, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Image,
+  useLayoutEffect,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { SearchBar } from "react-native-elements";
 import { FrontAwesome, Entypo } from "@expo/vector-icons";
 // Assets
@@ -50,15 +56,18 @@ export default function InboxPage({ navigation }) {
         onChangeText={(text) => setSearch(text)}
         //value={search}
       />
+
       <ScrollView>
-        <UserCard
-          username="Scissors"
-          boldtext="Thanks for the feedback..."
-          text=" · 1h"
-          pfp={Images.scissors}
-          notification
-        >
-        </UserCard>
+        <TouchableOpacity onPress={() => navigation.navigate("chat", {userName: "Scissors"})}>
+          <UserCard
+            username="Scissors"
+            boldtext="Thanks for the feedback..."
+            text=" · 1h"
+            pfp={Images.scissors}
+            notification
+          ></UserCard>
+        </TouchableOpacity>
+
         <UserCard
           username="Bessieb"
           text="Liked a message · 1d"
