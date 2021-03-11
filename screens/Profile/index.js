@@ -142,7 +142,7 @@ export default () => {
                 {/* If the soundbite is less than 2 minutes old, render a 'new' tag */}
                 {Date.now() - elem.date < 120000 && (
                   <CustomText customStyles={{ fontWeight: "700" }}>
-                    Uploaded!
+                    Uploaded! 🎉
                   </CustomText>
                 )}
               </View>

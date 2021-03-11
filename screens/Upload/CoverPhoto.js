@@ -5,7 +5,9 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
-  ActivityIndicator,
+  Modal,
+  ScrollView,
+  TouchableWithoutFeedback,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
@@ -24,6 +26,7 @@ const CoverPhoto = ({ navigation }) => {
   const [loadingInterval, setLoadingInterval] = useState(0);
   const [uploadingTimeout, setUploadingTimeout] = useState(null);
   const [uploadingInterval, setUploadingInterval] = useState(null);
+  const [filterVisible, setFilterVisible] = useState(false);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -139,6 +142,8 @@ const CoverPhoto = ({ navigation }) => {
           </View>
         </TouchableOpacity>
       )}
+
+      {/* Genre dropdown picker */}
       <DropDownPicker
         items={[
           {
@@ -183,6 +188,48 @@ const CoverPhoto = ({ navigation }) => {
               ></View>
             ),
           },
+          {
+            label: "POP",
+            value: "pop",
+            icon: () => (
+              <View
+                style={{
+                  height: 14,
+                  width: 14,
+                  backgroundColor: Colors.colorful4,
+                  borderRadius: 7,
+                }}
+              ></View>
+            ),
+          },
+          {
+            label: "COUNTRY",
+            value: "country",
+            icon: () => (
+              <View
+                style={{
+                  height: 14,
+                  width: 14,
+                  backgroundColor: Colors.colorful6,
+                  borderRadius: 7,
+                }}
+              ></View>
+            ),
+          },
+          {
+            label: "HIP HOP",
+            value: "hiphop",
+            icon: () => (
+              <View
+                style={{
+                  height: 14,
+                  width: 14,
+                  backgroundColor: Colors.colorful7,
+                  borderRadius: 7,
+                }}
+              ></View>
+            ),
+          },
         ]}
         defaultValue={genre}
         placeholder={"Select Genre"}
@@ -211,6 +258,8 @@ const CoverPhoto = ({ navigation }) => {
         dropDownStyle={{ backgroundColor: "#fafafa", width: "75%" }}
         onChangeItem={(item) => setGenre(item.value)}
       />
+
+      {/* Post button */}
       <CustomButton
         text="Post"
         variantButton="primaryShadow"
@@ -319,5 +368,28 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     lineHeight: 24,
     marginLeft: 8,
+  },
+  backdrop: {
+    flex: 1,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: Colors.background2,
+    borderRadius: 20,
+    padding: 35,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    width: "100%",
+  },
+  centeredView: {
+    flex: 1,
+    alignItems: "center",
+    marginTop: 30,
   },
 });
