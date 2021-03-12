@@ -12,6 +12,9 @@ import {
   ConnectionNotificationCard,
 } from "./components";
 
+// import { SoundNotificationCard } from "./components/SoundNotificationCard";
+// import { ConnectionNotificationCard } from "./components/";
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

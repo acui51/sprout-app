@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { Entypo } from "@expo/vector-icons";
 
 // Assets
 import { Images, Colors } from "../../../../assets/Themes";
 
 // Components
 import { CustomText } from "../../../../components";
-import { ConnectButtonCard } from "../../components";
+import { ConnectButtonCard } from "../ConnectButtonCard";
 
 const ConnectionNotificationCard = () => {
   const [deleted, setDeleted] = useState(false);
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     marginLeft: 70,
-  }
+  },
 });
 
 export default ConnectionNotificationCard;
