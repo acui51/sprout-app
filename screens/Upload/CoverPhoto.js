@@ -75,6 +75,7 @@ const CoverPhoto = ({ navigation }) => {
         imageName: "rockPow",
         title: text,
         date: Date.now(),
+        creator: "ariana_venti",
       })
       .then((docRef) => {
         // docRef.id
