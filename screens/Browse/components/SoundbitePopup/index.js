@@ -144,29 +144,35 @@ const SoundbitePopup = ({
                 />
 
                 {/* Profile preview */}
-                <ProfilePreview />
+                <ProfilePreview creator={soundbite.creator} />
 
-                <CustomButton
-                  variantButton="primaryShadow"
-                  variantText="whiteBaseText"
-                  text="Add To Sound"
-                  width={"60%"}
-                  customStyles={{ alignSelf: "center", paddingHorizontal: 12 }}
-                  onPress={() => {
-                    setSoundbiteInFocus({
-                      ...soundbiteInFocus,
-                      inFocus: !soundbiteInFocus.inFocus,
-                    });
-                    navigation.navigate("UploadTab", {
-                      screen: "Upload",
-                    });
-                  }}
-                >
-                  <Feather name="plus" size={24} color={Colors.white} />
-                  <CustomText customStyles={styles.addToSound}>
-                    Add To Sound
-                  </CustomText>
-                </CustomButton>
+                {/* Don't show the Add To Sound button if it's ariana_venti's */}
+                {soundbite.creator !== "ariana_venti" && (
+                  <CustomButton
+                    variantButton="primaryShadow"
+                    variantText="whiteBaseText"
+                    text="Add To Sound"
+                    width={"60%"}
+                    customStyles={{
+                      alignSelf: "center",
+                      paddingHorizontal: 12,
+                    }}
+                    onPress={() => {
+                      setSoundbiteInFocus({
+                        ...soundbiteInFocus,
+                        inFocus: !soundbiteInFocus.inFocus,
+                      });
+                      navigation.navigate("UploadTab", {
+                        screen: "Upload",
+                      });
+                    }}
+                  >
+                    <Feather name="plus" size={24} color={Colors.white} />
+                    <CustomText customStyles={styles.addToSound}>
+                      Add To Sound
+                    </CustomText>
+                  </CustomButton>
+                )}
               </View>
             </View>
           </TouchableWithoutFeedback>

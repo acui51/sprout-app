@@ -9,13 +9,19 @@ import { Colors, Images } from "../../../../assets/Themes";
 // Components
 import { CustomText } from "../../../../components";
 
-export const ProfilePreview = ({ customStyles }) => {
+export const ProfilePreview = ({ creator, customStyles }) => {
   const [connected, setConnected] = useState(false);
+
+  console.log(creator);
   return (
     <View style={[styles.container, customStyles]}>
       {/* Person Profile Pic */}
       <View style={{ position: "relative" }}>
-        <Image style={styles.pfp} source={Images.dj_cobra} />
+        {creator ? (
+          <Image style={styles.pfp} source={Images[creator]} />
+        ) : (
+          <Image style={styles.pfp} source={Images.dj_cobra} />
+        )}
         {connected ? (
           <TouchableOpacity onPress={() => setConnected(!connected)}>
             <View style={styles.addedButton}>
@@ -24,9 +30,12 @@ export const ProfilePreview = ({ customStyles }) => {
           </TouchableOpacity>
         ) : (
           <TouchableOpacity onPress={() => setConnected(!connected)}>
-            <View style={styles.addButton}>
-              <Feather name="plus" size={12} color={Colors.white} />
-            </View>
+            {/* Don't show the add button if the user is ariana_venti */}
+            {creator !== "ariana_venti" && (
+              <View style={styles.addButton}>
+                <Feather name="plus" size={12} color={Colors.white} />
+              </View>
+            )}
           </TouchableOpacity>
         )}
       </View>

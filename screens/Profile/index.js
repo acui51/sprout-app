@@ -14,6 +14,7 @@ import { db, firestore } from "../../firebase";
 import { Bubble, CustomText } from "../../components";
 import Container from "../../hoc/Container";
 import { ProfileCard } from "./components";
+import { SoundbitePopup } from "../Browse/components";
 
 // Sorts the soundbites based on their date property
 const compareSoundbites = (a, b) => {
@@ -30,6 +31,12 @@ export default () => {
   const [view, setView] = useState("featured");
   const [loading, setLoading] = useState(false);
   const [soundbites, setSoundbites] = useState([]);
+
+  // Soundbite in focus state - bring up soundbite modal or not
+  const [soundbiteInFocus, setSoundbiteInFocus] = useState({
+    soundbite: {},
+    inFocus: false,
+  });
 
   useEffect(() => {
     // Fetch from soundbites
@@ -56,6 +63,15 @@ export default () => {
 
   return (
     <Container customStyles={styles.container}>
+      {/* Soundbite Popup */}
+      {soundbiteInFocus.inFocus && (
+        <SoundbitePopup
+          soundbiteInFocus={soundbiteInFocus}
+          setSoundbiteInFocus={setSoundbiteInFocus}
+          soundbite={soundbiteInFocus.soundbite}
+        ></SoundbitePopup>
+      )}
+
       {/* Profile Card at Top */}
       <ProfileCard
         name="Ariana Venti"
@@ -137,6 +153,17 @@ export default () => {
                   genre={elem.genre}
                   img={Images[`sb_${elem.imageName}`]}
                   customStyles={{ marginBottom: 8 }}
+                  onPress={() => {
+                    setSoundbiteInFocus({
+                      soundbite: {
+                        title: elem.title,
+                        genre: elem.genre,
+                        img: elem.imageName,
+                        creator: elem.creator,
+                      },
+                      inFocus: true,
+                    });
+                  }}
                 />
 
                 {/* If the soundbite is less than 2 minutes old, render a 'new' tag */}
