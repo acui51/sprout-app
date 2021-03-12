@@ -264,18 +264,6 @@ export default function App() {
   }
 
   const Tab = createBottomTabNavigator();
-
-  const getTabBarVisibility = (route) => {
-    const routeName = route.state
-      ? route.state.routes[route.state.index].name
-      : "";
-
-    if (routeName === "chat") {
-      return false;
-    }
-    return true;
-  };
-
   return (
     <>
       <SafeAreaView style={styles.topSafeArea} />
@@ -284,7 +272,6 @@ export default function App() {
         <NavigationContainer theme={Theme}>
           <Tab.Navigator
             screenOptions={({ route }) => ({
-              // tabBarVisible: getTabBarVisibility(route),
               tabBarIcon: ({ focused, color, size }) => {
                 let icon;
                 switch (route.name) {

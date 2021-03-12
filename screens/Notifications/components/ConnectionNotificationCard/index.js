@@ -6,7 +6,8 @@ import { Images, Colors } from "../../../../assets/Themes";
 
 // Components
 import { CustomText } from "../../../../components";
-import { ConnectButtonCard } from "../ConnectButtonCard";
+// import { ConnectButtonCard } from "../../components";
+import ConnectButtonCard from "../ConnectButtonCard";
 
 const ConnectionNotificationCard = () => {
   const [deleted, setDeleted] = useState(false);
