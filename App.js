@@ -19,7 +19,6 @@ import Upload from "./screens/Upload/index";
 import Studio from "./screens/Upload/studio";
 import SoundsGood from "./screens/Upload/soundsGood";
 import CoverPhoto from "./screens/Upload/CoverPhoto";
-import ConnectionPage from "./screens/Profile/components/ConnectionPage";
 import InboxPage from "./screens/Profile/components/InboxPage";
 import NewMessagePage from "./screens/Profile/components/newMessagePage";
 import ChatPage from "./screens/Profile/components/chatPage";
@@ -196,7 +195,7 @@ function ProfileStackComponent() {
       />
       <ProfileStack.Screen
         name="My Network"
-        component={ConnectionPage}
+        component={Network}
         options={({ navigation }) => ({
           headerBackTitleVisible: false,
           headerRight: () => (
