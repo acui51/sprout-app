@@ -166,8 +166,8 @@ export default () => {
                   }}
                 />
 
-                {/* If the soundbite is less than 2 minutes old, render a 'new' tag */}
-                {Date.now() - elem.date < 120000 && (
+                {/* If the soundbite is less than 15 seconds, render a 'new' tag */}
+                {Date.now() - elem.date < 15000 && (
                   <CustomText customStyles={{ fontWeight: "700" }}>
                     Uploaded! 🎉
                   </CustomText>

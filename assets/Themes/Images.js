@@ -13,6 +13,7 @@ const images = {
   sb_rnbChinese: require("../Images/rnb_chinese.png"),
   sb_popBanana: require("../Images/pop_banana.png"),
   sb_rockPow: require("../Images/rock_pow.png"),
+  sb_unicorn: require("../Images/unicorn.png"),
   ariana_venti: require("../Images/arianaVenti.png"),
   honest_ocean: require("../Images/honestOcean.png"),
   justin_t: require("../Images/justinT.png"),

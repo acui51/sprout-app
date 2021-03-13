@@ -21,12 +21,13 @@ import { db, firestore } from "../../firebase";
 const CoverPhoto = ({ navigation }) => {
   const [genre, setGenre] = useState(null);
   const [coverPhoto, setCoverPhoto] = useState(false);
+  const [selectedCoverPhoto, setSelectedCoverPhoto] = useState("");
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [loadingInterval, setLoadingInterval] = useState(0);
   const [uploadingTimeout, setUploadingTimeout] = useState(null);
   const [uploadingInterval, setUploadingInterval] = useState(null);
-  const [filterVisible, setFilterVisible] = useState(false);
+  const [coverPhotoModal, setCoverPhotoModal] = useState(false);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -72,7 +73,8 @@ const CoverPhoto = ({ navigation }) => {
     db.collection("soundbites")
       .add({
         genre: genre,
-        imageName: "rockPow",
+        // imageName: "rockPow",
+        imageName: selectedCoverPhoto.substring(3),
         title: text,
         date: Date.now(),
         creator: "ariana_venti",
@@ -115,6 +117,88 @@ const CoverPhoto = ({ navigation }) => {
 
   return (
     <Container customStyles={styles.container}>
+      {/* Select cover photos modal */}
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={coverPhotoModal}
+        onRequestClose={() => setCoverPhotoModal(!coverPhotoModal)}
+      >
+        <TouchableOpacity
+          style={styles.backdrop}
+          activeOpacity={1}
+          onPressOut={() => {
+            setCoverPhotoModal(!coverPhotoModal);
+          }}
+        >
+          <ScrollView
+            directionalLockEnabled={true}
+            contentContainerStyle={styles.scrollModal}
+          >
+            <TouchableWithoutFeedback>
+              <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                  <CustomText
+                    customStyles={{
+                      fontSize: 18,
+                      fontWeight: "700",
+                      alignSelf: "center",
+                      marginBottom: 24,
+                    }}
+                  >
+                    Select a Photo
+                  </CustomText>
+                  <View style={styles.selectCoverPhoto}>
+                    <TouchableOpacity
+                      style={{ margin: 12 }}
+                      onPress={() => {
+                        setSelectedCoverPhoto("sb_unicorn");
+                        setCoverPhotoModal(false);
+                      }}
+                    >
+                      <Image style={styles.photo} source={Images.sb_unicorn} />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{ margin: 12 }}
+                      onPress={() => {
+                        setSelectedCoverPhoto("sb_rockPow");
+                        setCoverPhotoModal(false);
+                      }}
+                    >
+                      <Image style={styles.photo} source={Images.sb_rockPow} />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{ margin: 12 }}
+                      onPress={() => {
+                        setSelectedCoverPhoto("sb_popBanana");
+                        setCoverPhotoModal(false);
+                      }}
+                    >
+                      <Image
+                        style={styles.photo}
+                        source={Images.sb_popBanana}
+                      />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{ margin: 12 }}
+                      onPress={() => {
+                        setSelectedCoverPhoto("sb_popCherry");
+                        setCoverPhotoModal(false);
+                      }}
+                    >
+                      <Image
+                        style={styles.photo}
+                        source={Images.sb_popCherry}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+          </ScrollView>
+        </TouchableOpacity>
+      </Modal>
+
       {/* Title Input */}
       <TextInput
         style={styles.titleInput}
@@ -124,12 +208,15 @@ const CoverPhoto = ({ navigation }) => {
         placeholderTextColor={Colors.gray}
       />
 
-      {coverPhoto ? (
-        <TouchableOpacity onPress={() => setCoverPhoto(!coverPhoto)}>
-          <Image style={styles.coverPhoto} source={Images.uploadPhoto} />
+      {selectedCoverPhoto ? (
+        <TouchableOpacity onPress={() => setCoverPhotoModal(!coverPhotoModal)}>
+          <Image
+            style={styles.coverPhoto}
+            source={Images[selectedCoverPhoto]}
+          />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity onPress={() => setCoverPhoto(!coverPhoto)}>
+        <TouchableOpacity onPress={() => setCoverPhotoModal(!coverPhotoModal)}>
           <View style={styles.coverPhoto}>
             <AntDesign
               name="pluscircleo"
@@ -271,9 +358,9 @@ const CoverPhoto = ({ navigation }) => {
         }}
         customStyles={[
           styles.button,
-          (!genre || !coverPhoto || text === "") && { opacity: 0.4 },
+          (!genre || !selectedCoverPhoto || text === "") && { opacity: 0.4 },
         ]}
-        disabled={!genre || !coverPhoto || text === ""}
+        disabled={!genre || !selectedCoverPhoto || text === ""}
       >
         {loading && (
           <>
@@ -312,6 +399,15 @@ const styles = StyleSheet.create({
     width: 300,
     aspectRatio: 1,
     borderRadius: 300 / 2,
+    backgroundColor: Colors.background2,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  photo: {
+    height: undefined,
+    width: 125,
+    aspectRatio: 1,
+    // borderRadius: 100 / 2,
     backgroundColor: Colors.background2,
     justifyContent: "center",
     alignItems: "center",
@@ -392,5 +488,33 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     marginTop: 30,
+  },
+  centeredView: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "50%",
+  },
+  backdrop: {
+    flex: 1,
+    backgroundColor: `${Colors.background1}99`,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: Colors.background2,
+    borderRadius: 24,
+    // padding: 35,
+    paddingHorizontal: 25,
+    paddingVertical: 35,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+  },
+  selectCoverPhoto: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
   },
 });
