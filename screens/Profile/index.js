@@ -5,6 +5,7 @@ import {
   View,
   ActivityIndicator,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Assets + DATA
 import { Metrics, Colors, Images } from "../../assets/Themes";
@@ -37,7 +38,7 @@ export default () => {
     soundbite: {},
     inFocus: false,
   });
-
+  const navigation = useNavigation();
   useEffect(() => {
     // Fetch from soundbites
     setLoading(true);

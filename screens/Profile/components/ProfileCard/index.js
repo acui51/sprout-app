@@ -2,7 +2,7 @@ import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+
 // Assets
 import { Images, Colors } from "../../../../assets/Themes";
 
@@ -10,7 +10,7 @@ import { Images, Colors } from "../../../../assets/Themes";
 import { CustomButton, CustomText } from "../../../../components";
 
 const ProfileCard = ({ name, bio, pfp, customStyles }) => {
-  const navigation = useNavigation();
+  
   return (
     <View style={[styles.wrapper, customStyles]}>
       <View style={styles.profileCard}>
