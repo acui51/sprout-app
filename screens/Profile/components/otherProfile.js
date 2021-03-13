@@ -77,36 +77,32 @@ export default function OtherProfile({navigation}) {
         name="Honest Ocean"
         bio="Combining songs from different genres since ‘95!"
         pfp={Images.honest_ocean}
-        buttonText="Edit Profile"
-        customStyles={styles.profileCard}
       />
-      {/* <View style={styles.buttonWrapper}>
+      <View style={styles.buttonWrapper}>
         <CustomButton
           variantButton="profileOutline"
           variantText="whiteProfileText"
-          text="Edit Profile"
-          width={"34%"}
+          text="Connect"
+          width={"33%"}
           customStyles={{ marginRight: 8 }}
         />
         <CustomButton
           variantButton="grayProfileOutline"
           variantText="whiteProfileText"
           text="Connections"
-          width={"39%"}
+          width={"38%"}
           customStyles={{ marginRight: 8 }}
           onPress={() => navigation.navigate("My Network")}
         />
         <CustomButton
           variantButton="grayProfileOutline"
           variantText="whiteProfileText"
-          text="Inbox"
-          width={"27%"}
-          text="Inbox"
+          width={"31%"}
+          text="Message"
           customStyles={{ position: "relative" }}
-          notification
           onPress={() => navigation.navigate("My Inbox")}
         />
-      </View> */}
+      </View>
       
       {/* Featured All Switcher */}
       <View style={styles.featuredAllSwitch}>
@@ -214,19 +210,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonWrapper: {
-    marginHorizontal: 15,
+    marginHorizontal: 20,
     flexDirection: "row", 
     justifyContent: "center", 
-
-    marginBottom: 40,
-    
+    marginBottom: 30,
   },
   logo: {
     height: Metrics.icons.xl,
     resizeMode: "contain",
-  },
-  profileCard: {
-    marginBottom: 40,
   },
   featuredAllSwitch: {
     flexDirection: "row",

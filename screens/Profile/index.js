@@ -11,7 +11,7 @@ import { Metrics, Colors, Images } from "../../assets/Themes";
 import { db, firestore } from "../../firebase";
 
 // Components
-import { Bubble, CustomText } from "../../components";
+import { Bubble, CustomText, CustomButton } from "../../components";
 import Container from "../../hoc/Container";
 import { ProfileCard } from "./components";
 import { SoundbitePopup } from "../Browse/components";
@@ -78,9 +78,34 @@ export default () => {
         bio="I love pizza almost as much as making music 👌"
         pfp={Images.ariana_venti}
         buttonText="Edit Profile"
-        customStyles={styles.profileCard}
       />
-
+      <View style={styles.buttonWrapper}>
+        <CustomButton
+          variantButton="profileOutline"
+          variantText="whiteProfileText"
+          text="Edit Profile"
+          width={"35%"}
+          customStyles={{ marginRight: 8 }}
+        />
+        <CustomButton
+          variantButton="grayProfileOutline"
+          variantText="whiteProfileText"
+          text="Connections"
+          width={"39%"}
+          customStyles={{ marginRight: 8 }}
+          onPress={() => navigation.navigate("My Network")}
+        />
+        <CustomButton
+          variantButton="grayProfileOutline"
+          variantText="whiteProfileText"
+          text="Inbox"
+          width={"27%"}
+          text="Inbox"
+          customStyles={{ position: "relative" }}
+          notification
+          onPress={() => navigation.navigate("My Inbox")}
+        />
+      </View>
       {/* Featured All Switcher */}
       <View style={styles.featuredAllSwitch}>
         <TouchableOpacity
@@ -186,12 +211,15 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
   },
+  buttonWrapper: {
+    marginHorizontal: 20,
+    flexDirection: "row", 
+    justifyContent: "center", 
+    marginBottom: 30,
+  },
   logo: {
     height: Metrics.icons.xl,
     resizeMode: "contain",
-  },
-  profileCard: {
-    marginBottom: 40,
   },
   featuredAllSwitch: {
     flexDirection: "row",
