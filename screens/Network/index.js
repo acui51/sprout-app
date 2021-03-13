@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { StyleSheet, Image, View, ScrollView } from "react-native";
 import { SearchBar } from "react-native-elements";
 // Assets
-import { Images, Colors } from "../../../assets/Themes";
+import { Images, Colors } from "../../assets/Themes";
 
 // Components
-import { CustomText } from "../../../components";
-import Container from "../../../hoc/Container";
-import UserCard from "../components/UserCard/index";
+import { CustomText } from "../../components";
+import Container from "../../hoc/Container";
+import UserCard from "../Profile/components/UserCard";
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ConnectionPage({ navigation }) {
+export default () => { 
   const [text, setSearch] = useState("");
   return (
     <Container customStyle={styles.container}>
