@@ -22,6 +22,7 @@ import CoverPhoto from "./screens/Upload/CoverPhoto";
 import InboxPage from "./screens/Profile/components/InboxPage";
 import NewMessagePage from "./screens/Profile/components/newMessagePage";
 import ChatPage from "./screens/Profile/components/chatPage";
+import OtherProfile from "./screens/Profile/components/otherProfile";
 
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
@@ -162,6 +163,14 @@ function NotificationStackComponent() {
       <NotificationStack.Screen
         name="Notifications"
         component={Notifications}
+      />
+      <NotificationStack.Screen
+        name="Honest Profile"
+        component={OtherProfile}
+        options={{
+          title: "@brunetted",
+          headerBackTitleVisible: false,
+        }}
       />
     </NotificationStack.Navigator>
   );

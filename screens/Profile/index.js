@@ -76,6 +76,7 @@ export default () => {
       <ProfileCard
         name="Ariana Venti"
         bio="I love pizza almost as much as making music 👌"
+        pfp={Images.ariana_venti}
         buttonText="Edit Profile"
         customStyles={styles.profileCard}
       />
