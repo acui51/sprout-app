@@ -31,6 +31,7 @@ export default function OtherProfile({navigation}) {
   const [view, setView] = useState("featured");
   const [loading, setLoading] = useState(false);
   const [soundbites, setSoundbites] = useState([]);
+  const [connected, setConnected] = useState(false);
 
   // Soundbite in focus state - bring up soundbite modal or not
   const [soundbiteInFocus, setSoundbiteInFocus] = useState({
@@ -79,13 +80,24 @@ export default function OtherProfile({navigation}) {
         pfp={Images.honest_ocean}
       />
       <View style={styles.buttonWrapper}>
+      {connected ? (
         <CustomButton
-          variantButton="profileOutline"
+          variantButton="profileGradient"
+          variantText="whiteProfileText"
+          text="Connected"
+          width={"35%"}
+          onPress={() => setConnected(false)}
+          customStyles={{ marginRight: 8 }}
+        />):(
+          <CustomButton
+          variantButton="profileShadow"
           variantText="whiteProfileText"
           text="Connect"
-          width={"33%"}
+          width={"35%"}
+          onPress={() => setConnected(true)}
           customStyles={{ marginRight: 8 }}
         />
+        )}
         <CustomButton
           variantButton="grayProfileOutline"
           variantText="whiteProfileText"

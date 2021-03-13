@@ -52,7 +52,7 @@ export const base = {
 
 export const profile = {
   paddingHorizontal: 12.5,
-  paddingVertical: 6,
+  paddingVertical: 10,
   borderRadius: 24,
   justifyContent: "center",
   alignItems: "center",
@@ -104,6 +104,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 8 },
+  },
+  profileGradient: {
+    ...profile,
+    borderColor: "#6D117D",
+    borderWidth: 2,
   },
   primaryOutline: {
     ...base,
