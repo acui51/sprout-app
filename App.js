@@ -9,11 +9,10 @@ import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 // Assets
 import { Colors, Metrics, Images } from "./assets/Themes";
-import { CustomText } from "./components";
 import CustomIcons from "./assets/Fonts";
 
 // Components
-import { Browse, Profile, Saved, Notifications } from "./screens";
+import { Browse, Profile, Network, Notifications } from "./screens";
 
 //import screens
 import Upload from "./screens/Upload/index";
@@ -65,11 +64,11 @@ function BrowseStackComponent() {
   );
 }
 
-// Saved Screen Stack
-const SavedStack = createStackNavigator();
-function SavedStackComponent() {
+// Network Screen Stack
+const NetworkStack = createStackNavigator();
+function NetworkStackComponent() {
   return (
-    <SavedStack.Navigator
+    <NetworkStack.Navigator
       headerMode="float"
       headerMode="float"
       screenOptions={{
@@ -87,8 +86,19 @@ function SavedStackComponent() {
         },
       }}
     >
-      <SavedStack.Screen name="Saved" component={Saved} />
-    </SavedStack.Navigator>
+      <NetworkStack.Screen name="My Network" component={Network} 
+      options={({ navigation }) => ({
+        headerRight: () => (
+          <Ionicons
+            name="chatbubble-ellipses-outline"
+            size={32}
+            color={Colors.white}
+            style={{ marginRight: Metrics.headerMarginHorizontal }}
+            onPress={() => navigation.navigate("My Inbox")}
+          />
+        )})}
+        />
+    </NetworkStack.Navigator>
   );
 }
 
@@ -286,7 +296,7 @@ export default function App() {
                       <CustomIcons name="home" color={color} size={size} />
                     );
                     break;
-                  case "SavedTab":
+                  case "NetworkTab":
                     icon = focused ? (
                       <CustomIcons name="bookmark" color={color} size={size} />
                     ) : (
@@ -362,7 +372,7 @@ export default function App() {
             }}
           >
             <Tab.Screen name="BrowseTab" component={BrowseStackComponent} />
-            <Tab.Screen name="SavedTab" component={SavedStackComponent} />
+            <Tab.Screen name="NetworkTab" component={NetworkStackComponent} />
             <Tab.Screen name="UploadTab" component={UploadStackComponent} />
             <Tab.Screen
               name="NotificationsTab"
