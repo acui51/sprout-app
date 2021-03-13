@@ -12,12 +12,18 @@ import { CustomText } from "../../../../components";
 export const ProfilePreview = ({ creator, customStyles }) => {
   const [connected, setConnected] = useState(false);
 
+  let arrName = creator.split("_");
+  let firstName = arrName[0];
+  let lastName = arrName[1];
+
   return (
     <View style={[styles.container, customStyles]}>
       {/* Person Profile Pic */}
       <View style={{ position: "relative" }}>
         {creator ? (
-          <Image style={styles.pfp} source={Images[creator]} />
+          <TouchableOpacity>
+            <Image style={styles.pfp} source={Images[creator]} />
+          </TouchableOpacity>
         ) : (
           <Image style={styles.pfp} source={Images.dj_cobra} />
         )}
@@ -41,7 +47,10 @@ export const ProfilePreview = ({ creator, customStyles }) => {
 
       {/* Profile Bio + Name */}
       <View style={{ flexShrink: 1 }}>
-        <CustomText customStyles={styles.name}>First Last</CustomText>
+        <CustomText customStyles={styles.name}>
+          {firstName.charAt(0).toUpperCase() + firstName.slice(1)}{" "}
+          {lastName.charAt(0).toUpperCase() + lastName.slice(1)}
+        </CustomText>
         <CustomText>Bonjour!! I love baguettes and old school rock.</CustomText>
       </View>
     </View>

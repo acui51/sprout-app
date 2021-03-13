@@ -10,7 +10,6 @@ import { Images, Colors } from "../../../../assets/Themes";
 import { CustomButton, CustomText } from "../../../../components";
 
 const ProfileCard = ({ name, bio, pfp, customStyles }) => {
-  
   return (
     <View style={[styles.wrapper, customStyles]}>
       <View style={styles.profileCard}>
@@ -18,7 +17,7 @@ const ProfileCard = ({ name, bio, pfp, customStyles }) => {
         <View style={{ flexShrink: 1 }}>
           <CustomText customStyles={styles.name}>{name}</CustomText>
           <CustomText customStyles={styles.bio}>{bio}</CustomText>
-          <View style={{ flexDirection: "row" }}>
+          <View style={{ flexDirection: "row", marginBottom: 16 }}>
             <AntDesign
               name="instagram"
               size={30}
