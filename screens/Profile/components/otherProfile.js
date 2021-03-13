@@ -5,17 +5,16 @@ import {
   View,
   ActivityIndicator,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
 // Assets + DATA
-import { Metrics, Colors, Images } from "../../assets/Themes";
-import { db, firestore } from "../../firebase";
+import { Metrics, Colors, Images } from "../../../assets/Themes";
+import { db, firestore } from "../../../firebase";
 
 // Components
-import { Bubble, CustomText, CustomButton } from "../../components";
-import Container from "../../hoc/Container";
-import { ProfileCard } from "./components";
-import { SoundbitePopup } from "../Browse/components";
+import { Bubble, CustomText, CustomButton } from "../../../components";
+import Container from "../../../hoc/Container";
+import { ProfileCard } from ".";
+import { SoundbitePopup } from "../../Browse/components";
 
 // Sorts the soundbites based on their date property
 const compareSoundbites = (a, b) => {
@@ -28,22 +27,23 @@ const compareSoundbites = (a, b) => {
   return 0;
 };
 
-export default () => {
+export default function OtherProfile({navigation}) {
   const [view, setView] = useState("featured");
   const [loading, setLoading] = useState(false);
   const [soundbites, setSoundbites] = useState([]);
+  const [connected, setConnected] = useState(false);
 
   // Soundbite in focus state - bring up soundbite modal or not
   const [soundbiteInFocus, setSoundbiteInFocus] = useState({
     soundbite: {},
     inFocus: false,
   });
-  const navigation = useNavigation();
+
   useEffect(() => {
     // Fetch from soundbites
     setLoading(true);
     db.collection("users")
-      .doc("ariana_venti")
+      .doc("honest_ocean")
       .onSnapshot((doc) => {
         const soundbites = doc.data()[`${view}_soundbites`];
 
@@ -75,38 +75,47 @@ export default () => {
 
       {/* Profile Card at Top */}
       <ProfileCard
-        name="Ariana Venti"
-        bio="I love pizza almost as much as making music 👌"
-        pfp={Images.ariana_venti}
-        buttonText="Edit Profile"
+        name="Honest Ocean"
+        bio="Combining songs from different genres since ‘95!"
+        pfp={Images.honest_ocean}
       />
       <View style={styles.buttonWrapper}>
+      {connected ? (
         <CustomButton
-          variantButton="profileOutline"
+          variantButton="profileGradient"
           variantText="whiteProfileText"
-          text="Edit Profile"
+          text="Connected"
           width={"35%"}
+          onPress={() => setConnected(false)}
+          customStyles={{ marginRight: 8 }}
+        />):(
+          <CustomButton
+          variantButton="profileShadow"
+          variantText="whiteProfileText"
+          text="Connect"
+          width={"35%"}
+          onPress={() => setConnected(true)}
           customStyles={{ marginRight: 8 }}
         />
+        )}
         <CustomButton
           variantButton="grayProfileOutline"
           variantText="whiteProfileText"
           text="Connections"
-          width={"39%"}
+          width={"38%"}
           customStyles={{ marginRight: 8 }}
           onPress={() => navigation.navigate("My Network")}
         />
         <CustomButton
           variantButton="grayProfileOutline"
           variantText="whiteProfileText"
-          text="Inbox"
-          width={"27%"}
-          text="Inbox"
+          width={"31%"}
+          text="Message"
           customStyles={{ position: "relative" }}
-          notification
           onPress={() => navigation.navigate("My Inbox")}
         />
       </View>
+      
       {/* Featured All Switcher */}
       <View style={styles.featuredAllSwitch}>
         <TouchableOpacity

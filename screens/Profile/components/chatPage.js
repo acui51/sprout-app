@@ -44,7 +44,7 @@ export default () => {
       },
       {
         _id: 2,
-        text: "Love your new sound",
+        text: "Love your new sound 🔥",
         createdAt: new Date(),
         user: {
           _id: 1,

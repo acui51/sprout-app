@@ -2,19 +2,19 @@ import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+
 // Assets
 import { Images, Colors } from "../../../../assets/Themes";
 
 // Components
 import { CustomButton, CustomText } from "../../../../components";
 
-const ProfileCard = ({ name, bio, customStyles }) => {
-  const navigation = useNavigation();
+const ProfileCard = ({ name, bio, pfp, customStyles }) => {
+  
   return (
     <View style={[styles.wrapper, customStyles]}>
       <View style={styles.profileCard}>
-        <Image style={styles.profileImage} source={Images.ariana_venti} />
+        <Image style={styles.profileImage} source={pfp} />
         <View style={{ flexShrink: 1 }}>
           <CustomText customStyles={styles.name}>{name}</CustomText>
           <CustomText customStyles={styles.bio}>{bio}</CustomText>
@@ -29,35 +29,6 @@ const ProfileCard = ({ name, bio, customStyles }) => {
           </View>
         </View>
       </View>
-
-      {/* Edit Profile, Connections, Inbox Buttons */}
-      <View style={{ flexDirection: "row", justifyContent: "center" }}>
-        <CustomButton
-          variantButton="profileOutline"
-          variantText="whiteProfileText"
-          text="Edit Profile"
-          width={"33%"}
-          customStyles={{ marginRight: 8 }}
-        />
-        <CustomButton
-          variantButton="grayProfileOutline"
-          variantText="whiteProfileText"
-          text="Connections"
-          width={"36%"}
-          customStyles={{ marginRight: 8 }}
-          onPress={() => navigation.navigate("My Network")}
-        />
-        <CustomButton
-          variantButton="grayProfileOutline"
-          variantText="whiteProfileText"
-          text="Inbox"
-          width={"33%"}
-          text="Inbox"
-          customStyles={{ position: "relative" }}
-          notification
-          onPress={() => navigation.navigate("My Inbox")}
-        />
-      </View>
     </View>
   );
 };
@@ -68,8 +39,6 @@ const styles = StyleSheet.create({
   },
   profileCard: {
     flexDirection: "row",
-    marginBottom: 20,
-    // flexWrap: "wrap",
   },
   profileImage: {
     marginRight: 24,

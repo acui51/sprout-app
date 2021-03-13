@@ -21,7 +21,9 @@ const ConnectionNotificationCard = () => {
         </View>
       ) : (
         <View style={styles.notificationBox}>
-          <Image style={styles.profileImage} source={Images.honest_ocean} />
+          {/* <TouchableOpacity onPress={() => navigation.navigate("Honest Profile")}> */}
+            <Image style={styles.profileImage} source={Images.honest_ocean} />
+          {/* </TouchableOpacity> */}
           <CustomText customStyles={styles.username}>
             brunetted
             <CustomText customStyles={styles.notificationText}>
