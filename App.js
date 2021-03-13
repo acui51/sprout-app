@@ -156,7 +156,7 @@ function NotificationStackComponent() {
         headerTintColor: Colors.white,
         headerTitleStyle: {
           fontFamily: "Kollektif-Bold",
-          fontSize: 24,
+          fontSize: 18,
         },
       }}
     >

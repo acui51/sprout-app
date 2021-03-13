@@ -9,12 +9,12 @@ import { Images, Colors } from "../../../../assets/Themes";
 // Components
 import { CustomButton, CustomText } from "../../../../components";
 
-const ProfileCard = ({ name, bio, customStyles }) => {
+const ProfileCard = ({ name, bio, pfp, customStyles }) => {
   const navigation = useNavigation();
   return (
     <View style={[styles.wrapper, customStyles]}>
       <View style={styles.profileCard}>
-        <Image style={styles.profileImage} source={Images.ariana_venti} />
+        <Image style={styles.profileImage} source={pfp} />
         <View style={{ flexShrink: 1 }}>
           <CustomText customStyles={styles.name}>{name}</CustomText>
           <CustomText customStyles={styles.bio}>{bio}</CustomText>
