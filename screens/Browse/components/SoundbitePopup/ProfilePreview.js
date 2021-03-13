@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 // Data + assets
 import { Colors, Images } from "../../../../assets/Themes";
@@ -9,8 +10,9 @@ import { Colors, Images } from "../../../../assets/Themes";
 // Components
 import { CustomText } from "../../../../components";
 
-export const ProfilePreview = ({ creator, customStyles }) => {
+export const ProfilePreview = ({ creator, customStyles, closeModal }) => {
   const [connected, setConnected] = useState(false);
+  const navigation = useNavigation();
 
   let arrName = creator.split("_");
   let firstName = arrName[0];
@@ -21,7 +23,12 @@ export const ProfilePreview = ({ creator, customStyles }) => {
       {/* Person Profile Pic */}
       <View style={{ position: "relative" }}>
         {creator ? (
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              closeModal();
+              navigation.navigate("Profile", { profile: creator });
+            }}
+          >
             <Image style={styles.pfp} source={Images[creator]} />
           </TouchableOpacity>
         ) : (

@@ -144,7 +144,10 @@ const SoundbitePopup = ({
                 />
 
                 {/* Profile preview */}
-                <ProfilePreview creator={soundbite.creator} />
+                <ProfilePreview
+                  closeModal={() => setSoundbiteInFocus(false)}
+                  creator={soundbite.creator}
+                />
 
                 {/* Don't show the Add To Sound button if it's ariana_venti's */}
                 {soundbite.creator !== "ariana_venti" && (

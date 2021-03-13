@@ -75,7 +75,12 @@ export default function Studio({ route, navigation }) {
             variantButton="primaryShadow"
             variantText="whiteBaseText"
             width={120}
-            onPress={() => navigation.navigate("Sounds Good", { reply: true })}
+            onPress={() =>
+              navigation.navigate(
+                "Sounds Good",
+                route.params && route.params.reply && { reply: true }
+              )
+            }
             customStyles={styles.button}
           />
         </View>

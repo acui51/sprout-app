@@ -28,16 +28,38 @@ const compareSoundbites = (a, b) => {
   return 0;
 };
 
-export default () => {
+export default ({ route }) => {
   const [view, setView] = useState("featured");
   const [loading, setLoading] = useState(false);
   const [soundbites, setSoundbites] = useState([]);
+
+  // 0 - connect
+  // 1 - requested
+  // 2 - connected
+  const [connectStatus, setConnectStatus] = useState(0);
+
+  let connectText;
+  if (connectStatus === 0) {
+    connectText = "Connect";
+  } else if (connectStatus === 1) {
+    connectText = "Requested";
+  } else {
+    connectText = "Connected";
+  }
+
+  let firstName, lastName;
+  if (route.params && route.params.profile) {
+    let arrName = route.params.profile.split("_");
+    firstName = arrName[0].charAt(0).toUpperCase() + arrName[0].slice(1);
+    lastName = arrName[1].charAt(0).toUpperCase() + arrName[1].slice(1);
+  }
 
   // Soundbite in focus state - bring up soundbite modal or not
   const [soundbiteInFocus, setSoundbiteInFocus] = useState({
     soundbite: {},
     inFocus: false,
   });
+
   const navigation = useNavigation();
   useEffect(() => {
     // Fetch from soundbites
@@ -74,19 +96,31 @@ export default () => {
       )}
 
       {/* Profile Card at Top */}
-      <ProfileCard
-        name="Ariana Venti"
-        bio="I love pizza almost as much as making music 👌"
-        pfp={Images.ariana_venti}
-        buttonText="Edit Profile"
-      />
+      {route.params && route.params.profile ? (
+        <ProfileCard
+          name={`${firstName} ${lastName}`}
+          bio="I love pizza almost as much as making music 👌"
+          pfp={Images[route.params.profile]}
+          buttonText="Connect"
+        />
+      ) : (
+        <ProfileCard
+          name="Ariana Venti"
+          bio="I love pizza almost as much as making music 👌"
+          pfp={Images.ariana_venti}
+          buttonText="Edit Profile"
+        />
+      )}
       <View style={styles.buttonWrapper}>
         <CustomButton
           variantButton="profileOutline"
           variantText="whiteProfileText"
-          text="Edit Profile"
+          text={
+            route.params && route.params.profile ? connectText : "Edit Profile"
+          }
           width={"35%"}
           customStyles={{ marginRight: 8 }}
+          onPress={() => setConnectStatus(connectStatus + 1)}
         />
         <CustomButton
           variantButton="grayProfileOutline"
@@ -214,8 +248,8 @@ const styles = StyleSheet.create({
   },
   buttonWrapper: {
     marginHorizontal: 20,
-    flexDirection: "row", 
-    justifyContent: "center", 
+    flexDirection: "row",
+    justifyContent: "center",
     marginBottom: 30,
   },
   logo: {

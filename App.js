@@ -70,6 +70,7 @@ function BrowseStackComponent() {
       <BrowseStack.Screen name="Studio" component={Studio} />
       <BrowseStack.Screen name="Sounds Good" component={SoundsGood} />
       <BrowseStack.Screen name="Upload a Cover Photo" component={CoverPhoto} />
+      <BrowseStack.Screen name="Profile" component={Profile} />
     </BrowseStack.Navigator>
   );
 }
