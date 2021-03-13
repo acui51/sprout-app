@@ -6,11 +6,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { Colors, Metrics } from "../../assets/Themes";
 
 // Components
-import { CustomButton, CustomText } from "../../components";
+import { CustomButton, CustomText, SoundCloudPlayer } from "../../components";
+// import SoundCloudPlayer from "./SoundCloudPlayer";
 import RecordPlayer from "./RecordPlayer";
 import Container from "../../hoc/Container";
 
-export default function Studio({ navigation }) {
+export default function Studio({ route, navigation }) {
+  // Route.params.reply tells me if we need to render the lastSoundbites thinge
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: () => (
@@ -51,6 +54,18 @@ export default function Studio({ navigation }) {
         </CustomText>
       </View>
       <View style={styles.content}>
+        {route.params && route.params.reply && (
+          <SoundCloudPlayer
+            prevPeople={2}
+            prevSounds={true}
+            variant="dark"
+            customStyles={{
+              marginBottom: 32,
+              width: "100%",
+              paddingHorizontal: 24,
+            }}
+          />
+        )}
         <RecordPlayer />
       </View>
       <View style={styles.content}>
@@ -60,7 +75,7 @@ export default function Studio({ navigation }) {
             variantButton="primaryShadow"
             variantText="whiteBaseText"
             width={120}
-            onPress={() => navigation.navigate("SoundsGood")}
+            onPress={() => navigation.navigate("Sounds Good", { reply: true })}
             customStyles={styles.button}
           />
         </View>

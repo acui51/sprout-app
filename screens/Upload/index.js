@@ -11,7 +11,7 @@ import { CustomButton, CustomText } from "../../components";
 import Container from "../../hoc/Container";
 import Recorder from "./Recorder";
 
-export default function App() {
+export default function App({ route }) {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -57,7 +57,12 @@ export default function App() {
             variantButton="primaryShadow"
             variantText="whiteBaseText"
             width={180}
-            onPress={() => navigation.navigate("Studio")}
+            onPress={() =>
+              navigation.navigate(
+                "Studio",
+                route.params && route.params.reply && { reply: true }
+              )
+            }
             customStyles={{
               paddingVertical: 8,
               paddingHorizontal: 16,

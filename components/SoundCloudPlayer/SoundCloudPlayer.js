@@ -18,15 +18,16 @@ const SoundCloudBar = ({ height, backgroundColor }) => {
  *
  * @param {*} prevSounds - toggles whether we see 'last x soundbites'
  * @param {*} prevPeople - number of prev people soundbubbles we see
+ * @param {*} reply - if it is a reply, put ariana_venti in the third part
  */
 export function SoundCloudPlayer({
   prevSounds,
   prevPeople,
   variant,
   customStyles,
+  reply,
 }) {
   const [time, setTime] = useState(0);
-
   let scBars = [];
   for (let i = 0; i < 60; i++) {
     if (i < time) {
@@ -71,6 +72,12 @@ export function SoundCloudPlayer({
     }
   }
 
+  if (reply) {
+    prevSoundbiteBubbles.push(
+      <Image key={3} style={styles.ariana_venti} source={Images.ariana_venti} />
+    );
+  }
+
   return (
     <View
       style={[
@@ -87,12 +94,24 @@ export function SoundCloudPlayer({
               marginBottom: 8,
             }}
           >
-            Include last 1 sounds
+            Include last {prevPeople} sounds
           </CustomText>
           <View style={styles.prevSounds}>
             <View style={styles.prevSoundPrimary}></View>
-            <View style={styles.soundConnector}></View>
-            <View style={styles.prevSoundUnselected}></View>
+            <View
+              style={
+                prevPeople === 2
+                  ? styles.soundConnectorActive
+                  : styles.soundConnector
+              }
+            ></View>
+            <View
+              style={
+                prevPeople === 2
+                  ? styles.prevSoundPrimary
+                  : styles.prevSoundUnselected
+              }
+            ></View>
           </View>
         </>
       )}
@@ -181,6 +200,7 @@ const styles = StyleSheet.create({
   prevSounds: {
     flexDirection: "row",
     alignItems: "center",
+    marginBottom: 16,
   },
   prevSoundPrimary: {
     width: 12,
@@ -199,6 +219,11 @@ const styles = StyleSheet.create({
     height: 2,
     backgroundColor: Colors.gray,
   },
+  soundConnectorActive: {
+    width: 35,
+    height: 2,
+    backgroundColor: Colors.primary,
+  },
   userSB0: {
     transform: [{ rotateX: "180deg" }],
     position: "absolute",
@@ -213,5 +238,13 @@ const styles = StyleSheet.create({
     width: 30,
     top: 45,
     left: "33%",
+  },
+  ariana_venti: {
+    transform: [{ rotateX: "180deg" }],
+    position: "absolute",
+    height: 45,
+    width: 45,
+    top: 45,
+    left: "80%",
   },
 });

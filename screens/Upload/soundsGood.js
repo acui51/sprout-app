@@ -6,11 +6,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { Metrics, Colors } from "../../assets/Themes";
 
 // Components
-import { CustomButton, CustomText } from "../../components";
+import { CustomButton, CustomText, SoundCloudPlayer } from "../../components";
 import Container from "../../hoc/Container";
-import SoundCloudPlayer from "./SoundCloudPlayer";
+// import SoundCloudPlayer from "./SoundCloudPlayer";
 
-export default function SoundsGood({ navigation }) {
+export default function SoundsGood({ route, navigation }) {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: () => (
@@ -55,7 +55,17 @@ export default function SoundsGood({ navigation }) {
         </CustomText>
       </View>
       <View style={styles.content}>
-        <SoundCloudPlayer prevPeople={1} />
+        <SoundCloudPlayer
+          prevSounds={route.params && route.params.reply && true}
+          prevPeople={2}
+          variant="dark"
+          reply={route.params && route.params.reply}
+          customStyles={{
+            marginBottom: 32,
+            width: "100%",
+            paddingHorizontal: 24,
+          }}
+        />
       </View>
       <View style={styles.button}>
         <CustomButton

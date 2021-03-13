@@ -12,7 +12,6 @@ import { CustomText } from "../../../../components";
 export const ProfilePreview = ({ creator, customStyles }) => {
   const [connected, setConnected] = useState(false);
 
-  console.log(creator);
   return (
     <View style={[styles.container, customStyles]}>
       {/* Person Profile Pic */}

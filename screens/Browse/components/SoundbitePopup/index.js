@@ -162,9 +162,7 @@ const SoundbitePopup = ({
                         ...soundbiteInFocus,
                         inFocus: !soundbiteInFocus.inFocus,
                       });
-                      navigation.navigate("UploadTab", {
-                        screen: "Upload",
-                      });
+                      navigation.navigate("SoundbitePopup", { reply: true });
                     }}
                   >
                     <Feather name="plus" size={24} color={Colors.white} />

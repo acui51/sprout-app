@@ -58,9 +58,19 @@ function BrowseStackComponent() {
           fontFamily: "Kollektif-Bold",
           fontSize: 24,
         },
+        headerBackTitleVisible: false,
+        headerBackImage: () => (
+          <View style={styles.backButton}>
+            <Ionicons name="arrow-back" size={24} color={Colors.white} />
+          </View>
+        ),
       }}
     >
       <BrowseStack.Screen name="Explore" component={Browse} />
+      <BrowseStack.Screen name="SoundbitePopup" component={Upload} />
+      <BrowseStack.Screen name="Studio" component={Studio} />
+      <BrowseStack.Screen name="Sounds Good" component={SoundsGood} />
+      <BrowseStack.Screen name="Upload a Cover Photo" component={CoverPhoto} />
     </BrowseStack.Navigator>
   );
 }
