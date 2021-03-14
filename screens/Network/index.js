@@ -60,7 +60,10 @@ export default ({ route }) => {
         onChangeText={(text) => setSearch(text)}
         //value={search}
       />
-      {route.params.options == "yes" ? (
+
+      {route.params && route.params.myself === "no" ? (
+        <CustomText customStyles={styles.subheading}>MUTUALS</CustomText>
+      ) : (
         <View>
           <UserCard
             username="Connection Requests"
@@ -72,8 +75,6 @@ export default ({ route }) => {
             MOST INTERACTED WITH
           </CustomText>
         </View>
-      ) : (
-        <CustomText customStyles={styles.subheading}>MUTUALS</CustomText>
       )}
       <View style={styles.line}></View>
       <ScrollView>
@@ -88,7 +89,13 @@ export default ({ route }) => {
           ALL CONNECTIONS
         </CustomText>
         <View style={styles.line}></View>
-        {route.params.options == "yes" ? (
+        {route.params && route.params.myself === "no" ? (
+          <UserCard
+            username="justinebeaver"
+            text="Justine Beaver"
+            pfp={Images.justine_b}
+          />
+        ) : (
           <View>
             <UserCard
               username="shawnamendez"
@@ -101,12 +108,6 @@ export default ({ route }) => {
               pfp={Images.taylor_f}
             />
           </View>
-        ) : (
-            <UserCard
-              username="justinebeaver"
-              text="Justine Beaver"
-              pfp={Images.justine_b}
-            />
         )}
       </ScrollView>
     </Container>
