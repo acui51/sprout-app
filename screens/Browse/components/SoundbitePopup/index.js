@@ -133,6 +133,10 @@ const SoundbitePopup = ({
                     text="view evolution"
                     // width="60%"
                     customStyles={{ paddingHorizontal: 8, paddingVertical: 8 }}
+                    onPress={() => {
+                      setSoundbiteInFocus(false);
+                      navigation.navigate("Sound Evolution");
+                    }}
                   />
                 </View>
 

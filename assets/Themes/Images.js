@@ -17,6 +17,7 @@ const images = {
   sb_strawberry: require("../Images/strawberry.png"),
   sb_casettes: require("../Images/casettes.png"),
   sb_strobes: require("../Images/strobes.png"),
+  sb_monsters: require("../Images/monsters.png"),
   ariana_venti: require("../Images/arianaVenti.png"),
   honest_ocean: require("../Images/honestOcean.png"),
   justin_t: require("../Images/justinT.png"),
