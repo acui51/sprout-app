@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import {
   StyleSheet,
   TouchableOpacity,
@@ -43,6 +43,9 @@ export default ({ route }) => {
   if (connectStatus === 0) {
     connectText = "Connect";
     connectStyle = "profileOutline";
+  } else if (connectStatus === 1 && route.params.profile === "honest_ocean") {
+    connectText = "Connected";
+    connectStyle = "profileShadow";
   } else if (connectStatus === 1) {
     connectText = "Requested";
     connectStyle = "profileOutline";
@@ -66,10 +69,16 @@ export default ({ route }) => {
 
   const navigation = useNavigation();
   useEffect(() => {
+    let profileName;
+    if (route.params && route.params.profile) {
+      profileName = route.params.profile;
+    } else {
+      profileName = "ariana_venti";
+    }
     // Fetch from soundbites
     setLoading(true);
     db.collection("users")
-      .doc("ariana_venti")
+      .doc(profileName)
       .onSnapshot((doc) => {
         const soundbites = doc.data()[`${view}_soundbites`];
 
@@ -87,6 +96,15 @@ export default ({ route }) => {
           });
       });
   }, [view]);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle:
+        route.params && route.params.profile
+          ? `@${route.params.profile}`
+          : "@arianaventi",
+    });
+  }, [navigation]);
 
   return (
     <Container customStyles={styles.container}>
@@ -129,11 +147,7 @@ export default ({ route }) => {
           width={"35%"}
           customStyles={{ marginRight: 8 }}
           onPress={() => {
-            if (connectStatus == 2) {
-              setConnectStatus(0);
-            } else {
-              setConnectStatus(connectStatus + 1);
-            }
+            setConnectStatus(connectStatus + 1);
           }}
         />
         <CustomButton
@@ -148,10 +162,10 @@ export default ({ route }) => {
           variantButton="grayProfileOutline"
           variantText="whiteProfileText"
           text="Inbox"
-          width={"27%"}
-          text="Inbox"
+          width={"28%"}
+          text={route.params && route.params.profile ? "Message" : "Inbox"}
           customStyles={{ position: "relative" }}
-          notification
+          notification={route.params && route.params.profile ? false : true}
           onPress={() => navigation.navigate("My Inbox")}
         />
       </View>
