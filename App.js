@@ -23,7 +23,7 @@ import InboxPage from "./screens/Profile/components/InboxPage";
 import NewMessagePage from "./screens/Profile/components/newMessagePage";
 import ChatPage from "./screens/Profile/components/chatPage";
 import OtherProfile from "./screens/Profile/components/otherProfile";
-
+import HonestChat from "./screens/Network/honestChat";
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
 // const { colors } = useTheme();
@@ -101,22 +101,13 @@ function NetworkStackComponent() {
         name="My Network"
         component={Network}
         options={({ navigation }) => ({
-          myself:"yes",
+          myself: "yes",
           headerBackTitleVisible: false,
           headerBackImage: () => (
             <View style={styles.backButton}>
               <Ionicons name="arrow-back" size={24} color={Colors.white} />
             </View>
           ),
-          // headerRight: () => (
-          //   <Ionicons
-          //     name="chatbubble-ellipses-outline"
-          //     size={32}
-          //     color={Colors.white}
-          //     style={{ marginRight: Metrics.headerMarginHorizontal }}
-          //     onPress={() => navigation.navigate("My Inbox")}
-          //   />
-          // ),
         })}
       />
     </NetworkStack.Navigator>
@@ -194,6 +185,13 @@ function NotificationStackComponent() {
       <NotificationStack.Screen
         name="Honest Profile"
         component={OtherProfile}
+        options={{
+          title: "@brunetted",
+        }}
+      />
+      <NotificationStack.Screen
+        name="Honest Chat"
+        component={HonestChat}
         options={{
           title: "@brunetted",
         }}

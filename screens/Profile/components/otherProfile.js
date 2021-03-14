@@ -112,7 +112,7 @@ export default function OtherProfile({navigation}) {
           width={"31%"}
           text="Message"
           customStyles={{ position: "relative" }}
-          onPress={() => navigation.navigate("chat")}
+          onPress={() => navigation.navigate("Honest Chat")}
         />
       </View>
       
