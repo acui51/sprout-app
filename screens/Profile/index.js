@@ -39,12 +39,16 @@ export default ({ route }) => {
   const [connectStatus, setConnectStatus] = useState(0);
 
   let connectText;
+  let connectStyle;
   if (connectStatus === 0) {
     connectText = "Connect";
+    connectStyle = "profileOutline";
   } else if (connectStatus === 1) {
     connectText = "Requested";
+    connectStyle = "profileOutline";
   } else {
     connectText = "Connected";
+    connectStyle = "profileShadow";
   }
 
   let firstName, lastName;
@@ -113,14 +117,24 @@ export default ({ route }) => {
       )}
       <View style={styles.buttonWrapper}>
         <CustomButton
-          variantButton="profileOutline"
+          variantButton={
+            route.params && route.params.profile
+              ? connectStyle
+              : "profileOutline"
+          }
           variantText="whiteProfileText"
           text={
             route.params && route.params.profile ? connectText : "Edit Profile"
           }
           width={"35%"}
           customStyles={{ marginRight: 8 }}
-          onPress={() => setConnectStatus(connectStatus + 1)}
+          onPress={() => {
+            if (connectStatus == 2) {
+              setConnectStatus(0);
+            } else {
+              setConnectStatus(connectStatus + 1);
+            }
+          }}
         />
         <CustomButton
           variantButton="grayProfileOutline"
