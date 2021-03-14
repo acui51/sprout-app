@@ -104,7 +104,7 @@ export default function OtherProfile({navigation}) {
           text="Connections"
           width={"38%"}
           customStyles={{ marginRight: 8 }}
-          onPress={() => navigation.navigate("My Network")}
+          onPress={() => navigation.navigate("My Network", {options:"no"})}
         />
         <CustomButton
           variantButton="grayProfileOutline"
