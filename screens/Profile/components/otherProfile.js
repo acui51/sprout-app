@@ -112,7 +112,7 @@ export default function OtherProfile({navigation}) {
           width={"31%"}
           text="Message"
           customStyles={{ position: "relative" }}
-          onPress={() => navigation.navigate("My Inbox")}
+          onPress={() => navigation.navigate("chat")}
         />
       </View>
       

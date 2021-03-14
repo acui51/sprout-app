@@ -182,7 +182,7 @@ function NotificationStackComponent() {
         headerTintColor: Colors.white,
         headerTitleStyle: {
           fontFamily: "Kollektif-Bold",
-          fontSize: 18,
+          fontSize: 24,
         },
       }}
     >
@@ -218,7 +218,7 @@ function ProfileStackComponent() {
         shadowColor: "transparent",
         headerTintColor: Colors.white,
         headerTitleStyle: {
-          fontSize: 18,
+          fontSize: 24,
         },
       }}
     >
