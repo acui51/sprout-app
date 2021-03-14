@@ -104,7 +104,7 @@ export default function OtherProfile({navigation}) {
           text="Connections"
           width={"38%"}
           customStyles={{ marginRight: 8 }}
-          onPress={() => navigation.navigate("My Network")}
+          onPress={() => navigation.navigate("My Network", {user:"@brunetted"})}
         />
         <CustomButton
           variantButton="grayProfileOutline"
@@ -112,7 +112,7 @@ export default function OtherProfile({navigation}) {
           width={"31%"}
           text="Message"
           customStyles={{ position: "relative" }}
-          onPress={() => navigation.navigate("My Inbox")}
+          onPress={() => navigation.navigate("Honest Chat")}
         />
       </View>
       

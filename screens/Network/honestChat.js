@@ -11,10 +11,10 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { FontAwesome5 } from '@expo/vector-icons';
 
 // Assets
-import { Metrics, Colors, Images } from "../../../assets/Themes";
+import { Metrics, Colors, Images } from "../../assets/Themes";
 
 // Components
-import Container from "../../../hoc/Container";
+import Container from "../../hoc/Container";
 
 const styles = StyleSheet.create({
   container: {
@@ -27,29 +27,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ({route}) => {
+export default () => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     setMessages([
       {
         _id: 1,
-        text: "Thanks for the feedback! I was super inspired by Monsters.",
-        createdAt: new Date(),
         user: {
           _id: 2,
           name: "React Native",
-          avatar: Images.scissors,
-        },
-      },
-      {
-        _id: 2,
-        text: "Love your new sound 🔥",
-        createdAt: new Date(),
-        user: {
-          _id: 1,
-          name: "React Native",
-          avatar: Images.scissors,
+          avatar: Images.honest_ocean,
         },
       },
     ]);
@@ -103,7 +91,6 @@ export default ({route}) => {
     return (
       <InputToolbar
         {...props}
-        //placeholder={"Write a message"}
         containerStyle={{
           backgroundColor: Colors.background2,
           borderTopWidth: 0,
@@ -113,22 +100,6 @@ export default ({route}) => {
       />
     );
   };
-// suppose to change the keyboard text color but is not working 
-//   const renderComposer = (props) => {
-//     return (
-//       <TextInput
-//         //placeholderTextColor="rgba(67,88,101,0.4)"
-//         value={props.text}
-//         multiline={true}
-//         style={{
-//           maxHeight: 100,
-//           height: Math.max(40, props.composerHeight),
-//           color: Colors.white,
-//           padding: 5,
-//         }}
-//       />
-//     );
-//   };
   const scrollToBottomComponent = () => {
     return(
         <FontAwesome5 name="chevron-down" size={22} color={Colors.black}/>
@@ -145,7 +116,6 @@ export default ({route}) => {
         renderBubble={renderBubble}
         renderSend={renderSend}
         renderInputToolbar={renderInputToolbar}
-        //renderComposer={renderComposer}
         scrollToBottom
         scrollToBottomComponent={scrollToBottomComponent}
       />

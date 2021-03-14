@@ -24,6 +24,7 @@ import NewMessagePage from "./screens/Profile/components/newMessagePage";
 import ChatPage from "./screens/Profile/components/chatPage";
 import OtherProfile from "./screens/Profile/components/otherProfile";
 import SoundEvolution from "./screens/SoundEvolution/";
+import HonestChat from "./screens/Network/honestChat";
 
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
@@ -103,20 +104,12 @@ function NetworkStackComponent() {
         name="My Network"
         component={Network}
         options={({ navigation }) => ({
+          myself: "yes",
           headerBackTitleVisible: false,
           headerBackImage: () => (
             <View style={styles.backButton}>
               <Ionicons name="arrow-back" size={24} color={Colors.white} />
             </View>
-          ),
-          headerRight: () => (
-            <Ionicons
-              name="chatbubble-ellipses-outline"
-              size={32}
-              color={Colors.white}
-              style={{ marginRight: Metrics.headerMarginHorizontal }}
-              onPress={() => navigation.navigate("My Inbox")}
-            />
           ),
         })}
       />
@@ -184,7 +177,7 @@ function NotificationStackComponent() {
         headerTintColor: Colors.white,
         headerTitleStyle: {
           fontFamily: "Kollektif-Bold",
-          fontSize: 18,
+          fontSize: 24,
         },
       }}
     >
@@ -195,6 +188,13 @@ function NotificationStackComponent() {
       <NotificationStack.Screen
         name="Honest Profile"
         component={OtherProfile}
+        options={{
+          title: "@brunetted",
+        }}
+      />
+      <NotificationStack.Screen
+        name="Honest Chat"
+        component={HonestChat}
         options={{
           title: "@brunetted",
         }}
@@ -220,7 +220,7 @@ function ProfileStackComponent() {
         shadowColor: "transparent",
         headerTintColor: Colors.white,
         headerTitleStyle: {
-          fontSize: 18,
+          fontSize: 24,
         },
       }}
     >
@@ -232,22 +232,23 @@ function ProfileStackComponent() {
       <ProfileStack.Screen
         name="My Network"
         component={Network}
-        options={({ navigation }) => ({
+        options={({ route, navigation }) => ({
+          title: route.params.user,
           headerBackTitleVisible: false,
           headerBackImage: () => (
             <View style={styles.backButton}>
               <Ionicons name="arrow-back" size={24} color={Colors.white} />
             </View>
           ),
-          headerRight: () => (
-            <Ionicons
-              name="chatbubble-ellipses-outline"
-              size={32}
-              color={Colors.white}
-              style={{ marginRight: Metrics.headerMarginHorizontal }}
-              onPress={() => navigation.navigate("My Inbox")}
-            />
-          ),
+          // headerRight: () => (
+          //   <Ionicons
+          //     name="chatbubble-ellipses-outline"
+          //     size={32}
+          //     color={Colors.white}
+          //     style={{ marginRight: Metrics.headerMarginHorizontal }}
+          //     onPress={() => navigation.navigate("My Inbox")}
+          //   />
+          // ),
         })}
       />
       <ProfileStack.Screen name="New Message" component={NewMessagePage} />
