@@ -229,22 +229,23 @@ function ProfileStackComponent() {
       <ProfileStack.Screen
         name="My Network"
         component={Network}
-        options={({ navigation }) => ({
+        options={({ route, navigation }) => ({
+          title: route.params.user,
           headerBackTitleVisible: false,
           headerBackImage: () => (
             <View style={styles.backButton}>
               <Ionicons name="arrow-back" size={24} color={Colors.white} />
             </View>
           ),
-          headerRight: () => (
-            <Ionicons
-              name="chatbubble-ellipses-outline"
-              size={32}
-              color={Colors.white}
-              style={{ marginRight: Metrics.headerMarginHorizontal }}
-              onPress={() => navigation.navigate("My Inbox")}
-            />
-          ),
+          // headerRight: () => (
+          //   <Ionicons
+          //     name="chatbubble-ellipses-outline"
+          //     size={32}
+          //     color={Colors.white}
+          //     style={{ marginRight: Metrics.headerMarginHorizontal }}
+          //     onPress={() => navigation.navigate("My Inbox")}
+          //   />
+          // ),
         })}
       />
       <ProfileStack.Screen name="New Message" component={NewMessagePage} />

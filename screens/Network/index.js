@@ -61,7 +61,7 @@ export default ({ route }) => {
         //value={search}
       />
 
-      {route.params && route.params.myself === "no" ? (
+      {route.params && route.params.user === "@brunetted" ? (
         <CustomText customStyles={styles.subheading}>MUTUALS</CustomText>
       ) : (
         <View>
@@ -89,7 +89,7 @@ export default ({ route }) => {
           ALL CONNECTIONS
         </CustomText>
         <View style={styles.line}></View>
-        {route.params && route.params.myself === "no" ? (
+        {route.params && route.params.user === "@brunetted" ? (
           <UserCard
             username="justinebeaver"
             text="Justine Beaver"
