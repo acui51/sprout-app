@@ -152,7 +152,7 @@ function UploadStackComponent() {
     >
       <UploadStack.Screen name="Upload" component={Upload} />
       <UploadStack.Screen name="Studio" component={Studio} />
-      <UploadStack.Screen name="SoundsGood" component={SoundsGood} />
+      <UploadStack.Screen name="Sounds Good" component={SoundsGood} />
       <UploadStack.Screen name="Upload a Cover Photo" component={CoverPhoto} />
     </UploadStack.Navigator>
   );
