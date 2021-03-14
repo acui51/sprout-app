@@ -26,10 +26,12 @@ export function SoundCloudPlayer({
   variant,
   customStyles,
   reply,
+  soundEvolution,
 }) {
   const [time, setTime] = useState(0);
   let scBars = [];
-  for (let i = 0; i < 60; i++) {
+  let max = soundEvolution ? 50 : 60;
+  for (let i = 0; i < max; i++) {
     if (i < time) {
       scBars.push(
         <SoundCloudBar

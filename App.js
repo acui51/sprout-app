@@ -23,7 +23,9 @@ import InboxPage from "./screens/Profile/components/InboxPage";
 import NewMessagePage from "./screens/Profile/components/newMessagePage";
 import ChatPage from "./screens/Profile/components/chatPage";
 import OtherProfile from "./screens/Profile/components/otherProfile";
+import SoundEvolution from "./screens/SoundEvolution/";
 import HonestChat from "./screens/Network/honestChat";
+
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
 // const { colors } = useTheme();
@@ -71,6 +73,7 @@ function BrowseStackComponent() {
       <BrowseStack.Screen name="Sounds Good" component={SoundsGood} />
       <BrowseStack.Screen name="Upload a Cover Photo" component={CoverPhoto} />
       <BrowseStack.Screen name="Profile" component={Profile} />
+      <BrowseStack.Screen name="Sound Evolution" component={SoundEvolution} />
     </BrowseStack.Navigator>
   );
 }
@@ -144,7 +147,7 @@ function UploadStackComponent() {
     >
       <UploadStack.Screen name="Upload" component={Upload} />
       <UploadStack.Screen name="Studio" component={Studio} />
-      <UploadStack.Screen name="SoundsGood" component={SoundsGood} />
+      <UploadStack.Screen name="Sounds Good" component={SoundsGood} />
       <UploadStack.Screen name="Upload a Cover Photo" component={CoverPhoto} />
     </UploadStack.Navigator>
   );

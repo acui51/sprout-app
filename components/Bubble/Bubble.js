@@ -10,7 +10,7 @@ import { Colors } from "../../assets/Themes";
  * @param {string} genre
  * @param {Images.<>} img
  */
-export function Bubble({ genre, img, onPress, customStyles, large }) {
+export function Bubble({ genre, img, onPress, customStyles, large, small }) {
   return (
     <TouchableOpacity
       style={[
@@ -21,7 +21,11 @@ export function Bubble({ genre, img, onPress, customStyles, large }) {
       onPress={onPress}
     >
       <Image
-        style={[styles(genre).img, large && styles(genre).bigImg]}
+        style={[
+          styles(genre).img,
+          large && styles(genre).bigImg,
+          small && styles(genre).smallImg,
+        ]}
         source={img}
       />
     </TouchableOpacity>
@@ -67,5 +71,9 @@ export const styles = (genre) =>
     bigImg: {
       height: 182,
       width: 182,
+    },
+    smallImg: {
+      height: 60,
+      width: 60,
     },
   });
