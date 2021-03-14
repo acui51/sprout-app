@@ -4,10 +4,10 @@ import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
 // Assets
-import { Images, Colors } from "../../../../assets/Themes";
+import { Colors } from "../../../../assets/Themes";
 
 // Components
-import { CustomButton, CustomText } from "../../../../components";
+import { CustomText } from "../../../../components";
 
 const ProfileCard = ({ name, bio, pfp, customStyles }) => {
   return (

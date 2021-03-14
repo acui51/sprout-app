@@ -128,7 +128,7 @@ export default ({ route }) => {
           text="Connections"
           width={"39%"}
           customStyles={{ marginRight: 8 }}
-          onPress={() => navigation.navigate("My Network")}
+          onPress={() => navigation.navigate("My Network", {myself:"yes"})}
         />
         <CustomButton
           variantButton="grayProfileOutline"

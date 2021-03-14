@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default () => { 
+export default ({ route }) => {
   const [text, setSearch] = useState("");
   return (
     <Container customStyle={styles.container}>
@@ -60,15 +60,22 @@ export default () => {
         onChangeText={(text) => setSearch(text)}
         //value={search}
       />
-      <UserCard
-        username="Connection Requests"
-        text="brunetted and 2 others"
-        pfp={Images.honest_ocean}
-        request
-      />
-      <CustomText customStyles={styles.subheading}>
-        MOST INTERACTED WITH
-      </CustomText>
+
+      {route.params && route.params.myself === "no" ? (
+        <CustomText customStyles={styles.subheading}>MUTUALS</CustomText>
+      ) : (
+        <View>
+          <UserCard
+            username="Connection Requests"
+            text="brunetted and 2 others"
+            pfp={Images.honest_ocean}
+            request
+          />
+          <CustomText customStyles={styles.subheading}>
+            MOST INTERACTED WITH
+          </CustomText>
+        </View>
+      )}
       <View style={styles.line}></View>
       <ScrollView>
         <UserCard username="scissors" text="Sissors" pfp={Images.scissors} />
@@ -82,17 +89,27 @@ export default () => {
           ALL CONNECTIONS
         </CustomText>
         <View style={styles.line}></View>
-        <UserCard
-          username="shawnamendez"
-          text="Shawna Mendez"
-          pfp={Images.shawna_m}
-        />
-        <UserCard
-          username="taylorfast"
-          text="Taylor Fast"
-          pfp={Images.taylor_f}
-        />
+        {route.params && route.params.myself === "no" ? (
+          <UserCard
+            username="justinebeaver"
+            text="Justine Beaver"
+            pfp={Images.justine_b}
+          />
+        ) : (
+          <View>
+            <UserCard
+              username="shawnamendez"
+              text="Shawna Mendez"
+              pfp={Images.shawna_m}
+            />
+            <UserCard
+              username="taylorfast"
+              text="Taylor Fast"
+              pfp={Images.taylor_f}
+            />
+          </View>
+        )}
       </ScrollView>
     </Container>
   );
-}
+};
