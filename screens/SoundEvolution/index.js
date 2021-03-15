@@ -82,6 +82,18 @@ export default () => {
           style={{ height: 100, width: 3, alignSelf: "center" }}
           source={Images.vertical_line}
         />
+
+        <Bubble
+          genre="edm"
+          img={Images.sb_tameImpala}
+          onPress={() =>
+            setSoundbitePlaying({ name: "sb_tameImpala", genre: "edm" })
+          }
+        />
+        <Image
+          style={{ height: 100, width: 3, alignSelf: "center" }}
+          source={Images.vertical_line}
+        />
         <Bubble
           genre="pop"
           img={Images.sb_candy}
@@ -100,6 +112,7 @@ export default () => {
           onPress={() =>
             setSoundbitePlaying({ name: "sb_monsters", genre: "edm" })
           }
+          customStyles={{ marginBottom: 200 }}
         />
       </ScrollView>
       <CustomButton
