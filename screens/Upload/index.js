@@ -84,6 +84,12 @@ export default function App({ route }) {
               paddingHorizontal: 16,
               justifyContent: "center",
             }}
+            onPress={() =>
+              navigation.navigate(
+                "Studio",
+                route.params && route.params.reply && { reply: true }
+              )
+            }
           ></CustomButton>
         </View>
       </View>

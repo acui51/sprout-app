@@ -156,13 +156,15 @@ export default ({ route }) => {
           text="Connections"
           width={"39%"}
           customStyles={{ marginRight: 8 }}
-          onPress={() => navigation.navigate("My Network", {user:"My Network"})}
+          onPress={() =>
+            navigation.navigate("My Network", { user: "My Network" })
+          }
         />
         <CustomButton
           variantButton="grayProfileOutline"
           variantText="whiteProfileText"
           text="Inbox"
-          width={"28%"}
+          width={"29%"}
           text={route.params && route.params.profile ? "Message" : "Inbox"}
           customStyles={{ position: "relative" }}
           notification={route.params && route.params.profile ? false : true}

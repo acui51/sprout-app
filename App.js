@@ -222,6 +222,12 @@ function ProfileStackComponent() {
         headerTitleStyle: {
           fontSize: 24,
         },
+        headerBackTitleVisible: false,
+        headerBackImage: () => (
+          <View style={styles.backButton}>
+            <Ionicons name="arrow-back" size={24} color={Colors.white} />
+          </View>
+        ),
       }}
     >
       <ProfileStack.Screen
