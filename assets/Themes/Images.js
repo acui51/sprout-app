@@ -1,5 +1,9 @@
 const images = {
   logo: require("../Images/logo.png"),
+  onboarding1: require("../Images/onboarding/Discover.png"),
+  onboarding2: require("../Images/onboarding/Add.png"),
+  onboarding3: require("../Images/onboarding/Seed.png"),
+  onboarding4: require("../Images/onboarding/Evolve.png"),
   homeIcon: require("../Images/home-icon.svg"),
   sb_candy: require("../Images/candy.png"),
   sb_tameImpala: require("../Images/tame_impala.png"),
