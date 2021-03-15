@@ -11,10 +11,10 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { FontAwesome5 } from '@expo/vector-icons';
 
 // Assets
-import { Metrics, Colors, Images } from "../../assets/Themes";
+import { Metrics, Colors, Images } from "../../../assets/Themes";
 
 // Components
-import Container from "../../hoc/Container";
+import Container from "../../../hoc/Container";
 
 const styles = StyleSheet.create({
   container: {
