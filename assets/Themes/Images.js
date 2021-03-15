@@ -18,6 +18,8 @@ const images = {
   sb_casettes: require("../Images/casettes.png"),
   sb_strobes: require("../Images/strobes.png"),
   sb_monsters: require("../Images/monsters.png"),
+  vertical_line: require("../Images/vertical_line.png"),
+  curve_line: require("../Images/left_curve.png"),
   ariana_venti: require("../Images/arianaVenti.png"),
   honest_ocean: require("../Images/honestOcean.png"),
   justin_t: require("../Images/justinT.png"),
