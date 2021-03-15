@@ -98,6 +98,12 @@ function NetworkStackComponent() {
           fontFamily: "Kollektif-Bold",
           fontSize: 24,
         },
+        headerBackTitleVisible: false,
+        headerBackImage: () => (
+          <View style={styles.backButton}>
+            <Ionicons name="arrow-back" size={24} color={Colors.white} />
+          </View>
+        ),
       }}
     >
       <NetworkStack.Screen
@@ -113,6 +119,7 @@ function NetworkStackComponent() {
           ),
         })}
       />
+      <BrowseStack.Screen name="Profile" component={Profile} />
     </NetworkStack.Navigator>
   );
 }

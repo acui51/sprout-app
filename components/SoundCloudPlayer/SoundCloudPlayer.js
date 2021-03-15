@@ -132,7 +132,7 @@ export function SoundCloudPlayer({
               variant === "light" && { color: Colors.gray },
             ]}
           >
-            0:11
+            0:00
           </CustomText>
           <CustomText
             customStyles={[
