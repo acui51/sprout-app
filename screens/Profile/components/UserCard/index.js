@@ -26,7 +26,7 @@ const UserCard = ({
     <View style={styles.container}>
       <View style={styles.UserCard}>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Profile", { profile: username2 })}
+          onPress={() => navigation.push("Profile", { profile: username2 })}
         >
           <Image style={styles.profileImage} source={pfp} />
         </TouchableOpacity>

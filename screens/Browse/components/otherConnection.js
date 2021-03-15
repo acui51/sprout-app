@@ -79,8 +79,8 @@ export default ({ route }) => {
       <ScrollView>
         <UserCard
           username="scissors"
-          username2="scissors"
-          text="Sissors"
+          username2="scissors_s"
+          text="Scissors"
           pfp={Images.scissors}
         />
         <UserCard

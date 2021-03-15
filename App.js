@@ -77,12 +77,7 @@ function BrowseStackComponent() {
       <BrowseStack.Screen name="Profile" component={Profile} />
       <BrowseStack.Screen name="Sound Evolution" component={SoundEvolution} />
       <BrowseStack.Screen name="Other Inbox" component={OtherInbox} />
-      <BrowseStack.Screen
-        name="Other Connection"
-        component={OtherConnection}
-        // options={({ route }) => ({
-        //     title: route.params.profile})}
-      />
+      <BrowseStack.Screen name="Other Connection" component={OtherConnection} />
     </BrowseStack.Navigator>
   );
 }
@@ -117,6 +112,11 @@ function NetworkStackComponent() {
     >
       <NetworkStack.Screen name="My Network" component={Network} />
       <NetworkStack.Screen name="Profile" component={Profile} />
+      <NetworkStack.Screen name="Other Inbox" component={OtherInbox} />
+      <NetworkStack.Screen
+        name="Other Connection"
+        component={OtherConnection}
+      />
     </NetworkStack.Navigator>
   );
 }
@@ -212,6 +212,12 @@ function NotificationStackComponent() {
       <NotificationStack.Screen
         name="Sound Evolution"
         component={SoundEvolution}
+      />
+      <NotificationStack.Screen name="Profile" component={Profile} />
+      <NotificationStack.Screen name="Other Inbox" component={OtherInbox} />
+      <NotificationStack.Screen
+        name="Other Connection"
+        component={OtherConnection}
       />
     </NotificationStack.Navigator>
   );

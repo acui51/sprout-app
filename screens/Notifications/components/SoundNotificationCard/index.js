@@ -30,7 +30,11 @@ const SoundNotificationCard = () => {
             "Monsters"
             <CustomText customStyles={styles.notificationText}>
               {" "}
-              was added by djcobra to a branch you are in.
+              was added by{" "}
+              <CustomText customStyles={{ fontWeight: "700" }}>
+                brunetted
+              </CustomText>{" "}
+              to a branch you are in.
               <CustomText customStyles={styles.notificationTime}>
                 {" "}
                 11h

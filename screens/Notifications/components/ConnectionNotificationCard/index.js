@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Assets
 import { Images, Colors } from "../../../../assets/Themes";
@@ -11,6 +12,7 @@ import ConnectButtonCard from "../ConnectButtonCard";
 
 const ConnectionNotificationCard = () => {
   const [deleted, setDeleted] = useState(false);
+  const navigation = useNavigation();
   return (
     <View>
       {deleted ? (
@@ -21,9 +23,13 @@ const ConnectionNotificationCard = () => {
         </View>
       ) : (
         <View style={styles.notificationBox}>
-          {/* <TouchableOpacity onPress={() => navigation.navigate("Honest Profile")}> */}
-          <Image style={styles.profileImage} source={Images.honest_ocean} />
-          {/* </TouchableOpacity> */}
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("Profile", { profile: "honest_ocean" })
+            }
+          >
+            <Image style={styles.profileImage} source={Images.honest_ocean} />
+          </TouchableOpacity>
           <CustomText customStyles={styles.username}>
             brunetted
             <CustomText customStyles={styles.notificationText}>

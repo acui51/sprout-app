@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ({navigation}) => {
+export default ({ navigation }) => {
   const [view, setView] = useState("sounds");
   return (
     <Container customStyles={styles.container}>
@@ -125,9 +125,7 @@ export default ({navigation}) => {
         <SoundNotificationCard></SoundNotificationCard>
       ) : (
         // Connection notifications
-        <TouchableOpacity onPress={() => navigation.navigate("Honest Profile")}>
-          <ConnectionNotificationCard></ConnectionNotificationCard>
-        </TouchableOpacity>
+        <ConnectionNotificationCard></ConnectionNotificationCard>
       )}
     </Container>
   );
