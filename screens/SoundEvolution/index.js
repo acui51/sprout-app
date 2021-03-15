@@ -5,13 +5,20 @@ import {
   ScrollView,
   Image,
   TouchableWithoutFeedback,
+  Modal,
+  TouchableOpacity,
 } from "react-native";
 
 // assets + data
 import { Colors, Images } from "../../assets/Themes";
 
 // components
-import { SoundCloudPlayer, Bubble, CustomButton } from "../../components";
+import {
+  SoundCloudPlayer,
+  Bubble,
+  CustomButton,
+  CustomText,
+} from "../../components";
 
 import Container from "../../hoc/Container";
 import { SoundbitePopup } from "../Browse/components";
@@ -29,6 +36,7 @@ export default () => {
       creator: "honest_ocean",
     },
   });
+  const [showInfoModal, setShowInfoModal] = useState(true);
   const soundbiteScroll = useRef(null);
 
   // const handleDoubleTap = () => {
@@ -46,6 +54,48 @@ export default () => {
 
   return (
     <Container>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={showInfoModal}
+        onRequestClose={() => setShowInfoModal(false)}
+      >
+        <TouchableOpacity
+          style={styles.backdrop}
+          activeOpacity={1}
+          onPressOut={() => setShowInfoModal(false)}
+        >
+          <ScrollView
+            directionalLockEnabled={true}
+            contentContainerStyle={styles.scrollModal}
+          >
+            <TouchableWithoutFeedback>
+              <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                  <CustomText
+                    customStyles={{
+                      fontSize: 18,
+                      marginBottom: 28,
+                      textAlign: "center",
+                    }}
+                  >
+                    Double tap a sound to start listening to a sound branch!
+                  </CustomText>
+                  <CustomButton
+                    text="OKAY"
+                    variantButton="primaryShadow"
+                    variantText="whiteBaseText"
+                    width={120}
+                    customStyles={{ alignSelf: "center" }}
+                    onPress={() => setShowInfoModal(false)}
+                  />
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+          </ScrollView>
+        </TouchableOpacity>
+      </Modal>
+
       <ScrollView ref={soundbiteScroll}>
         {soundbiteInFocus.inFocus && (
           <SoundbitePopup
@@ -161,5 +211,27 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 125,
     alignSelf: "center",
+  },
+  centeredView: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "50%",
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: Colors.background2,
+    borderRadius: 24,
+    // padding: 35,
+    paddingHorizontal: 25,
+    paddingVertical: 35,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+  },
+  backdrop: {
+    flex: 1,
   },
 });

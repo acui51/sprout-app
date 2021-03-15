@@ -338,9 +338,19 @@ export default function App() {
                     break;
                   case "NetworkTab":
                     icon = focused ? (
-                      <CustomIcons name="bookmark" color={color} size={size} />
+                      // <CustomIcons name="bookmark" color={color} size={size} />
+                      <Ionicons
+                        name="people-outline"
+                        size={size}
+                        color={color}
+                      />
                     ) : (
-                      <CustomIcons name="bookmark" color={color} size={size} />
+                      // <CustomIcons name="bookmark" color={color} size={size} />
+                      <Ionicons
+                        name="people-outline"
+                        size={size}
+                        color={color}
+                      />
                     );
                     break;
                   case "UploadTab":
