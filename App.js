@@ -350,11 +350,9 @@ export default function App() {
                 switch (route.name) {
                   case "BrowseTab":
                     icon = focused ? (
-                      <CustomIcons
-                        name="home-filled"
-                        color={color}
-                        size={size}
-                      />
+                      // <CustomIcons name="home-filled" color={color} size={size} />
+
+                      <CustomIcons name="home" color={color} size={size} />
                     ) : (
                       <CustomIcons name="home" color={color} size={size} />
                     );

@@ -25,7 +25,7 @@ const ConnectionNotificationCard = () => {
           <Image style={styles.profileImage} source={Images.honest_ocean} />
           {/* </TouchableOpacity> */}
           <CustomText customStyles={styles.username}>
-            @honest_ocean
+            brunetted
             <CustomText customStyles={styles.notificationText}>
               {" "}
               wants to connect with you.
