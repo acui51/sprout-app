@@ -21,7 +21,7 @@ import SoundsGood from "./screens/Upload/soundsGood";
 import CoverPhoto from "./screens/Upload/CoverPhoto";
 import InboxPage from "./screens/Profile/components/InboxPage";
 import NewMessagePage from "./screens/Profile/components/newMessagePage";
-import OtherInbox from './screens/Browse/components/otherUserChat';
+import OtherInbox from "./screens/Browse/components/otherUserChat";
 import ChatPage from "./screens/Profile/components/chatPage";
 import OtherProfile from "./screens/Profile/components/otherProfile";
 import OtherConnection from "./screens/Browse/components/otherConnection";
@@ -77,10 +77,12 @@ function BrowseStackComponent() {
       <BrowseStack.Screen name="Profile" component={Profile} />
       <BrowseStack.Screen name="Sound Evolution" component={SoundEvolution} />
       <BrowseStack.Screen name="Other Inbox" component={OtherInbox} />
-      <BrowseStack.Screen name="Other Connection" component={OtherConnection} 
-      // options={({ route }) => ({
-      //     title: route.params.profile})} 
-          />
+      <BrowseStack.Screen
+        name="Other Connection"
+        component={OtherConnection}
+        // options={({ route }) => ({
+        //     title: route.params.profile})}
+      />
     </BrowseStack.Navigator>
   );
 }
@@ -113,11 +115,8 @@ function NetworkStackComponent() {
         ),
       }}
     >
-      <NetworkStack.Screen
-        name="My Network"
-        component={Network}
-      />
-      <BrowseStack.Screen name="Profile" component={Profile} />
+      <NetworkStack.Screen name="My Network" component={Network} />
+      <NetworkStack.Screen name="Profile" component={Profile} />
     </NetworkStack.Navigator>
   );
 }
@@ -254,7 +253,7 @@ function ProfileStackComponent() {
         name="My Network"
         component={Network}
         options={({ route, navigation }) => ({
-          title: route.params.user,
+          // title: route.params.profile,
           headerBackTitleVisible: false,
           headerBackImage: () => (
             <View style={styles.backButton}>

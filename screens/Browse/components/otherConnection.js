@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { StyleSheet, Image, View, ScrollView } from "react-native";
 import { SearchBar } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 // Assets
 import { Images, Colors } from "../../../assets/Themes";
 
@@ -42,6 +43,19 @@ const styles = StyleSheet.create({
 });
 
 export default ({ route }) => {
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle:
+        route.params && route.params.profile
+          ? route.params.profile === "honest_ocean"
+            ? "@brunetted"
+            : `@${route.params.profile}`
+          : "@arianaventi",
+    });
+  }, [navigation]);
+
   const [text, setSearch] = useState("");
   return (
     <Container customStyle={styles.container}>
@@ -60,7 +74,7 @@ export default ({ route }) => {
         onChangeText={(text) => setSearch(text)}
         //value={search}
       />
-        <CustomText customStyles={styles.subheading}>MUTUALS</CustomText>
+      <CustomText customStyles={styles.subheading}>MUTUALS</CustomText>
       <View style={styles.line}></View>
       <ScrollView>
         <UserCard
@@ -85,12 +99,12 @@ export default ({ route }) => {
           ALL CONNECTIONS
         </CustomText>
         <View style={styles.line}></View>
-        
-          <UserCard
-            username="justinebeaver"
-            text="Justine Beaver"
-            pfp={Images.justine_b}
-          />
+
+        <UserCard
+          username="justinebeaver"
+          text="Justine Beaver"
+          pfp={Images.justine_b}
+        />
       </ScrollView>
     </Container>
   );

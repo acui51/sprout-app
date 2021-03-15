@@ -1,4 +1,9 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+} from "react";
 import {
   Bubble,
   Send,
@@ -8,7 +13,8 @@ import {
 } from "react-native-gifted-chat";
 import { StyleSheet, View } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 // Assets
 import { Metrics, Colors, Images } from "../../../assets/Themes";
@@ -27,8 +33,20 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ({pfp}) => {
+export default ({ pfp, route }) => {
   const [messages, setMessages] = useState([]);
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle:
+        route.params && route.params.profile
+          ? route.params.profile === "honest_ocean"
+            ? "@brunetted"
+            : `@${route.params.profile}`
+          : "@arianaventi",
+    });
+  }, [navigation]);
 
   useEffect(() => {
     setMessages([
@@ -37,7 +55,7 @@ export default ({pfp}) => {
         user: {
           _id: 2,
           name: "React Native",
-          avatar: {pfp},
+          avatar: { pfp },
         },
       },
     ]);
@@ -101,10 +119,8 @@ export default ({pfp}) => {
     );
   };
   const scrollToBottomComponent = () => {
-    return(
-        <FontAwesome5 name="chevron-down" size={22} color={Colors.black}/>
-    );
-  }
+    return <FontAwesome5 name="chevron-down" size={22} color={Colors.black} />;
+  };
   return (
     <Container customStyle={styles.container}>
       <GiftedChat
