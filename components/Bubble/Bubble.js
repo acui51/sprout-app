@@ -1,8 +1,8 @@
 import React from "react";
-import { Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
 // Assets
-import { Colors } from "../../assets/Themes";
+import { Colors, Images } from "../../assets/Themes";
 
 /**
  * Bubble component
@@ -10,13 +10,24 @@ import { Colors } from "../../assets/Themes";
  * @param {string} genre
  * @param {Images.<>} img
  */
-export function Bubble({ genre, img, onPress, customStyles, large, small }) {
+export function Bubble({
+  genre,
+  img,
+  onPress,
+  customStyles,
+  large,
+  small,
+  med,
+  user,
+  notif,
+}) {
   return (
     <TouchableOpacity
       style={[
         styles(genre).bubbleBackground,
         customStyles,
         large && styles(genre).bigBubbleBackground,
+        med && styles(genre).medBubbleBackground,
       ]}
       onPress={onPress}
     >
@@ -25,9 +36,37 @@ export function Bubble({ genre, img, onPress, customStyles, large, small }) {
           styles(genre).img,
           large && styles(genre).bigImg,
           small && styles(genre).smallImg,
+          med && styles(genre).medImg,
         ]}
         source={img}
       />
+      {user && (
+        <Image
+          source={Images.ariana_venti}
+          style={{
+            position: "absolute",
+            width: 40,
+            height: 40,
+            top: 0,
+            right: 0,
+          }}
+        />
+      )}
+      {notif && (
+        <View
+          style={{
+            position: "absolute",
+            backgroundColor: Colors.colorful7,
+            height: 18,
+            width: 18,
+            borderRadius: 9,
+            top: 7,
+            right: 7,
+            borderColor: Colors.background1,
+            borderWidth: 3,
+          }}
+        />
+      )}
     </TouchableOpacity>
   );
 }
@@ -53,6 +92,12 @@ const bigBase = {
   borderRadius: 191 / 2,
 };
 
+const medBase = {
+  padding: 4.5,
+  alignSelf: "center",
+  borderRadius: 129 / 2,
+};
+
 // Stylesheet factory
 export const styles = (genre) =>
   StyleSheet.create({
@@ -64,6 +109,10 @@ export const styles = (genre) =>
       ...bigBase,
       backgroundColor: genreToColor[genre],
     },
+    medBubbleBackground: {
+      ...medBase,
+      backgroundColor: genreToColor[genre],
+    },
     img: {
       height: 90,
       width: 90,
@@ -71,6 +120,10 @@ export const styles = (genre) =>
     bigImg: {
       height: 182,
       width: 182,
+    },
+    medImg: {
+      height: 120,
+      width: 120,
     },
     smallImg: {
       height: 60,
