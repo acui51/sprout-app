@@ -21,11 +21,13 @@ import SoundsGood from "./screens/Upload/soundsGood";
 import CoverPhoto from "./screens/Upload/CoverPhoto";
 import InboxPage from "./screens/Profile/components/InboxPage";
 import NewMessagePage from "./screens/Profile/components/newMessagePage";
+import OtherInbox from './screens/Browse/components/otherUserChat';
 import ChatPage from "./screens/Profile/components/chatPage";
 import OtherProfile from "./screens/Profile/components/otherProfile";
+import OtherConnection from "./screens/Browse/components/otherConnection";
 import SoundEvolution from "./screens/SoundEvolution/";
-import HonestChat from "./screens/Network/honestChat";
-
+import HonestChat from "./screens/Notifications/components/honestChat";
+import HonestChatProfile from "./screens/Profile/components/honestChatProfile";
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
 // const { colors } = useTheme();
@@ -74,6 +76,11 @@ function BrowseStackComponent() {
       <BrowseStack.Screen name="Upload a Cover Photo" component={CoverPhoto} />
       <BrowseStack.Screen name="Profile" component={Profile} />
       <BrowseStack.Screen name="Sound Evolution" component={SoundEvolution} />
+      <BrowseStack.Screen name="Other Inbox" component={OtherInbox} />
+      <BrowseStack.Screen name="Other Connection" component={OtherConnection} 
+      // options={({ route }) => ({
+      //     title: route.params.profile})} 
+          />
     </BrowseStack.Navigator>
   );
 }
@@ -109,15 +116,6 @@ function NetworkStackComponent() {
       <NetworkStack.Screen
         name="My Network"
         component={Network}
-        options={({ navigation }) => ({
-          myself: "yes",
-          headerBackTitleVisible: false,
-          headerBackImage: () => (
-            <View style={styles.backButton}>
-              <Ionicons name="arrow-back" size={24} color={Colors.white} />
-            </View>
-          ),
-        })}
       />
       <BrowseStack.Screen name="Profile" component={Profile} />
     </NetworkStack.Navigator>
@@ -263,15 +261,15 @@ function ProfileStackComponent() {
               <Ionicons name="arrow-back" size={24} color={Colors.white} />
             </View>
           ),
-          // headerRight: () => (
-          //   <Ionicons
-          //     name="chatbubble-ellipses-outline"
-          //     size={32}
-          //     color={Colors.white}
-          //     style={{ marginRight: Metrics.headerMarginHorizontal }}
-          //     onPress={() => navigation.navigate("My Inbox")}
-          //   />
-          // ),
+          headerRight: () => (
+            <Ionicons
+              name="chatbubble-ellipses-outline"
+              size={32}
+              color={Colors.white}
+              style={{ marginRight: Metrics.headerMarginHorizontal }}
+              onPress={() => navigation.navigate("My Inbox")}
+            />
+          ),
         })}
       />
       <ProfileStack.Screen name="New Message" component={NewMessagePage} />
@@ -290,6 +288,13 @@ function ProfileStackComponent() {
             />
           ),
         })}
+      />
+      <ProfileStack.Screen
+        name="Honest Chat Profile"
+        component={HonestChatProfile}
+        options={{
+          title: "@brunetted",
+        }}
       />
       <ProfileStack.Screen
         name="chat"

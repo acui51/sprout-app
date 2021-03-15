@@ -163,7 +163,7 @@ export default ({ route }) => {
           width={"39%"}
           customStyles={{ marginRight: 8 }}
           onPress={() =>
-            navigation.navigate("My Network", { user: "My Network" })
+            navigation.navigate(route.params && route.params.profile ? "Other Connection" : "My Network")
           }
         />
         <CustomButton
@@ -174,7 +174,7 @@ export default ({ route }) => {
           text={route.params && route.params.profile ? "Message" : "Inbox"}
           customStyles={{ position: "relative" }}
           notification={route.params && route.params.profile ? false : true}
-          onPress={() => navigation.navigate("My Inbox")}
+          onPress={() => navigation.navigate(route.params && route.params.profile ? "Other Inbox" : "My Inbox")}
         />
       </View>
       {/* Featured All Switcher */}

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { StyleSheet, Image, View, ScrollView } from "react-native";
 import { SearchBar } from "react-native-elements";
 // Assets
-import { Images, Colors } from "../../assets/Themes";
+import { Images, Colors } from "../../../assets/Themes";
 
 // Components
-import { CustomText } from "../../components";
-import Container from "../../hoc/Container";
-import UserCard from "../Profile/components/UserCard";
+import { CustomText } from "../../../components";
+import Container from "../../../hoc/Container";
+import UserCard from "../../Profile/components/UserCard";
 
 const styles = StyleSheet.create({
   container: {
@@ -60,18 +60,7 @@ export default ({ route }) => {
         onChangeText={(text) => setSearch(text)}
         //value={search}
       />
-        <View>
-          <UserCard
-            username="Connection Requests"
-            username2="honest_ocean"
-            text="brunetted and 2 others"
-            pfp={Images.honest_ocean}
-            request
-          />
-          <CustomText customStyles={styles.subheading}>
-            MOST INTERACTED WITH
-          </CustomText>
-        </View>
+        <CustomText customStyles={styles.subheading}>MUTUALS</CustomText>
       <View style={styles.line}></View>
       <ScrollView>
         <UserCard
@@ -96,20 +85,12 @@ export default ({ route }) => {
           ALL CONNECTIONS
         </CustomText>
         <View style={styles.line}></View>
-          <View>
-            <UserCard
-              username="shawnamendez"
-              username2="shawna_m"
-              text="Shawna Mendez"
-              pfp={Images.shawna_m}
-            />
-            <UserCard
-              username="taylorfast"
-              username2="taylor_f"
-              text="Taylor Fast"
-              pfp={Images.taylor_f}
-            />
-          </View>
+        
+          <UserCard
+            username="justinebeaver"
+            text="Justine Beaver"
+            pfp={Images.justine_b}
+          />
       </ScrollView>
     </Container>
   );

@@ -58,7 +58,7 @@ export default function InboxPage({ navigation }) {
       />
 
       <ScrollView>
-      <TouchableOpacity onPress={() => navigation.navigate("Honest Chat", {userName: "Brunetted"})}>
+      <TouchableOpacity onPress={() => navigation.navigate("Honest Chat Profile")}>
           <UserCard
             username="brunetted"
             boldtext="Thank you for connecting..."
