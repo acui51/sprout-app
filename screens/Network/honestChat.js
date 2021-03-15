@@ -34,6 +34,8 @@ export default () => {
     setMessages([
       {
         _id: 1,
+        text: "Thank you for connecting!",
+        createdAt: new Date(),
         user: {
           _id: 2,
           name: "React Native",
