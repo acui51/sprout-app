@@ -5906,7 +5906,7 @@ promise@^8.0.3:
   dependencies:
     asap "~2.0.6"
 
-prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.7.x:
+prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.7.x:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -6029,6 +6029,13 @@ react-native-communications@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-native-communications/-/react-native-communications-2.2.1.tgz#7883b56b20a002eeb790c113f8616ea8692ca795"
   integrity sha1-eIO1ayCgAu63kMET+GFuqGksp5U=
+
+react-native-double-click@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-double-click/-/react-native-double-click-1.0.5.tgz#64c4ef5c2dd2b33f25be9c833e6fab8a63ad0fe5"
+  integrity sha512-HeF8L0ia3cHCdRtlXr/2FdgHsNR9g+eS/S7/I7OIVYuOyKYtEX/TkEpRMrTzEzUQfQkp44SivOjoQsDzN/ZoGA==
+  dependencies:
+    prop-types "^15.6.1"
 
 react-native-dropdown-picker@^4.0.2:
   version "4.0.2"
