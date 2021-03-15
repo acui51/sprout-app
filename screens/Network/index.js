@@ -67,6 +67,7 @@ export default ({ route }) => {
         <View>
           <UserCard
             username="Connection Requests"
+            username2="honest_ocean"
             text="brunetted and 2 others"
             pfp={Images.honest_ocean}
             request
@@ -78,10 +79,21 @@ export default ({ route }) => {
       )}
       <View style={styles.line}></View>
       <ScrollView>
-        <UserCard username="scissors" text="Sissors" pfp={Images.scissors} />
-        <UserCard username="bessieb" text="Bessie b" pfp={Images.bessie_b} />
+        <UserCard
+          username="scissors"
+          username2="scissors"
+          text="Sissors"
+          pfp={Images.scissors}
+        />
+        <UserCard
+          username="bessieb"
+          username2="bessie_b"
+          text="Bessie b"
+          pfp={Images.bessie_b}
+        />
         <UserCard
           username="justintimberpond"
+          username2="justin_t"
           text="Justin Timberpound"
           pfp={Images.justin_t}
         />
@@ -99,11 +111,13 @@ export default ({ route }) => {
           <View>
             <UserCard
               username="shawnamendez"
+              username2="shawna_m"
               text="Shawna Mendez"
               pfp={Images.shawna_m}
             />
             <UserCard
               username="taylorfast"
+              username2="taylor_f"
               text="Taylor Fast"
               pfp={Images.taylor_f}
             />

@@ -98,6 +98,12 @@ function NetworkStackComponent() {
           fontFamily: "Kollektif-Bold",
           fontSize: 24,
         },
+        headerBackTitleVisible: false,
+        headerBackImage: () => (
+          <View style={styles.backButton}>
+            <Ionicons name="arrow-back" size={24} color={Colors.white} />
+          </View>
+        ),
       }}
     >
       <NetworkStack.Screen
@@ -113,6 +119,7 @@ function NetworkStackComponent() {
           ),
         })}
       />
+      <BrowseStack.Screen name="Profile" component={Profile} />
     </NetworkStack.Navigator>
   );
 }
@@ -179,6 +186,12 @@ function NotificationStackComponent() {
           fontFamily: "Kollektif-Bold",
           fontSize: 24,
         },
+        headerBackTitleVisible: false,
+        headerBackImage: () => (
+          <View style={styles.backButton}>
+            <Ionicons name="arrow-back" size={24} color={Colors.white} />
+          </View>
+        ),
       }}
     >
       <NotificationStack.Screen
@@ -198,6 +211,10 @@ function NotificationStackComponent() {
         options={{
           title: "@brunetted",
         }}
+      />
+      <NotificationStack.Screen
+        name="Sound Evolution"
+        component={SoundEvolution}
       />
     </NotificationStack.Navigator>
   );
@@ -333,11 +350,9 @@ export default function App() {
                 switch (route.name) {
                   case "BrowseTab":
                     icon = focused ? (
-                      <CustomIcons
-                        name="home-filled"
-                        color={color}
-                        size={size}
-                      />
+                      // <CustomIcons name="home-filled" color={color} size={size} />
+
+                      <CustomIcons name="home" color={color} size={size} />
                     ) : (
                       <CustomIcons name="home" color={color} size={size} />
                     );

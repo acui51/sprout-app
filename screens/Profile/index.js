@@ -97,11 +97,17 @@ export default ({ route }) => {
       });
   }, [view]);
 
+  // let profileToUsername = {
+  //   honest_ocean: "brunetted"
+  // }
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle:
         route.params && route.params.profile
-          ? `@${route.params.profile}`
+          ? route.params.profile === "honest_ocean"
+            ? "@brunetted"
+            : `@${route.params.profile}`
           : "@arianaventi",
     });
   }, [navigation]);

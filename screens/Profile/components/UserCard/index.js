@@ -1,11 +1,12 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 // Assets
 import { Images, Colors } from "../../../../assets/Themes";
 
 // Components
 import { CustomText } from "../../../../components";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
 /**
  *
  * @param {Images.<>} pfp
@@ -13,16 +14,22 @@ import { AntDesign } from '@expo/vector-icons';
 
 const UserCard = ({
   username,
+  username2,
   text,
   pfp,
   boldtext,
   notification,
   request,
 }) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.UserCard}>
-        <Image style={styles.profileImage} source={pfp} />
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Profile", { profile: username2 })}
+        >
+          <Image style={styles.profileImage} source={pfp} />
+        </TouchableOpacity>
         <View style={{ flexShrink: 1 }}>
           <CustomText customStyles={styles.username}>{username}</CustomText>
           <CustomText customStyles={styles.boldtext}>
@@ -31,7 +38,11 @@ const UserCard = ({
           </CustomText>
         </View>
         {notification && <View style={styles.notificationDot} />}
-        {request && <View style={{position: 'absolute', right: 40}}><AntDesign name="arrowright" size={20} color={Colors.white}/></View>}
+        {request && (
+          <View style={{ position: "absolute", right: 40 }}>
+            <AntDesign name="arrowright" size={20} color={Colors.white} />
+          </View>
+        )}
       </View>
     </View>
   );

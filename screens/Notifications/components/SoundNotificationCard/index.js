@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Assets
 import { Images, Colors } from "../../../../assets/Themes";
@@ -9,32 +10,40 @@ import { Bubble, CustomText } from "../../../../components";
 
 const SoundNotificationCard = () => {
   const [deleted, setDeleted] = useState(false);
+  const navigation = useNavigation();
   return (
     <View>
       {deleted ? (
         <View style={styles.container}>
-        <CustomText customStyles={styles.noRequestText}>
-          No new connection requests.
-        </CustomText>
-      </View>
-      ):(
+          <CustomText customStyles={styles.noRequestText}>
+            No new connection requests.
+          </CustomText>
+        </View>
+      ) : (
         <View style={styles.notificationBox}>
-      <Image style={styles.soundCover} source={Images.monster_cover} />
-      <CustomText customStyles={styles.username}>
-        "Monsters"
-        <CustomText customStyles={styles.notificationText}>
-          {" "}
-          was added by djcobra to a branch you are in.
-          <CustomText customStyles={styles.notificationTime}> 11h</CustomText>
-        </CustomText>
-      </CustomText>
-      <TouchableOpacity onPress={() => setDeleted(true)}>
-        <Image
-          source={Images.delete_button}
-          style={styles.deleteButton}
-        ></Image>
-      </TouchableOpacity>
-    </View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Sound Evolution")}
+          >
+            <Image style={styles.soundCover} source={Images.monster_cover} />
+          </TouchableOpacity>
+          <CustomText customStyles={styles.username}>
+            "Monsters"
+            <CustomText customStyles={styles.notificationText}>
+              {" "}
+              was added by djcobra to a branch you are in.
+              <CustomText customStyles={styles.notificationTime}>
+                {" "}
+                11h
+              </CustomText>
+            </CustomText>
+          </CustomText>
+          <TouchableOpacity onPress={() => setDeleted(true)}>
+            <Image
+              source={Images.delete_button}
+              style={styles.deleteButton}
+            ></Image>
+          </TouchableOpacity>
+        </View>
       )}
     </View>
   );
@@ -85,7 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     marginLeft: 70,
-  }
+  },
 });
 
 export default SoundNotificationCard;
