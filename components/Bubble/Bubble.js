@@ -30,6 +30,7 @@ export function Bubble({
         med && styles(genre).medBubbleBackground,
       ]}
       onPress={onPress}
+      onLongPress={() => console.log("LONG PRESS")}
     >
       <Image
         style={[

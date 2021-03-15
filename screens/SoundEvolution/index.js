@@ -4,9 +4,9 @@ import {
   StyleSheet,
   ScrollView,
   Image,
-  TouchableWithoutFeedback,
   Modal,
   TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native";
 
 // assets + data
@@ -54,6 +54,7 @@ export default () => {
 
   return (
     <Container>
+      {/* Info modal that tells user to double tap */}
       <Modal
         animationType="fade"
         transparent={true}
@@ -107,24 +108,23 @@ export default () => {
 
         {/* TODO: Doubletap - plays and changes player at the bottom
         Singletap - opens soundbite popup */}
-
         <Bubble
           genre="rnb"
           img={Images.sb_rnbStatue}
           // onPress={() =>
           //   setSoundbitePlaying({ name: "sb_rnbStatue", genre: "rnb" })
           // }
-          onPress={() =>
-            setSoundbiteInFocus({
-              inFocus: true,
-              soundbite: {
-                img: "rnbStatue",
-                creator: "ariana_venti",
-                genre: "rnb",
-                title: "Statue",
-              },
-            })
-          }
+          // onPress={() =>
+          //   setSoundbiteInFocus({
+          //     inFocus: true,
+          //     soundbite: {
+          //       img: "rnbStatue",
+          //       creator: "ariana_venti",
+          //       genre: "rnb",
+          //       title: "Statue",
+          //     },
+          //   })
+          // }
           med
           user
         />
