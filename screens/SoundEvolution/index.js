@@ -80,7 +80,7 @@ export default () => {
                       textAlign: "center",
                     }}
                   >
-                    Double tap a sound to start listening to a sound branch!
+                    Long press a sound to start listening to a sound branch!
                   </CustomText>
                   <CustomButton
                     text="OKAY"
@@ -111,20 +111,20 @@ export default () => {
         <Bubble
           genre="rnb"
           img={Images.sb_rnbStatue}
-          // onPress={() =>
-          //   setSoundbitePlaying({ name: "sb_rnbStatue", genre: "rnb" })
-          // }
-          // onPress={() =>
-          //   setSoundbiteInFocus({
-          //     inFocus: true,
-          //     soundbite: {
-          //       img: "rnbStatue",
-          //       creator: "ariana_venti",
-          //       genre: "rnb",
-          //       title: "Statue",
-          //     },
-          //   })
-          // }
+          playSoundbite={() =>
+            setSoundbitePlaying({ name: "sb_rnbStatue", genre: "rnb" })
+          }
+          onPress={() =>
+            setSoundbiteInFocus({
+              inFocus: true,
+              soundbite: {
+                img: "rnbStatue",
+                creator: "ariana_venti",
+                genre: "rnb",
+                title: "Statue",
+              },
+            })
+          }
           med
           user
         />
@@ -136,8 +136,19 @@ export default () => {
         <Bubble
           genre="edm"
           img={Images.sb_tameImpala}
-          onPress={() =>
+          playSoundbite={() =>
             setSoundbitePlaying({ name: "sb_tameImpala", genre: "edm" })
+          }
+          onPress={() =>
+            setSoundbiteInFocus({
+              inFocus: true,
+              soundbite: {
+                img: "tameImpala",
+                creator: "honest_ocean",
+                genre: "edm",
+                title: "Tame Impala",
+              },
+            })
           }
         />
         <Image
@@ -147,8 +158,19 @@ export default () => {
         <Bubble
           genre="pop"
           img={Images.sb_candy}
-          onPress={() =>
+          playSoundbite={() =>
             setSoundbitePlaying({ name: "sb_candy", genre: "pop" })
+          }
+          onPress={() =>
+            setSoundbiteInFocus({
+              inFocus: true,
+              soundbite: {
+                img: "candy",
+                creator: "dj_cobra",
+                genre: "pop",
+                title: "Candy",
+              },
+            })
           }
         />
         <Image
@@ -159,8 +181,19 @@ export default () => {
           genre="edm"
           img={Images.sb_monsters}
           notif
-          onPress={() =>
+          playSoundbite={() =>
             setSoundbitePlaying({ name: "sb_monsters", genre: "edm" })
+          }
+          onPress={() =>
+            setSoundbiteInFocus({
+              inFocus: true,
+              soundbite: {
+                img: "monsters",
+                creator: "honest_ocean",
+                genre: "edm",
+                title: "Monsters",
+              },
+            })
           }
           customStyles={{ marginBottom: 200 }}
         />

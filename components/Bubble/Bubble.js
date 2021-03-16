@@ -20,6 +20,7 @@ export function Bubble({
   med,
   user,
   notif,
+  playSoundbite,
 }) {
   return (
     <TouchableOpacity
@@ -30,7 +31,7 @@ export function Bubble({
         med && styles(genre).medBubbleBackground,
       ]}
       onPress={onPress}
-      onLongPress={() => console.log("LONG PRESS")}
+      onLongPress={playSoundbite}
     >
       <Image
         style={[

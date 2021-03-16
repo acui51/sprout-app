@@ -28,6 +28,7 @@ const CoverPhoto = ({ navigation }) => {
   const [uploadingTimeout, setUploadingTimeout] = useState(null);
   const [uploadingInterval, setUploadingInterval] = useState(null);
   const [coverPhotoModal, setCoverPhotoModal] = useState(false);
+  const [selectedCP, setSelectedCP] = useState("");
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -152,45 +153,69 @@ const CoverPhoto = ({ navigation }) => {
                     <TouchableOpacity
                       style={{ margin: 12 }}
                       onPress={() => {
-                        setSelectedCoverPhoto("sb_unicorn");
-                        setCoverPhotoModal(false);
-                      }}
-                    >
-                      <Image style={styles.photo} source={Images.sb_unicorn} />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      style={{ margin: 12 }}
-                      onPress={() => {
-                        setSelectedCoverPhoto("sb_rockPow");
-                        setCoverPhotoModal(false);
-                      }}
-                    >
-                      <Image style={styles.photo} source={Images.sb_rockPow} />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      style={{ margin: 12 }}
-                      onPress={() => {
-                        setSelectedCoverPhoto("sb_popBanana");
-                        setCoverPhotoModal(false);
+                        setSelectedCP("sb_unicorn");
                       }}
                     >
                       <Image
-                        style={styles.photo}
+                        style={[
+                          styles.photo,
+                          selectedCP === "sb_unicorn" && styles.selectedCP,
+                        ]}
+                        source={Images.sb_unicorn}
+                      />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{ margin: 12 }}
+                      onPress={() => {
+                        setSelectedCP("sb_rockPow");
+                      }}
+                    >
+                      <Image
+                        style={[
+                          styles.photo,
+                          selectedCP === "sb_rockPow" && styles.selectedCP,
+                        ]}
+                        source={Images.sb_rockPow}
+                      />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{ margin: 12 }}
+                      onPress={() => {
+                        setSelectedCP("sb_popBanana");
+                      }}
+                    >
+                      <Image
+                        style={[
+                          styles.photo,
+                          selectedCP === "sb_popBanana" && styles.selectedCP,
+                        ]}
                         source={Images.sb_popBanana}
                       />
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={{ margin: 12 }}
                       onPress={() => {
-                        setSelectedCoverPhoto("sb_popCherry");
-                        setCoverPhotoModal(false);
+                        setSelectedCP("sb_popCherry");
                       }}
                     >
                       <Image
-                        style={styles.photo}
+                        style={[
+                          styles.photo,
+                          selectedCP === "sb_popCherry" && styles.selectedCP,
+                        ]}
                         source={Images.sb_popCherry}
                       />
                     </TouchableOpacity>
+
+                    <CustomButton
+                      variantButton="primaryShadow"
+                      variantText="whiteBaseText"
+                      text="Select"
+                      onPress={() => {
+                        setSelectedCoverPhoto(selectedCP);
+                        setCoverPhotoModal(false);
+                      }}
+                    />
                   </View>
                 </View>
               </View>
@@ -407,7 +432,6 @@ const styles = StyleSheet.create({
     height: undefined,
     width: 125,
     aspectRatio: 1,
-    // borderRadius: 100 / 2,
     backgroundColor: Colors.background2,
     justifyContent: "center",
     alignItems: "center",
@@ -516,5 +540,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
+  },
+  selectedCP: {
+    borderColor: Colors.primary,
+    borderWidth: 5,
+    borderRadius: 125 / 2,
   },
 });
