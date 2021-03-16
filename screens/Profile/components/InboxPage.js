@@ -58,18 +58,24 @@ export default function InboxPage({ navigation }) {
       />
 
       <ScrollView>
-      <TouchableOpacity onPress={() => navigation.navigate("Honest Chat Profile")}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Honest Chat Profile")}
+        >
           <UserCard
             username="brunetted"
+            username2="honest_ocean"
             boldtext="Thank you for connecting..."
             text=" · 1h"
             pfp={Images.honest_ocean}
             notification
           ></UserCard>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("chat", {userName: "Scissors"})}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("chat", { userName: "Scissors" })}
+        >
           <UserCard
             username="Scissors"
+            username2="scissors_s"
             boldtext="Thanks for the feedback..."
             text=" · 1h"
             pfp={Images.scissors}
@@ -79,16 +85,19 @@ export default function InboxPage({ navigation }) {
 
         <UserCard
           username="Bessieb"
+          username2="bessie_b"
           text="Liked a message · 1d"
           pfp={Images.bessie_b}
         />
         <UserCard
           username="Justintimberpond"
+          username2="justin_t"
           text="Love it · 1d"
           pfp={Images.justin_t}
         />
         <UserCard
           username="Shawnamendez"
+          username2="shawna_m"
           text="Gotchat, will try it out · 2d"
           pfp={Images.shawna_m}
         />

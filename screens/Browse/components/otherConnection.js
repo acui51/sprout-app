@@ -1,5 +1,11 @@
 import React, { useState, useLayoutEffect } from "react";
-import { StyleSheet, Image, View, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Image,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { SearchBar } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 // Assets
@@ -77,34 +83,50 @@ export default ({ route }) => {
       <CustomText customStyles={styles.subheading}>MUTUALS</CustomText>
       <View style={styles.line}></View>
       <ScrollView>
-        <UserCard
-          username="scissors"
-          username2="scissors_s"
-          text="Scissors"
-          pfp={Images.scissors}
-        />
-        <UserCard
-          username="bessieb"
-          username2="bessie_b"
-          text="Bessie b"
-          pfp={Images.bessie_b}
-        />
-        <UserCard
-          username="justintimberpond"
-          username2="justin_t"
-          text="Justin Timberpound"
-          pfp={Images.justin_t}
-        />
+        <TouchableOpacity
+          onPress={() => navigation.push("Profile", { profile: "scissors_s" })}
+        >
+          <UserCard
+            username="scissors"
+            username2="scissors_s"
+            text="Scissors"
+            pfp={Images.scissors}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.push("Profile", { profile: "bessie_b" })}
+        >
+          <UserCard
+            username="bessieb"
+            username2="bessie_b"
+            text="Bessie b"
+            pfp={Images.bessie_b}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.push("Profile", { profile: "justin_t" })}
+        >
+          <UserCard
+            username="justintimberpond"
+            username2="justin_t"
+            text="Justin Timberpound"
+            pfp={Images.justin_t}
+          />
+        </TouchableOpacity>
         <CustomText customStyles={styles.subheading}>
           ALL CONNECTIONS
         </CustomText>
         <View style={styles.line}></View>
 
-        <UserCard
-          username="justinebeaver"
-          text="Justine Beaver"
-          pfp={Images.justine_b}
-        />
+        <TouchableOpacity
+          onPress={() => navigation.push("Profile", { profile: "justine_b" })}
+        >
+          <UserCard
+            username="justinebeaver"
+            text="Justine Beaver"
+            pfp={Images.justine_b}
+          />
+        </TouchableOpacity>
       </ScrollView>
     </Container>
   );

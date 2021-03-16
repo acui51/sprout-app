@@ -1,6 +1,13 @@
 import React, { useState } from "react";
-import { StyleSheet, Image, View, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Image,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { SearchBar } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 // Assets
 import { Images, Colors } from "../../assets/Themes";
 
@@ -43,6 +50,7 @@ const styles = StyleSheet.create({
 
 export default ({ route }) => {
   const [text, setSearch] = useState("");
+  const navigation = useNavigation();
   return (
     <Container customStyle={styles.container}>
       <SearchBar
@@ -60,56 +68,76 @@ export default ({ route }) => {
         onChangeText={(text) => setSearch(text)}
         //value={search}
       />
-        <View>
-          <UserCard
-            username="Connection Requests"
-            username2="honest_ocean"
-            text="brunetted and 2 others"
-            pfp={Images.honest_ocean}
-            request
-          />
-          <CustomText customStyles={styles.subheading}>
-            MOST INTERACTED WITH
-          </CustomText>
-        </View>
+      <View>
+        <UserCard
+          username="Connection Requests"
+          username2="honest_ocean"
+          text="brunetted and 2 others"
+          pfp={Images.honest_ocean}
+          request
+        />
+        <CustomText customStyles={styles.subheading}>
+          MOST INTERACTED WITH
+        </CustomText>
+      </View>
       <View style={styles.line}></View>
       <ScrollView>
-        <UserCard
-          username="scissors"
-          username2="scissors_s"
-          text="Scissors"
-          pfp={Images.scissors}
-        />
-        <UserCard
-          username="bessieb"
-          username2="bessie_b"
-          text="Bessie b"
-          pfp={Images.bessie_b}
-        />
-        <UserCard
-          username="justintimberpond"
-          username2="justin_t"
-          text="Justin Timberpound"
-          pfp={Images.justin_t}
-        />
+        <TouchableOpacity
+          onPress={() => navigation.push("Profile", { profile: "scissors_s" })}
+        >
+          <UserCard
+            username="scissors"
+            username2="scissors_s"
+            text="Scissors"
+            pfp={Images.scissors}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.push("Profile", { profile: "bessie_b" })}
+        >
+          <UserCard
+            username="bessieb"
+            username2="bessie_b"
+            text="Bessie b"
+            pfp={Images.bessie_b}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.push("Profile", { profile: "justin_t" })}
+        >
+          <UserCard
+            username="justintimberpond"
+            username2="justin_t"
+            text="Justin Timberpound"
+            pfp={Images.justin_t}
+          />
+        </TouchableOpacity>
         <CustomText customStyles={styles.subheading}>
           ALL CONNECTIONS
         </CustomText>
         <View style={styles.line}></View>
-          <View>
+        <View>
+          <TouchableOpacity
+            onPress={() => navigation.push("Profile", { profile: "shawna_m" })}
+          >
             <UserCard
               username="shawnamendez"
               username2="shawna_m"
               text="Shawna Mendez"
               pfp={Images.shawna_m}
             />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.push("Profile", { profile: "taylor_f" })}
+          >
             <UserCard
               username="taylorfast"
               username2="taylor_f"
               text="Taylor Fast"
               pfp={Images.taylor_f}
             />
-          </View>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </Container>
   );
