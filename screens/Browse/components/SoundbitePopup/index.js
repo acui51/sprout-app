@@ -65,7 +65,7 @@ const SoundbitePopup = ({
                 />
 
                 {/* Title */}
-                <CustomButton
+                {/* <CustomButton
                   variantButton={soundbite.genre}
                   variantText="blackBaseText"
                   text={soundbite.title}
@@ -74,7 +74,32 @@ const SoundbitePopup = ({
                     marginTop: 24,
                     marginBottom: 24,
                   }}
+                /> */}
+
+                {/* Genre */}
+                <CustomButton
+                  variantButton={soundbite.genre}
+                  variantText="blackBaseText"
+                  text={soundbite.genre.toUpperCase()}
+                  customStyles={{
+                    alignSelf: "center",
+                    position: "absolute",
+                    top: 15,
+                  }}
                 />
+
+                {/* Title */}
+                <CustomText
+                  customStyles={{
+                    fontWeight: "700",
+                    fontSize: 20,
+                    alignSelf: "center",
+                    marginTop: 32,
+                    marginBottom: 24,
+                  }}
+                >
+                  {soundbite.title}
+                </CustomText>
 
                 {/* Last soundbites + View evolution */}
                 <View
