@@ -153,7 +153,9 @@ export default ({ route }) => {
           width={"35%"}
           customStyles={{ marginRight: 8 }}
           onPress={() => {
-            setConnectStatus(connectStatus + 1);
+            route.params && route.params.profile
+              ? setConnectStatus(connectStatus + 1)
+              : null;
           }}
         />
         <CustomButton
