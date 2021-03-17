@@ -301,5 +301,7 @@ const styles = StyleSheet.create({
     width: 12,
     borderRadius: 6,
     backgroundColor: Colors.primary,
+    borderColor: Colors.background1,
+    borderWidth: 1,
   },
 });
