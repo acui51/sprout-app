@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
@@ -10,24 +10,31 @@ import { Colors } from "../../assets/Themes";
 import Recorder from "./Recorder";
 import { CustomText } from "../../components";
 
-const Player = () => {
+const Player = ({ startTime }) => {
   return (
     // Outer white background bar
     <View style={styles.backgroundBar}>
       {/* Inner purple progress bar */}
-      <View style={styles.progressBar}></View>
-      <CustomText customStyles={styles.startText}>0:11</CustomText>
+      {startTime === "0:30" && <View style={styles.progressBar}></View>}
+      <CustomText customStyles={styles.startText}>{startTime}</CustomText>
       <CustomText customStyles={styles.endText}>0:30</CustomText>
     </View>
   );
 };
 
 const RecordPlayer = ({ customStyles }) => {
+  const [startTime, setStartTime] = useState("0:00");
+
   return (
     <View style={styles.container}>
       <View style={styles.player}>
-        <FontAwesome name="play-circle" size={35} color={Colors.primary} />
-        <Player />
+        <FontAwesome
+          name="play-circle"
+          size={35}
+          color={Colors.primary}
+          onPress={() => setStartTime("0:30")}
+        />
+        <Player startTime={startTime} />
       </View>
       <View style={styles.recordDelete}>
         <Recorder />
@@ -69,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     height: 10,
     borderRadius: 24,
-    width: "33%",
+    width: "100%",
     position: "absolute",
   },
   recordDelete: {

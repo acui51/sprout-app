@@ -29,6 +29,8 @@ export function SoundCloudPlayer({
   soundEvolution,
 }) {
   const [time, setTime] = useState(0);
+  const [startTime, setStartTime] = useState("0:00");
+
   let scBars = [];
   let max = soundEvolution ? 50 : 60;
   for (let i = 0; i < max; i++) {
@@ -122,7 +124,10 @@ export function SoundCloudPlayer({
           name="play-circle"
           size={35}
           color={Colors.primary}
-          onPress={() => setTime(60)}
+          onPress={() => {
+            setTime(60);
+            setStartTime("0:30");
+          }}
         />
         <View style={styles.scBarWrapper}>
           {scBars}
@@ -132,7 +137,7 @@ export function SoundCloudPlayer({
               variant === "light" && { color: Colors.gray },
             ]}
           >
-            0:00
+            {startTime}
           </CustomText>
           <CustomText
             customStyles={[
