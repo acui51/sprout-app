@@ -99,13 +99,14 @@ const CoverPhoto = ({ navigation }) => {
             // Atomically add a new region to the "featured_soundbites" array field.
             ref
               .update({
-                featured_soundbites: firestore.FieldValue.arrayUnion(
-                  `${docRef.id}`
-                ),
+                all_soundbites: firestore.FieldValue.arrayUnion(`${docRef.id}`),
               })
               // Once promise is resolved -> navigate to ProfileTab
               .then(() => {
-                navigation.navigate("ProfileTab", { screen: "Profile" });
+                navigation.navigate("ProfileTab", {
+                  screen: "Profile",
+                  params: { view: "all" },
+                });
                 setLoading(false);
               });
           }, 2000)

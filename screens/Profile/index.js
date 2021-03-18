@@ -29,6 +29,10 @@ const compareSoundbites = (a, b) => {
 };
 
 export default ({ route }) => {
+  // let screenView = "featured";
+  // if (route.params && route.params.view) {
+  //   screenView = route.params.view;
+  // }
   const [view, setView] = useState("featured");
   const [loading, setLoading] = useState(false);
   const [soundbites, setSoundbites] = useState([]);
@@ -68,6 +72,14 @@ export default ({ route }) => {
   });
 
   const navigation = useNavigation();
+
+  useEffect(() => {
+    if (route.params && route.params.view) {
+      let passedInView = route.params.view;
+      setView(passedInView);
+    }
+  }, []);
+
   useEffect(() => {
     let profileName;
     if (route.params && route.params.profile) {
@@ -75,6 +87,7 @@ export default ({ route }) => {
     } else {
       profileName = "ariana_venti";
     }
+
     // Fetch from soundbites
     setLoading(true);
     db.collection("users")
