@@ -5,7 +5,7 @@ import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { Images, Colors } from "../../../../assets/Themes";
 
 // Components
-import { Bubble, CustomText } from "../../../../components";
+import { CustomText } from "../../../../components";
 
 const SoundNotificationCard = () => {
   const [deleted, setDeleted] = useState(false);

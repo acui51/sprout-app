@@ -1,19 +1,22 @@
 import React, { useState, Component } from "react";
-import { StyleSheet, SafeAreaView, StatusBar, Image, View } from "react-native";
+import { StyleSheet, SafeAreaView, StatusBar, Image, View, AsyncStorage } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
-
+import Swiper from "react-native-swiper";
+import Onboarding from 'react-native-onboarding-swiper';
 // Assets
 import { Colors, Metrics, Images } from "./assets/Themes";
+import CustomButton from "./components";
 import CustomIcons from "./assets/Fonts";
 
 // Components
 import { Browse, Profile, Network, Notifications } from "./screens";
-
+import OnboardingScreen from "./screens/onboardingScreen";
+import OnboardingSwiper from "./screens/OnboardingSwipe";
 //import screens
 import Upload from "./screens/Upload/index";
 import Studio from "./screens/Upload/studio";
@@ -281,6 +284,7 @@ function ProfileStackComponent() {
 
 export default function App() {
   const [appLoading, setAppLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   // Asynchronously load the custom fonts icons from icomoon
   const loadResourcesAsync = async () =>
@@ -313,6 +317,48 @@ export default function App() {
     );
   }
 
+  const completeOnboarding = async () => {
+    await AsyncStorage.setItem('hasOnboarded', JSON.stringify({
+      hasOnboarded: true
+    }));
+    setLoaded;
+  };
+  const OnboardingScreen = props => {
+    return (
+      // <OnboardingSwiper/>
+      <Onboarding
+      onDone = {completeOnboarding}
+      onSkip = {completeOnboarding}
+      pages={[
+        {
+          image: (
+            <Image
+              style={{
+                height: Metrics.screenHeight,
+                width: Metrics.screenWidth,
+              }}
+              source={require("./assets/Images/onboarding/Discover.png")}
+            />
+          ),
+        },
+        {
+          image: (
+            <Image
+              style={{
+                height: Metrics.screenHeight,
+                width: Metrics.screenWidth,
+              }}
+              source={require("./assets/Images/onboarding/Add.png")}
+            />
+          ),
+        },
+      ]}
+    />
+    );
+  };
+  if (!loaded){
+   OnboardingScreen 
+  }
   const Tab = createBottomTabNavigator();
   return (
     <>
@@ -468,5 +514,9 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     marginBottom: 8,
+  },
+  slide: {
+    height: "100%",
+    width: "100%",
   },
 });
