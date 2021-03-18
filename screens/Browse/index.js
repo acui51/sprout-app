@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import {
   StyleSheet,
   SafeAreaView,
@@ -8,8 +8,10 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   ActivityIndicator,
+  TextInput,
 } from "react-native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 // Assets + Data
 import { Metrics, Images, Colors } from "../../assets/Themes";
@@ -25,6 +27,7 @@ export default ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [batch, setBatch] = useState(1);
   const [filterVisible, setFilterVisible] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   // Soundbite in focus state - bring up soundbite modal or not
   const [soundbiteInFocus, setSoundbiteInFocus] = useState({
@@ -72,6 +75,24 @@ export default ({ navigation }) => {
             });
           }}
         />
+      ),
+      headerTitle: () => (
+        <View style={styles.searchWrapper}>
+          <Feather
+            style={{ marginRight: 8 }}
+            name="search"
+            size={24}
+            color={Colors.white}
+            onPress={() =>
+              navigation.navigate("Profile", { profile: "honest_ocean" })
+            }
+          />
+          <TextInput
+            style={styles.searchText}
+            placeholder="Search for users"
+            placeholderTextColor={Colors.gray}
+          ></TextInput>
+        </View>
       ),
     });
   }, [navigation, batch]);
@@ -428,6 +449,7 @@ const styles = StyleSheet.create({
   },
   genreScroll: {
     // height: "10%",
+    marginTop: 8,
   },
   filterButtons: {
     flexDirection: "row",
@@ -440,5 +462,19 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     flex: 1,
+  },
+  searchWrapper: {
+    borderRadius: 12,
+    backgroundColor: Colors.background2,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    flexDirection: "row",
+    alignItems: "center",
+    // width: "100%",
+    width: 248,
+  },
+  searchText: {
+    color: Colors.white,
+    fontSize: 14,
   },
 });
