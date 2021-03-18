@@ -241,6 +241,7 @@ function ProfileStackComponent() {
         headerTintColor: Colors.white,
         headerTitleStyle: {
           fontSize: 24,
+          fontFamily: "Kollektif-Bold",
         },
         headerBackTitleVisible: false,
         headerBackImage: () => (

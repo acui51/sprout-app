@@ -187,7 +187,7 @@ export default ({ navigation }) => {
                 style={[
                   styles.soundbite,
                   {
-                    top: Math.floor(Math.random() * 100) + 1,
+                    top: Math.floor(Math.random() * 200) + 1,
                     left: Math.floor(Math.random() * 25) + 1,
                   },
                 ]}
@@ -406,7 +406,7 @@ const styles = StyleSheet.create({
   },
   soundbiteWrapper: {
     flexBasis: "33%",
-    height: "33%",
+    height: "50%",
     position: "relative",
   },
   soundbite: {
@@ -420,6 +420,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     marginTop: 30,
+    zIndex: 100,
   },
   modalTitle: {
     fontWeight: "700",
@@ -462,6 +463,7 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     flex: 1,
+    backgroundColor: `${Colors.background1}99`,
   },
   searchWrapper: {
     borderRadius: 12,
