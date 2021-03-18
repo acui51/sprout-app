@@ -3,12 +3,8 @@ import { Image, View, StatusBar, Dimensions, Button, TouchableOpacity } from "re
 import Swiper from "react-native-swiper";
 import CustomButton from "../components";
 
-const { width, height } = Dimensions.get("window");
+
 export default ( ) => {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {};
-    // }
   return (
     <View style={styles.container}>
       <StatusBar hidden={true} />
