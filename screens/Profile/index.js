@@ -277,6 +277,8 @@ export default ({ route }) => {
                   genre={elem.genre}
                   img={Images[`sb_${elem.imageName}`]}
                   customStyles={{ marginBottom: 8 }}
+                  // animated
+                  // animatedValue={Math.floor(Math.random() * 15) + 1}
                   onPress={() => {
                     setSoundbiteInFocus({
                       soundbite: {

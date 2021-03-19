@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 
@@ -24,26 +24,51 @@ const Player = ({ startTime }) => {
 
 const RecordPlayer = ({ customStyles }) => {
   const [startTime, setStartTime] = useState("0:00");
+  const [record, setRecord] = useState(true);
 
   return (
     <View style={styles.container}>
       <View style={styles.player}>
-        <FontAwesome
-          name="play-circle"
-          size={35}
-          color={Colors.primary}
-          onPress={() => setStartTime("0:30")}
-        />
+        <FontAwesome name="play-circle" size={35} color={Colors.primary} />
         <Player startTime={startTime} />
       </View>
       <View style={styles.recordDelete}>
-        <Recorder />
-        <Feather
-          style={styles.delete}
-          name="delete"
-          size={40}
-          color={Colors.white}
-        />
+        {record ? (
+          <TouchableOpacity
+            onPress={() => {
+              setRecord(false);
+              setStartTime("0:30");
+            }}
+          >
+            <Recorder />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={() => {
+              setRecord(true);
+            }}
+          >
+            <View style={styles.recorderBorder}>
+              <View style={styles.stop}></View>
+            </View>
+          </TouchableOpacity>
+        )}
+
+        {startTime === "0:00" ? (
+          <Feather
+            style={styles.delete}
+            name="delete"
+            size={40}
+            color={Colors.gray}
+          />
+        ) : (
+          <TouchableOpacity
+            style={styles.delete}
+            onPress={() => setStartTime("0:00")}
+          >
+            <Feather name="delete" size={40} color={Colors.white} />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
@@ -99,5 +124,20 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 15,
     right: 0,
+  },
+  stop: {
+    width: 24,
+    height: 24,
+    backgroundColor: Colors.red,
+    borderRadius: 4,
+  },
+  recorderBorder: {
+    borderColor: Colors.white,
+    borderWidth: 2,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

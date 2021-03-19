@@ -115,6 +115,7 @@ export default ({ pfp, route }) => {
           borderRadius: 20,
           paddingLeft: 10,
         }}
+        textInputStyle={{ color: Colors.white }}
       />
     );
   };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import {
   StyleSheet,
   SafeAreaView,
@@ -10,6 +10,8 @@ import {
   ActivityIndicator,
   TextInput,
   AsyncStorage,
+  Animated,
+  Easing,
 } from "react-native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
@@ -29,6 +31,7 @@ export default ({ navigation }) => {
   const [batch, setBatch] = useState(1);
   const [filterVisible, setFilterVisible] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [verticalVal, setVerticalVal] = useState(new Animated.Value(0));
 
   // Soundbite in focus state - bring up soundbite modal or not
   const [soundbiteInFocus, setSoundbiteInFocus] = useState({
@@ -100,6 +103,7 @@ export default ({ navigation }) => {
             style={styles.searchText}
             placeholder="Search for users"
             placeholderTextColor={Colors.gray}
+            onFocus={() => navigation.navigate("Search Users")}
           ></TextInput>
         </View>
       ),
@@ -129,6 +133,33 @@ export default ({ navigation }) => {
           });
       });
   }, [batch]);
+
+  // Math.floor(Math.random() * 50) + 1
+  // useEffect(() => {
+  //   Animated.timing(verticalVal, {
+  //     toValue: 50,
+  //     duration: 1000,
+  //     useNativeDriver: false,
+  //     easing: Easing.inOut(Easing.quad),
+  //   }).start();
+  //   verticalVal.addListener(({ value }) => {
+  //     if (value == 50) {
+  //       Animated.timing(verticalVal, {
+  //         toValue: 0,
+  //         duration: 1000,
+  //         useNativeDriver: false,
+  //         easing: Easing.inOut(Easing.quad),
+  //       }).start();
+  //     } else if (value == 0) {
+  //       Animated.timing(verticalVal, {
+  //         toValue: 50,
+  //         duration: 1000,
+  //         useNativeDriver: false,
+  //         easing: Easing.inOut(Easing.quad),
+  //       }).start();
+  //     }
+  //   });
+  // }, []);
 
   // Save changes callback
   const setFilteredSoundbites = () => {
@@ -196,15 +227,24 @@ export default ({ navigation }) => {
                 style={[
                   styles.soundbite,
                   {
-                    top: Math.floor(Math.random() * 100) + 1,
+                    top: Math.floor(Math.random() * 200) + 1,
                     left: Math.floor(Math.random() * 25) + 1,
                   },
                 ]}
               >
+                {/* <Animated.View
+                  style={{
+                    height: 100,
+                    width: 100,
+                    transform: [{ translateY: verticalVal }],
+                  }}
+                > */}
                 <Bubble
                   key={i}
                   genre={elem.genre}
                   img={Images[`sb_${elem.imageName}`]}
+                  animated
+                  animatedValue={Math.floor(Math.random() * 15) + 1}
                   onPress={() => {
                     setSoundbiteInFocus({
                       soundbite: {
@@ -217,6 +257,7 @@ export default ({ navigation }) => {
                     });
                   }}
                 />
+                {/* </Animated.View> */}
               </View>
             </View>
           ))}
@@ -415,7 +456,7 @@ const styles = StyleSheet.create({
   },
   soundbiteWrapper: {
     flexBasis: "33%",
-    height: "33%",
+    height: "50%",
     position: "relative",
   },
   soundbite: {
@@ -429,6 +470,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     marginTop: 30,
+    zIndex: 100,
   },
   modalTitle: {
     fontWeight: "700",
@@ -471,6 +513,7 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     flex: 1,
+    backgroundColor: `${Colors.background1}99`,
   },
   searchWrapper: {
     borderRadius: 12,

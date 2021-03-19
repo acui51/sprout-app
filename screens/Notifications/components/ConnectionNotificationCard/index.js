@@ -22,33 +22,33 @@ const ConnectionNotificationCard = () => {
           </CustomText>
         </View>
       ) : (
-        <View style={styles.notificationBox}>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("Profile", { profile: "honest_ocean" })
-            }
-          >
+        <TouchableOpacity
+          onPress={() =>
+            navigation.push("Profile", { profile: "honest_ocean" })
+          }
+        >
+          <View style={styles.notificationBox}>
             <Image style={styles.profileImage} source={Images.honest_ocean} />
-          </TouchableOpacity>
-          <CustomText customStyles={styles.username}>
-            brunetted
-            <CustomText customStyles={styles.notificationText}>
-              {" "}
-              wants to connect with you.
-              <CustomText customStyles={styles.notificationTime}>
+            <CustomText customStyles={styles.username}>
+              brunetted
+              <CustomText customStyles={styles.notificationText}>
                 {" "}
-                11h
+                wants to connect with you.
+                <CustomText customStyles={styles.notificationTime}>
+                  {" "}
+                  11h
+                </CustomText>
               </CustomText>
             </CustomText>
-          </CustomText>
-          <ConnectButtonCard></ConnectButtonCard>
-          <TouchableOpacity onPress={() => setDeleted(true)}>
-            <Image
-              source={Images.delete_button}
-              style={styles.deleteButton}
-            ></Image>
-          </TouchableOpacity>
-        </View>
+            <ConnectButtonCard></ConnectButtonCard>
+            <TouchableOpacity onPress={() => setDeleted(true)}>
+              <Image
+                source={Images.delete_button}
+                style={styles.deleteButton}
+              ></Image>
+            </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
       )}
     </View>
   );

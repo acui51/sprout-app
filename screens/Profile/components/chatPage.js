@@ -5,10 +5,11 @@ import {
   InputToolbar,
   TextInput,
   GiftedChat,
+  Composer,
 } from "react-native-gifted-chat";
 import { StyleSheet, View } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
 
 // Assets
 import { Metrics, Colors, Images } from "../../../assets/Themes";
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ({route}) => {
+export default ({ route }) => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -60,6 +61,7 @@ export default ({route}) => {
       GiftedChat.append(previousMessages, messages)
     );
   }, []);
+
   const renderBubble = (props) => {
     return (
       <Bubble
@@ -110,14 +112,17 @@ export default ({route}) => {
           borderRadius: 20,
           paddingLeft: 10,
         }}
+        textInputStyle={{ color: "white" }}
+        // renderComposer={(props1) => (
+        //   <Composer textInputStyle={{ color: "white" }} />
+        // )}
       />
     );
   };
+
   const scrollToBottomComponent = () => {
-    return(
-        <FontAwesome5 name="chevron-down" size={22} color={Colors.black}/>
-    );
-  }
+    return <FontAwesome5 name="chevron-down" size={22} color={Colors.black} />;
+  };
   return (
     <Container customStyle={styles.container}>
       <GiftedChat

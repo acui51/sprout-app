@@ -226,6 +226,7 @@ const CoverPhoto = ({ navigation }) => {
       </Modal>
 
       {/* Title Input */}
+
       <TextInput
         style={styles.titleInput}
         onChangeText={(text) => setText(text)}
@@ -363,13 +364,13 @@ const CoverPhoto = ({ navigation }) => {
         arrowColor={Colors.gray}
         style={{
           backgroundColor: Colors.background2,
-          width: "75%",
+          width: "90%",
           borderWidth: 0,
         }}
         itemStyle={{
           justifyContent: "flex-start",
         }}
-        dropDownStyle={{ backgroundColor: "#fafafa", width: "75%" }}
+        dropDownStyle={{ backgroundColor: "#fafafa", width: "90%" }}
         onChangeItem={(item) => setGenre(item.value)}
       />
 
@@ -450,7 +451,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     fontSize: 16,
     fontWeight: "700",
-    color: Colors.gray,
+    color: Colors.white,
   },
   backgroundBar: {
     flexBasis: "75%",

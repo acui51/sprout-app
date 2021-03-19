@@ -86,7 +86,7 @@ export default function App({ route }) {
             }}
             onPress={() =>
               navigation.navigate(
-                "Studio",
+                "Sounds Good",
                 route.params && route.params.reply && { reply: true }
               )
             }

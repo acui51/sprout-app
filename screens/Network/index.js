@@ -69,13 +69,15 @@ export default ({ route }) => {
         //value={search}
       />
       <View>
-        <UserCard
-          username="Connection Requests"
-          username2="honest_ocean"
-          text="brunetted and 2 others"
-          pfp={Images.honest_ocean}
-          request
-        />
+        <TouchableOpacity onPress={() => navigation.navigate("Connections")}>
+          <UserCard
+            username="Connection Requests"
+            username2="honest_ocean"
+            text="brunetted and 2 others"
+            pfp={Images.honest_ocean}
+            request
+          />
+        </TouchableOpacity>
         <CustomText customStyles={styles.subheading}>
           MOST INTERACTED WITH
         </CustomText>
@@ -86,7 +88,7 @@ export default ({ route }) => {
           onPress={() => navigation.push("Profile", { profile: "scissors_s" })}
         >
           <UserCard
-            username="scissors"
+            username="scissors_s"
             username2="scissors_s"
             text="Scissors"
             pfp={Images.scissors}
@@ -96,7 +98,7 @@ export default ({ route }) => {
           onPress={() => navigation.push("Profile", { profile: "bessie_b" })}
         >
           <UserCard
-            username="bessieb"
+            username="bessie_b"
             username2="bessie_b"
             text="Bessie b"
             pfp={Images.bessie_b}
@@ -106,7 +108,7 @@ export default ({ route }) => {
           onPress={() => navigation.push("Profile", { profile: "justin_t" })}
         >
           <UserCard
-            username="justintimberpond"
+            username="justin_t"
             username2="justin_t"
             text="Justin Timberpound"
             pfp={Images.justin_t}
@@ -121,7 +123,7 @@ export default ({ route }) => {
             onPress={() => navigation.push("Profile", { profile: "shawna_m" })}
           >
             <UserCard
-              username="shawnamendez"
+              username="shawna_m"
               username2="shawna_m"
               text="Shawna Mendez"
               pfp={Images.shawna_m}
@@ -131,7 +133,7 @@ export default ({ route }) => {
             onPress={() => navigation.push("Profile", { profile: "taylor_f" })}
           >
             <UserCard
-              username="taylorfast"
+              username="taylor_f"
               username2="taylor_f"
               text="Taylor Fast"
               pfp={Images.taylor_f}

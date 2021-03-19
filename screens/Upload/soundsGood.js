@@ -57,7 +57,7 @@ export default function SoundsGood({ route, navigation }) {
       <View style={styles.content}>
         <SoundCloudPlayer
           prevSounds={route.params && route.params.reply && true}
-          prevPeople={2}
+          prevPeople={route.params && route.params.reply && 2}
           variant="dark"
           reply={route.params && route.params.reply}
           customStyles={{

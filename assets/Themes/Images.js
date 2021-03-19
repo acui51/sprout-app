@@ -22,6 +22,7 @@ const images = {
   vertical_line: require("../Images/vertical_line.png"),
   curve_line: require("../Images/left_curve.png"),
   ariana_venti: require("../Images/arianaVenti.png"),
+  ariana_venti_focusued: require("../Images/ariana_venti_focused.png"),
   honest_ocean: require("../Images/honestOcean.png"),
   justin_t: require("../Images/justinT.png"),
   scissors: require("../Images/scissors.png"),
@@ -34,11 +35,13 @@ const images = {
   studio: require("../Images/Recorder.png"),
   sound_freq: require("../Images/AudioPlayer.png"),
   add_button: require("../Images/addButton.png"),
+  add_button_focus: require("../Images/addbuttonfocus.png"),
   check_button: require("../Images/checkButton.png"),
   delete_button: require("../Images/delete.png"),
   monster_cover: require("../Images/DJ_Cobra.png"),
   uploadPhoto: require("../Images/uploadPhoto.png"),
   search_icon: require("../Images/Search.png"),
+  notification_icon: require("../Images/notification.png"),
 };
 
 export default images;

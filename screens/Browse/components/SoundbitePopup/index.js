@@ -8,10 +8,11 @@ import {
   StyleSheet,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 // Assets + Data
-import { Colors, Images } from "../../../../assets/Themes";
+import { Colors, Images, Metrics } from "../../../../assets/Themes";
 
 // Components
 import {
@@ -55,6 +56,12 @@ const SoundbitePopup = ({
         >
           <TouchableWithoutFeedback>
             <View style={styles.centeredView}>
+              <TouchableOpacity
+                style={styles.close}
+                onPress={() => setSoundbiteInFocus(!soundbiteInFocus.inFocus)}
+              >
+                <Ionicons name="close" size={16} color={Colors.white} />
+              </TouchableOpacity>
               <View style={styles.modalView}>
                 {/* Cover Photo */}
                 <Bubble
@@ -169,13 +176,14 @@ const SoundbitePopup = ({
                 <SoundCloudPlayer
                   prevPeople={lastSoundbites}
                   variant="dark"
-                  customStyles={{ marginBottom: 16 }}
+                  customStyles={{ marginBottom: 24 }}
                 />
 
                 {/* Profile preview */}
                 <ProfilePreview
                   closeModal={() => setSoundbiteInFocus(false)}
                   creator={soundbite.creator}
+                  customStyles={{ marginBottom: 32 }}
                 />
 
                 {/* Don't show the Add To Sound button if it's ariana_venti's */}
@@ -242,6 +250,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: "50%",
+    position: "relative",
   },
   backdrop: {
     flex: 1,
@@ -304,5 +313,17 @@ const styles = StyleSheet.create({
     top: -5,
     fontWeight: "700",
     color: Colors.gray,
+  },
+  close: {
+    backgroundColor: Colors.gray,
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    top: 24 + 20,
+    right: 24 + 20,
+    zIndex: 9,
   },
 });
