@@ -368,14 +368,11 @@ export default function App() {
     );
   }
 
-  if (!viewedOnboarding) {
-    return(
-    <Onboarding/>
-    )
-  }
   const Tab = createBottomTabNavigator();
   return (
     <>
+    {!viewedOnboarding ? <Onboarding/> :
+    <View>
       <SafeAreaView style={styles.topSafeArea} />
       <SafeAreaView style={styles.bottomSafeArea}>
         <StatusBar barStyle="light-content" />
@@ -490,6 +487,8 @@ export default function App() {
           </Tab.Navigator>
         </NavigationContainer>
       </SafeAreaView>
+      </View>
+}
     </>
   );
 }
