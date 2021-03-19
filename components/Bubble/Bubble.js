@@ -36,7 +36,7 @@ export function Bubble({
   useEffect(() => {
     Animated.timing(verticalVal, {
       toValue: animatedValue,
-      duration: 1000,
+      duration: 2000,
       useNativeDriver: false,
       easing: Easing.inOut(Easing.quad),
     }).start();
@@ -44,14 +44,14 @@ export function Bubble({
       if (value == animatedValue) {
         Animated.timing(verticalVal, {
           toValue: 0,
-          duration: 1000,
+          duration: 2000,
           useNativeDriver: false,
           easing: Easing.inOut(Easing.quad),
         }).start();
       } else if (value == 0) {
         Animated.timing(verticalVal, {
           toValue: animatedValue,
-          duration: 1000,
+          duration: 2000,
           useNativeDriver: false,
           easing: Easing.inOut(Easing.quad),
         }).start();
