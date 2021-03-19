@@ -20,34 +20,34 @@ const SoundNotificationCard = () => {
           </CustomText>
         </View>
       ) : (
-        <View style={styles.notificationBox}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Sound Evolution")}
-          >
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Sound Evolution")}
+        >
+          <View style={styles.notificationBox}>
             <Image style={styles.soundCover} source={Images.monster_cover} />
-          </TouchableOpacity>
-          <CustomText customStyles={styles.username}>
-            "Monsters"
-            <CustomText customStyles={styles.notificationText}>
-              {" "}
-              was added by{" "}
-              <CustomText customStyles={{ fontWeight: "700" }}>
-                brunetted
-              </CustomText>{" "}
-              to a branch you are in.
-              <CustomText customStyles={styles.notificationTime}>
+            <CustomText customStyles={styles.username}>
+              "Monsters"
+              <CustomText customStyles={styles.notificationText}>
                 {" "}
-                11h
+                was added by{" "}
+                <CustomText customStyles={{ fontWeight: "700" }}>
+                  brunetted
+                </CustomText>{" "}
+                to a branch you are in.
+                <CustomText customStyles={styles.notificationTime}>
+                  {" "}
+                  11h
+                </CustomText>
               </CustomText>
             </CustomText>
-          </CustomText>
-          <TouchableOpacity onPress={() => setDeleted(true)}>
-            <Image
-              source={Images.delete_button}
-              style={styles.deleteButton}
-            ></Image>
-          </TouchableOpacity>
-        </View>
+            <TouchableOpacity onPress={() => setDeleted(true)}>
+              <Image
+                source={Images.delete_button}
+                style={styles.deleteButton}
+              ></Image>
+            </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
       )}
     </View>
   );

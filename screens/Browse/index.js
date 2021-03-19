@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   ActivityIndicator,
   TextInput,
+  Button,
 } from "react-native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
@@ -91,6 +92,7 @@ export default ({ navigation }) => {
             style={styles.searchText}
             placeholder="Search for users"
             placeholderTextColor={Colors.gray}
+            onFocus={() => navigation.navigate("Search Users")}
           ></TextInput>
         </View>
       ),

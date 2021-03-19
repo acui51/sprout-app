@@ -8,7 +8,7 @@ import {
 } from "react-native-gifted-chat";
 import { StyleSheet, View } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
 
 // Assets
 import { Metrics, Colors, Images } from "../../../assets/Themes";
@@ -103,10 +103,8 @@ export default () => {
     );
   };
   const scrollToBottomComponent = () => {
-    return(
-        <FontAwesome5 name="chevron-down" size={22} color={Colors.black}/>
-    );
-  }
+    return <FontAwesome5 name="chevron-down" size={22} color={Colors.black} />;
+  };
   return (
     <Container customStyle={styles.container}>
       <GiftedChat

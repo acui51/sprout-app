@@ -28,6 +28,8 @@ import OtherConnection from "./screens/Browse/components/otherConnection";
 import SoundEvolution from "./screens/SoundEvolution/";
 import HonestChat from "./screens/Notifications/components/honestChat";
 import HonestChatProfile from "./screens/Profile/components/honestChatProfile";
+import SearchUsers from "./screens/Browse/components/searchUsers";
+
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
 // const { colors } = useTheme();
@@ -78,6 +80,7 @@ function BrowseStackComponent() {
       <BrowseStack.Screen name="Sound Evolution" component={SoundEvolution} />
       <BrowseStack.Screen name="Other Inbox" component={OtherInbox} />
       <BrowseStack.Screen name="Other Connection" component={OtherConnection} />
+      <BrowseStack.Screen name="Search Users" component={SearchUsers} />
     </BrowseStack.Navigator>
   );
 }
@@ -126,6 +129,7 @@ const UploadStack = createStackNavigator();
 function UploadStackComponent() {
   return (
     <UploadStack.Navigator
+      initialRouteName="Upload"
       headerMode="float"
       headerMode="float"
       screenOptions={{

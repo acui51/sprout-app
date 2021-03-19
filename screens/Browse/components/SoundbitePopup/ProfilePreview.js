@@ -19,48 +19,57 @@ export const ProfilePreview = ({ creator, customStyles, closeModal }) => {
   let lastName = arrName[1];
 
   return (
-    <View style={[styles.container, customStyles]}>
-      {/* Person Profile Pic */}
-      <View style={{ position: "relative" }}>
-        {creator ? (
-          <TouchableOpacity
-            onPress={() => {
-              closeModal();
-              navigation.navigate("Profile", { profile: creator });
-            }}
-          >
-            <Image style={styles.pfp} source={Images[creator]} />
-          </TouchableOpacity>
-        ) : (
-          <Image style={styles.pfp} source={Images.dj_cobra} />
-        )}
-        {connected ? (
-          <TouchableOpacity onPress={() => setConnected(!connected)}>
-            <View style={styles.addedButton}>
-              <Entypo name="check" size={12} color={Colors.primary} />
-            </View>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity onPress={() => setConnected(!connected)}>
-            {/* Don't show the add button if the user is ariana_venti */}
-            {creator !== "ariana_venti" && (
-              <View style={styles.addButton}>
-                <Feather name="plus" size={12} color={Colors.white} />
+    <TouchableOpacity
+      onPress={() => {
+        closeModal();
+        navigation.navigate("Profile", { profile: creator });
+      }}
+    >
+      <View style={[styles.container, customStyles]}>
+        {/* Person Profile Pic */}
+        <View style={{ position: "relative" }}>
+          {creator ? (
+            <TouchableOpacity
+              onPress={() => {
+                closeModal();
+                navigation.navigate("Profile", { profile: creator });
+              }}
+            >
+              <Image style={styles.pfp} source={Images[creator]} />
+            </TouchableOpacity>
+          ) : (
+            <Image style={styles.pfp} source={Images.dj_cobra} />
+          )}
+          {connected ? (
+            <TouchableOpacity onPress={() => setConnected(!connected)}>
+              <View style={styles.addedButton}>
+                <Entypo name="check" size={12} color={Colors.primary} />
               </View>
-            )}
-          </TouchableOpacity>
-        )}
-      </View>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={() => setConnected(!connected)}>
+              {/* Don't show the add button if the user is ariana_venti */}
+              {creator !== "ariana_venti" && (
+                <View style={styles.addButton}>
+                  <Feather name="plus" size={12} color={Colors.white} />
+                </View>
+              )}
+            </TouchableOpacity>
+          )}
+        </View>
 
-      {/* Profile Bio + Name */}
-      <View style={{ flexShrink: 1 }}>
-        <CustomText customStyles={styles.name}>
-          {firstName.charAt(0).toUpperCase() + firstName.slice(1)}{" "}
-          {lastName.charAt(0).toUpperCase() + lastName.slice(1)}
-        </CustomText>
-        <CustomText>Bonjour!! I love baguettes and old school rock.</CustomText>
+        {/* Profile Bio + Name */}
+        <View style={{ flexShrink: 1 }}>
+          <CustomText customStyles={styles.name}>
+            {firstName.charAt(0).toUpperCase() + firstName.slice(1)}{" "}
+            {lastName.charAt(0).toUpperCase() + lastName.slice(1)}
+          </CustomText>
+          <CustomText>
+            Bonjour!! I love baguettes and old school rock.
+          </CustomText>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
