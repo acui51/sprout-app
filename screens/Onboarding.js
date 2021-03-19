@@ -2,12 +2,13 @@ import React, { useState, useRef } from "react";
 import {
   Image,
   View,
+  Button,
   StyleSheet,
   Dimensions,
-  AsyncStorage,
   FlatList,
   Animated,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default Onboarding = () => {
   const slides = [
@@ -61,6 +62,7 @@ export default Onboarding = () => {
           renderItem={({ item }) => (
             <View>
               <Image style={styles.slide} source={item.image} />
+              {/* {currentIndex >= slides.length - 1 && (<Button title="START" />)} */}
             </View>
           )}
           keyExtractor={(item) => item.id}
@@ -77,7 +79,7 @@ export default Onboarding = () => {
           scrollEventThrottle={32}
           onViewableItemsChanged={viewableItemsChanged}
           viewabilityConfig={viewConfig.current}
-          ref = {slideRef}
+          ref={slideRef}
         />
       </View>
     </View>
