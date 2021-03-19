@@ -451,7 +451,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     fontSize: 16,
     fontWeight: "700",
-    color: Colors.gray,
+    color: Colors.white,
   },
   backgroundBar: {
     flexBasis: "75%",

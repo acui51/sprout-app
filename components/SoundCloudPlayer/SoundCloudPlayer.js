@@ -116,6 +116,29 @@ export function SoundCloudPlayer({
                   : styles.prevSoundUnselected
               }
             ></View>
+
+            <CustomText
+              customStyles={{
+                fontWeight: "700",
+                color: Colors.white,
+                position: "absolute",
+                bottom: -20,
+                left: 3,
+              }}
+            >
+              1
+            </CustomText>
+            <CustomText
+              customStyles={{
+                fontWeight: "700",
+                color: Colors.white,
+                position: "absolute",
+                bottom: -20,
+                left: 49,
+              }}
+            >
+              2
+            </CustomText>
           </View>
         </>
       )}
@@ -207,12 +230,13 @@ const styles = StyleSheet.create({
   prevSounds: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 16,
+    marginBottom: 32,
+    position: "relative",
   },
   prevSoundPrimary: {
     width: 12,
     height: 12,
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.white,
     borderRadius: 6,
   },
   prevSoundUnselected: {
@@ -229,7 +253,7 @@ const styles = StyleSheet.create({
   soundConnectorActive: {
     width: 35,
     height: 2,
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.white,
   },
   userSB0: {
     transform: [{ rotateX: "180deg" }],
