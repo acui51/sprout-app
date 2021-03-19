@@ -393,7 +393,7 @@ export default function App() {
                   case "UploadTab":
                     icon = focused ? (
                       <Image
-                        source={require("./assets/Images/add.png")}
+                        source={require("./assets/Images/addbuttonfocus.png")}
                         style={styles.upload}
                       />
                     ) : (
