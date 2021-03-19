@@ -24,7 +24,7 @@ const ConnectionNotificationCard = () => {
       ) : (
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate("Profile", { profile: "honest_ocean" })
+            navigation.push("Profile", { profile: "honest_ocean" })
           }
         >
           <View style={styles.notificationBox}>

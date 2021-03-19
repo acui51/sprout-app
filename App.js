@@ -29,6 +29,7 @@ import SoundEvolution from "./screens/SoundEvolution/";
 import HonestChat from "./screens/Notifications/components/honestChat";
 import HonestChatProfile from "./screens/Profile/components/honestChatProfile";
 import SearchUsers from "./screens/Browse/components/searchUsers";
+import Connections from "./screens/Profile/components/connections";
 
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
@@ -313,6 +314,7 @@ function ProfileStackComponent() {
           title: route.params.userName,
         })}
       />
+      <ProfileStack.Screen name="Connections" component={Connections} />
     </ProfileStack.Navigator>
   );
 }

@@ -69,13 +69,15 @@ export default ({ route }) => {
         //value={search}
       />
       <View>
-        <UserCard
-          username="Connection Requests"
-          username2="honest_ocean"
-          text="brunetted and 2 others"
-          pfp={Images.honest_ocean}
-          request
-        />
+        <TouchableOpacity onPress={() => navigation.navigate("Connections")}>
+          <UserCard
+            username="Connection Requests"
+            username2="honest_ocean"
+            text="brunetted and 2 others"
+            pfp={Images.honest_ocean}
+            request
+          />
+        </TouchableOpacity>
         <CustomText customStyles={styles.subheading}>
           MOST INTERACTED WITH
         </CustomText>
