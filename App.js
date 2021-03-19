@@ -6,7 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage"
+import AsyncStorage from "@react-native-async-storage/async-storage";
 // Assets
 import { Colors, Metrics, Images } from "./assets/Themes";
 import CustomIcons from "./assets/Fonts";
@@ -371,7 +371,7 @@ export default function App() {
   const Tab = createBottomTabNavigator();
   return (
     <>
-    {!viewedOnboarding ? <Onboarding/> :
+    {viewedOnboarding ? <Onboarding/> :
       // <SafeAreaView style={styles.topSafeArea} />
       <SafeAreaView style={styles.bottomSafeArea}>
         <StatusBar barStyle="light-content" />
