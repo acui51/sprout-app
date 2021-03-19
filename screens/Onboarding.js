@@ -26,7 +26,7 @@ export default Onboarding = () => {
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
-  //const slideRef = useRef(null);
+  const slideRef = useRef(null);
 
   const viewableItemsChanged = useRef(({ viewableItems }) => {
     setCurrentIndex(viewableItems[0].index);
@@ -52,8 +52,8 @@ export default Onboarding = () => {
         <FlatList
           data={slides}
           renderItem={({ item }) => (
-            <View style={styles.slide}>
-              <Image source={item.image} />
+            <View>
+              <Image style={styles.slide} source={item.image} />
             </View>
           )}
           keyExtractor={(item) => item.id}
@@ -70,7 +70,8 @@ export default Onboarding = () => {
           scrollEventThrottle={32}
           onViewableItemsChanged={viewableItemsChanged}
           viewabilityConfig={viewConfig}
-        />{" "}
+          ref = {slideRef}
+        />
       </View>
     </View>
   );
