@@ -29,6 +29,7 @@ import SoundEvolution from "./screens/SoundEvolution/";
 import HonestChat from "./screens/Notifications/components/honestChat";
 import HonestChatProfile from "./screens/Profile/components/honestChatProfile";
 import Onboarding from "./screens/Onboarding";
+import OnboardingSwipe from "./screens/OnboardingSwipe";
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
 // const { colors } = useTheme();
@@ -367,7 +368,11 @@ export default function App() {
       />
     );
   }
-
+  if (!viewedOnboarding) {
+    return (
+      <OnboardingSwipe onDone={setViewedOnboarding}/>
+    )
+  }
   const Tab = createBottomTabNavigator();
   return (
     <>

@@ -36,12 +36,10 @@ export default ({onDone} ) => {
         </View>
         <View>
           <View>
-              <TouchableOpacity>
             <Image
               style={styles.slide}
               source={require("../assets/Images/onboarding/Connect.png")}
             />
-            </TouchableOpacity>
           </View>
         </View>
       </Swiper>
