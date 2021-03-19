@@ -320,7 +320,7 @@ export default function App() {
   const loadResourcesAsync = async () =>
     Promise.all([
       Font.loadAsync({
-        "custom-icons": require("./assets/Fonts/sprout-v2.ttf"),
+        "custom-icons": require("./assets/Fonts/sprout-v4.ttf"),
         Kollektif: require("./assets/Fonts/Kollektif.ttf"),
         "Kollektif-Bold": require("./assets/Fonts/Kollektif-Bold.ttf"),
         "Kollektif-Italic": require("./assets/Fonts/Kollektif-Italic.ttf"),
@@ -363,21 +363,26 @@ export default function App() {
                     icon = focused ? (
                       // <CustomIcons name="home-filled" color={color} size={size} />
 
-                      <CustomIcons name="home" color={color} size={size} />
+                      <CustomIcons
+                        name="home-filled"
+                        color={color}
+                        size={size}
+                      />
                     ) : (
                       <CustomIcons name="home" color={color} size={size} />
                     );
                     break;
                   case "NetworkTab":
                     icon = focused ? (
-                      // <CustomIcons name="bookmark" color={color} size={size} />
-                      <Ionicons
-                        name="people-outline"
-                        size={size}
-                        color={color}
-                      />
+                      // <CustomIcons
+                      //   name="network-filled"
+                      //   color={color}
+                      //   size={size}
+                      // />
+                      <Ionicons name="people" size={size} color={color} />
                     ) : (
                       // <CustomIcons name="bookmark" color={color} size={size} />
+                      // <CustomIcons name="network" color={color} size={size} />
                       <Ionicons
                         name="people-outline"
                         size={size}
@@ -400,22 +405,52 @@ export default function App() {
                     break;
                   case "NotificationsTab":
                     icon = focused ? (
-                      <CustomIcons
-                        name="notification"
-                        color={color}
-                        size={size}
-                      />
+                      <View style={{ position: "relative" }}>
+                        <CustomIcons
+                          name="notification-filled"
+                          color={color}
+                          size={size}
+                        />
+                        <View
+                          style={{
+                            height: 12,
+                            width: 12,
+                            borderRadius: 6,
+                            backgroundColor: Colors.colorful7,
+                            position: "absolute",
+                            top: 0,
+                            right: 0,
+                            borderColor: Colors.background1,
+                            borderWidth: 2,
+                          }}
+                        ></View>
+                      </View>
                     ) : (
-                      <CustomIcons
-                        name="notification"
-                        color={color}
-                        size={size}
-                      />
+                      <View style={{ position: "relative" }}>
+                        <CustomIcons
+                          name="notification"
+                          color={color}
+                          size={size}
+                        />
+                        <View
+                          style={{
+                            height: 12,
+                            width: 12,
+                            borderRadius: 6,
+                            backgroundColor: Colors.colorful7,
+                            position: "absolute",
+                            top: 0,
+                            right: 0,
+                            borderColor: Colors.background1,
+                            borderWidth: 2,
+                          }}
+                        ></View>
+                      </View>
                     );
                     break;
                   case "ProfileTab":
                     icon = focused ? (
-                      <View style={styles.iconContainer}>
+                      <View style={styles.iconContainerFocused}>
                         <Image
                           style={styles.pfp}
                           source={Images.ariana_venti}
@@ -430,9 +465,6 @@ export default function App() {
                           style={styles.pfp}
                           source={Images.ariana_venti}
                         />
-                        {/* <CustomText customStyle={{ fontSize: 10 }}>
-                          Profile
-                        </CustomText> */}
                       </View>
                     );
                     break;
@@ -496,9 +528,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  iconContainerFocused: {
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: Colors.white,
+    borderWidth: 2.5,
+    borderRadius: 35 / 2,
+    height: 35,
+    width: 35,
+  },
   pfp: {
     width: 30,
     height: 30,
-    marginBottom: 8,
+    // margin: 5,
+    // marginBottom: 8,
   },
 });

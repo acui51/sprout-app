@@ -39,6 +39,7 @@ const images = {
   monster_cover: require("../Images/DJ_Cobra.png"),
   uploadPhoto: require("../Images/uploadPhoto.png"),
   search_icon: require("../Images/Search.png"),
+  notification_icon: require("../Images/notification.png"),
 };
 
 export default images;
