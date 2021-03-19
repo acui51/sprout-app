@@ -1,15 +1,35 @@
 import React from "react";
-import { Image, View, StatusBar, Dimensions, Button, TouchableOpacity } from "react-native";
+import {
+  Image,
+  View,
+  StatusBar,
+  Dimensions,
+  Button,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import Swiper from "react-native-swiper";
-import CustomButton from "../components";
+import { CustomButton } from "../components";
+import { Colors } from "../assets/Themes";
+import { Entypo } from "@expo/vector-icons";
 
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
-export default ({onDone} ) => {
+export default ({ onDone }) => {
   return (
     <View style={styles.container}>
       <StatusBar hidden={true} />
-      <Swiper loop={false} showsButtons={true}>
+      <Swiper
+        loop={false}
+        showsPagination={false}
+        showsButtons={true}
+        nextButton={
+          <Entypo name="chevron-right" size={50} color={Colors.primary} />
+        }
+        prevButton={
+          <Entypo name="chevron-left" size={50} color={Colors.primary} />
+        }
+      >
         <View>
           <Image
             style={styles.slide}
@@ -40,14 +60,24 @@ export default ({onDone} ) => {
               style={styles.slide}
               source={require("../assets/Images/onboarding/Connect.png")}
             />
+            <CustomButton
+              variantButton="primaryShadow"
+              variantText="whiteBaseText"
+              text="START"
+              customStyles={{
+                position: "absolute",
+                top: "30.90%",
+                left: "33%",
+              }}
+              width={150}
+              onPress={() => onDone(true)}
+            />
           </View>
         </View>
       </Swiper>
-      <View>
-      <Button onPress={() => onDone(true)}
-          title="START" 
-        />
-      </View>
+      {/* <View>
+        <Button onPress={() => onDone(true)} title="START" />
+      </View> */}
     </View>
   );
 };

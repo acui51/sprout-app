@@ -348,24 +348,24 @@ export default function App() {
 
   const Loading = () => {
     return (
-    <View>
-      <ActivityIndicator size = "large"/>
-    </View>
+      <View>
+        <ActivityIndicator size="large" />
+      </View>
     );
-  }
+  };
   const checkOnboarding = async () => {
-    try{
-      const value = await AsyncStorage.getItem('@viewedOnboarding');
+    try {
+      const value = await AsyncStorage.getItem("@viewedOnboarding");
       if (value !== null) {
-        setViewedOnboarding(true)
+        setViewedOnboarding(true);
       }
     } catch (err) {
-      console.log('Error @checkOnboarding: ', err)
+      console.log("Error @checkOnboarding: ", err);
     }
-  }
+  };
   useEffect(() => {
     checkOnboarding();
-  }, [])
+  }, []);
 
   if (!appLoading) {
     return (
@@ -377,15 +377,13 @@ export default function App() {
     );
   }
   if (!viewedOnboarding) {
-    return (
-      <OnboardingSwipe onDone={setViewedOnboarding}/>
-    )
+    return <OnboardingSwipe onDone={setViewedOnboarding} />;
   }
   const Tab = createBottomTabNavigator();
   return (
     <>
-    {viewedOnboarding ? <Onboarding/> :
-      // <SafeAreaView style={styles.topSafeArea} />
+      {/* {viewedOnboarding ? <Onboarding/> : */}
+      <SafeAreaView style={styles.topSafeArea} />
       <SafeAreaView style={styles.bottomSafeArea}>
         <StatusBar barStyle="light-content" />
         <NavigationContainer theme={Theme}>
@@ -531,7 +529,6 @@ export default function App() {
           </Tab.Navigator>
         </NavigationContainer>
       </SafeAreaView>
-}
     </>
   );
 }
