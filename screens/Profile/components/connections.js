@@ -9,7 +9,7 @@ const Connections = () => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: "Requests",
+      headerTitle: "Connection Requests",
     });
   });
   return (

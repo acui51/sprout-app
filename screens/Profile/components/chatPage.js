@@ -5,6 +5,7 @@ import {
   InputToolbar,
   TextInput,
   GiftedChat,
+  Composer,
 } from "react-native-gifted-chat";
 import { StyleSheet, View } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -60,6 +61,7 @@ export default ({ route }) => {
       GiftedChat.append(previousMessages, messages)
     );
   }, []);
+
   const renderBubble = (props) => {
     return (
       <Bubble
@@ -110,25 +112,30 @@ export default ({ route }) => {
           borderRadius: 20,
           paddingLeft: 10,
         }}
+        textInputStyle={{ color: "white" }}
+        // renderComposer={(props1) => (
+        //   <Composer textInputStyle={{ color: "white" }} />
+        // )}
       />
     );
   };
-  // suppose to change the keyboard text color but is not working
-  //   const renderComposer = (props) => {
-  //     return (
-  //       <TextInput
-  //         //placeholderTextColor="rgba(67,88,101,0.4)"
-  //         value={props.text}
-  //         multiline={true}
-  //         style={{
-  //           maxHeight: 100,
-  //           height: Math.max(40, props.composerHeight),
-  //           color: Colors.white,
-  //           padding: 5,
-  //         }}
-  //       />
-  //     );
-  //   };
+  // // suppose to change the keyboard text color but is not working
+  // const renderComposer = (props) => {
+  //   return (
+  //     <TextInput
+  //       //placeholderTextColor="rgba(67,88,101,0.4)"
+  //       value={props.text}
+  //       multiline={true}
+  //       style={{
+  //         maxHeight: 100,
+  //         height: Math.max(40, props.composerHeight),
+  //         color: Colors.white,
+  //         padding: 5,
+  //       }}
+  //     />
+  //   );
+  // };
+
   const scrollToBottomComponent = () => {
     return <FontAwesome5 name="chevron-down" size={22} color={Colors.black} />;
   };

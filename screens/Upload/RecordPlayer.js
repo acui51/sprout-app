@@ -53,12 +53,22 @@ const RecordPlayer = ({ customStyles }) => {
             </View>
           </TouchableOpacity>
         )}
-        <TouchableOpacity
-          style={styles.delete}
-          onPress={() => setStartTime("0:00")}
-        >
-          <Feather name="delete" size={40} color={Colors.white} />
-        </TouchableOpacity>
+
+        {startTime === "0:00" ? (
+          <Feather
+            style={styles.delete}
+            name="delete"
+            size={40}
+            color={Colors.gray}
+          />
+        ) : (
+          <TouchableOpacity
+            style={styles.delete}
+            onPress={() => setStartTime("0:00")}
+          >
+            <Feather name="delete" size={40} color={Colors.white} />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );

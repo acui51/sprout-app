@@ -99,6 +99,7 @@ export default () => {
           borderRadius: 20,
           paddingLeft: 10,
         }}
+        textInputStyle={{ color: Colors.white }}
       />
     );
   };

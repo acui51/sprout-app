@@ -121,6 +121,7 @@ function NetworkStackComponent() {
         name="Other Connection"
         component={OtherConnection}
       />
+      <NetworkStack.Screen name="Connections" component={Connections} />
     </NetworkStack.Navigator>
   );
 }
@@ -422,7 +423,7 @@ export default function App() {
                             height: 12,
                             width: 12,
                             borderRadius: 6,
-                            backgroundColor: Colors.colorful7,
+                            backgroundColor: Colors.primary,
                             position: "absolute",
                             top: 0,
                             right: 0,
@@ -443,7 +444,7 @@ export default function App() {
                             height: 12,
                             width: 12,
                             borderRadius: 6,
-                            backgroundColor: Colors.colorful7,
+                            backgroundColor: Colors.primary,
                             position: "absolute",
                             top: 0,
                             right: 0,
