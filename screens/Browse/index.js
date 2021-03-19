@@ -51,11 +51,11 @@ export default ({ navigation }) => {
 
   const clearOnboarding = async () => {
     try {
-      await AsyncStorage.removeItem('@viewedOnboarding');
-    } catch(err){
-      console.log('Error @clearOnboarding: ', err)
+      await AsyncStorage.removeItem("@viewedOnboarding");
+    } catch (err) {
+      console.log("Error @clearOnboarding: ", err);
     }
-  }
+  };
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -244,7 +244,7 @@ export default ({ navigation }) => {
                   genre={elem.genre}
                   img={Images[`sb_${elem.imageName}`]}
                   animated
-                  animatedValue={Math.floor(Math.random() * 15) + 1}
+                  animatedValue={Math.floor(Math.random() * 20) + 1}
                   onPress={() => {
                     setSoundbiteInFocus({
                       soundbite: {
