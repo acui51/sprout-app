@@ -17,11 +17,19 @@ export default Onboarding = () => {
     },
     {
       id: "2",
-      image: require("../assets/Images/onboarding/Discover.png"),
+      image: require("../assets/Images/onboarding/Add.png"),
     },
     {
       id: "3",
-      image: require("../assets/Images/onboarding/Discover.png"),
+      image: require("../assets/Images/onboarding/Seed.png"),
+    },
+    {
+      id: "4",
+      image: require("../assets/Images/onboarding/Evolve.png"),
+    },
+    {
+      id: "5",
+      image: require("../assets/Images/onboarding/Connect.png"),
     },
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,8 +40,7 @@ export default Onboarding = () => {
     setCurrentIndex(viewableItems[0].index);
   }).current;
 
-  const viewConfig = useRef({ viewAreaCoveragePercentageThreshold: 50 })
-    .current;
+  const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 });
 
   const scrollTo = async () => {
     if (currentIndex < slides.length - 1) {
@@ -69,7 +76,7 @@ export default Onboarding = () => {
           )}
           scrollEventThrottle={32}
           onViewableItemsChanged={viewableItemsChanged}
-          viewabilityConfig={viewConfig}
+          viewabilityConfig={viewConfig.current}
           ref = {slideRef}
         />
       </View>
