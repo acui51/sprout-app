@@ -1,5 +1,12 @@
-import React from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  Animated,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Easing,
+} from "react-native";
 
 // Assets
 import { Colors, Images } from "../../assets/Themes";
@@ -21,55 +28,145 @@ export function Bubble({
   user,
   notif,
   playSoundbite,
+  animated,
+  animatedValue,
 }) {
+  const [verticalVal, setVerticalVal] = useState(new Animated.Value(0));
+
+  useEffect(() => {
+    Animated.timing(verticalVal, {
+      toValue: animatedValue,
+      duration: 1000,
+      useNativeDriver: false,
+      easing: Easing.inOut(Easing.quad),
+    }).start();
+    verticalVal.addListener(({ value }) => {
+      if (value == animatedValue) {
+        Animated.timing(verticalVal, {
+          toValue: 0,
+          duration: 1000,
+          useNativeDriver: false,
+          easing: Easing.inOut(Easing.quad),
+        }).start();
+      } else if (value == 0) {
+        Animated.timing(verticalVal, {
+          toValue: animatedValue,
+          duration: 1000,
+          useNativeDriver: false,
+          easing: Easing.inOut(Easing.quad),
+        }).start();
+      }
+    });
+  }, []);
+
   return (
-    <TouchableOpacity
-      style={[
-        styles(genre).bubbleBackground,
-        customStyles,
-        large && styles(genre).bigBubbleBackground,
-        med && styles(genre).medBubbleBackground,
-      ]}
-      onPress={onPress}
-      onLongPress={playSoundbite}
-    >
-      <Image
-        style={[
-          styles(genre).img,
-          large && styles(genre).bigImg,
-          small && styles(genre).smallImg,
-          med && styles(genre).medImg,
-        ]}
-        source={img}
-      />
-      {user && (
-        <Image
-          source={Images.ariana_venti}
+    <>
+      {animated ? (
+        <Animated.View
           style={{
-            position: "absolute",
-            width: 40,
-            height: 40,
-            top: 0,
-            right: 0,
+            height: 100,
+            width: 100,
+            transform: [{ translateY: verticalVal }],
           }}
-        />
+        >
+          <TouchableOpacity
+            style={[
+              styles(genre).bubbleBackground,
+              customStyles,
+              large && styles(genre).bigBubbleBackground,
+              med && styles(genre).medBubbleBackground,
+            ]}
+            onPress={onPress}
+            onLongPress={playSoundbite}
+          >
+            <Image
+              style={[
+                styles(genre).img,
+                large && styles(genre).bigImg,
+                small && styles(genre).smallImg,
+                med && styles(genre).medImg,
+              ]}
+              source={img}
+            />
+            {user && (
+              <Image
+                source={Images.ariana_venti}
+                style={{
+                  position: "absolute",
+                  width: 40,
+                  height: 40,
+                  top: 0,
+                  right: 0,
+                }}
+              />
+            )}
+            {notif && (
+              <View
+                style={{
+                  position: "absolute",
+                  backgroundColor: Colors.colorful7,
+                  height: 18,
+                  width: 18,
+                  borderRadius: 9,
+                  top: 7,
+                  right: 7,
+                  borderColor: Colors.background1,
+                  borderWidth: 3,
+                }}
+              />
+            )}
+          </TouchableOpacity>
+        </Animated.View>
+      ) : (
+        <TouchableOpacity
+          style={[
+            styles(genre).bubbleBackground,
+            customStyles,
+            large && styles(genre).bigBubbleBackground,
+            med && styles(genre).medBubbleBackground,
+          ]}
+          onPress={onPress}
+          onLongPress={playSoundbite}
+        >
+          <Image
+            style={[
+              styles(genre).img,
+              large && styles(genre).bigImg,
+              small && styles(genre).smallImg,
+              med && styles(genre).medImg,
+            ]}
+            source={img}
+          />
+          {user && (
+            <Image
+              source={Images.ariana_venti}
+              style={{
+                position: "absolute",
+                width: 40,
+                height: 40,
+                top: 0,
+                right: 0,
+              }}
+            />
+          )}
+          {notif && (
+            <View
+              style={{
+                position: "absolute",
+                backgroundColor: Colors.colorful7,
+                height: 18,
+                width: 18,
+                borderRadius: 9,
+                top: 7,
+                right: 7,
+                borderColor: Colors.background1,
+                borderWidth: 3,
+              }}
+            />
+          )}
+        </TouchableOpacity>
       )}
-      {notif && (
-        <View
-          style={{
-            position: "absolute",
-            backgroundColor: Colors.colorful7,
-            height: 18,
-            width: 18,
-            borderRadius: 9,
-            top: 7,
-            right: 7,
-            borderColor: Colors.background1,
-            borderWidth: 3,
-          }}
-        />
-      )}
-    </TouchableOpacity>
+    </>
   );
 }
 
