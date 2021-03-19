@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   ActivityIndicator,
   TextInput,
+  AsyncStorage,
   Animated,
   Easing,
 } from "react-native";
@@ -48,6 +49,13 @@ export default ({ navigation }) => {
     rock: true,
   });
 
+  const clearOnboarding = async () => {
+    try {
+      await AsyncStorage.removeItem('@viewedOnboarding');
+    } catch(err){
+      console.log('Error @clearOnboarding: ', err)
+    }
+  }
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -66,6 +74,7 @@ export default ({ navigation }) => {
           color={Colors.white}
           style={{ marginRight: Metrics.headerMarginHorizontal }}
           onPress={() => {
+            clearOnboarding;
             setFilterVisible(true);
             // Comment this out to active 'deselecting'
             setGenres({

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, SafeAreaView, StatusBar, Image, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
@@ -6,7 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 // Assets
 import { Colors, Metrics, Images } from "./assets/Themes";
 import CustomIcons from "./assets/Fonts";
@@ -28,6 +28,8 @@ import OtherConnection from "./screens/Browse/components/otherConnection";
 import SoundEvolution from "./screens/SoundEvolution/";
 import HonestChat from "./screens/Notifications/components/honestChat";
 import HonestChatProfile from "./screens/Profile/components/honestChatProfile";
+import Onboarding from "./screens/Onboarding";
+import OnboardingSwipe from "./screens/OnboardingSwipe";
 import SearchUsers from "./screens/Browse/components/searchUsers";
 import Connections from "./screens/Profile/components/connections";
 
@@ -322,7 +324,7 @@ function ProfileStackComponent() {
 
 export default function App() {
   const [appLoading, setAppLoading] = useState(false);
-
+  const [viewedOnboarding, setViewedOnboarding] = useState(false);
   // Asynchronously load the custom fonts icons from icomoon
   const loadResourcesAsync = async () =>
     Promise.all([
@@ -344,6 +346,27 @@ export default function App() {
     setAppLoading(true);
   };
 
+  const Loading = () => {
+    return (
+    <View>
+      <ActivityIndicator size = "large"/>
+    </View>
+    );
+  }
+  const checkOnboarding = async () => {
+    try{
+      const value = await AsyncStorage.getItem('@viewedOnboarding');
+      if (value !== null) {
+        setViewedOnboarding(true)
+      }
+    } catch (err) {
+      console.log('Error @checkOnboarding: ', err)
+    }
+  }
+  useEffect(() => {
+    checkOnboarding();
+  }, [])
+
   if (!appLoading) {
     return (
       <AppLoading
@@ -353,11 +376,16 @@ export default function App() {
       />
     );
   }
-
+  if (!viewedOnboarding) {
+    return (
+      <OnboardingSwipe onDone={setViewedOnboarding}/>
+    )
+  }
   const Tab = createBottomTabNavigator();
   return (
     <>
-      <SafeAreaView style={styles.topSafeArea} />
+    {viewedOnboarding ? <Onboarding/> :
+      // <SafeAreaView style={styles.topSafeArea} />
       <SafeAreaView style={styles.bottomSafeArea}>
         <StatusBar barStyle="light-content" />
         <NavigationContainer theme={Theme}>
@@ -503,6 +531,7 @@ export default function App() {
           </Tab.Navigator>
         </NavigationContainer>
       </SafeAreaView>
+}
     </>
   );
 }

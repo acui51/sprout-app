@@ -3,8 +3,9 @@ import { Image, View, StatusBar, Dimensions, Button, TouchableOpacity } from "re
 import Swiper from "react-native-swiper";
 import CustomButton from "../components";
 
+import {useNavigation} from "@react-navigation/native";
 
-export default ( ) => {
+export default ({onDone} ) => {
   return (
     <View style={styles.container}>
       <StatusBar hidden={true} />
@@ -35,18 +36,16 @@ export default ( ) => {
         </View>
         <View>
           <View>
-              <TouchableOpacity>
             <Image
               style={styles.slide}
               source={require("../assets/Images/onboarding/Connect.png")}
             />
-            </TouchableOpacity>
           </View>
         </View>
       </Swiper>
       <View>
-      <Button
-          title="START"
+      <Button onPress={() => onDone(true)}
+          title="START" 
         />
       </View>
     </View>
