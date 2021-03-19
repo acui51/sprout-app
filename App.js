@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, SafeAreaView, StatusBar, Image, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
@@ -28,6 +28,7 @@ import OtherConnection from "./screens/Browse/components/otherConnection";
 import SoundEvolution from "./screens/SoundEvolution/";
 import HonestChat from "./screens/Notifications/components/honestChat";
 import HonestChatProfile from "./screens/Profile/components/honestChatProfile";
+import Onboarding from "./screens/Onboarding";
 // Use this to get colors from theme
 // import { useTheme } from '@react-navigation/native';
 // const { colors } = useTheme();
@@ -314,7 +315,7 @@ function ProfileStackComponent() {
 
 export default function App() {
   const [appLoading, setAppLoading] = useState(false);
-
+  const [viewedOnboarding, setViewedOnboarding] = useState(false);
   // Asynchronously load the custom fonts icons from icomoon
   const loadResourcesAsync = async () =>
     Promise.all([
@@ -336,6 +337,27 @@ export default function App() {
     setAppLoading(true);
   };
 
+  const Loading = () => {
+    return (
+    <View>
+      <ActivityIndicator size = "large"/>
+    </View>
+    );
+  }
+  const checkOnboarding = async () => {
+    try{
+      const value = await AsyncStorage.getItem('@viewedOnboarding');
+      if (value !== null) {
+        setViewedOnboarding(true)
+      }
+    } catch (err) {
+      console.log('Error @checkOnboarding: ', err)
+    }
+  }
+  useEffect(() => {
+    checkOnboarding();
+  }, [])
+
   if (!appLoading) {
     return (
       <AppLoading
@@ -346,6 +368,11 @@ export default function App() {
     );
   }
 
+  if (!viewedOnboarding) {
+    return(
+    <Onboarding/>
+    )
+  }
   const Tab = createBottomTabNavigator();
   return (
     <>
